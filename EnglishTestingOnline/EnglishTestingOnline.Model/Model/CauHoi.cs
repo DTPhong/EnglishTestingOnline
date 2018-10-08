@@ -23,5 +23,16 @@ namespace EnglishTestingOnline.Model.Model
         [Required]
         [StringLength(250)]
         public string DapAn { get; set; }
+        [ForeignKey("LoaiCauHoi_ID")]
+        public virtual LoaiCauHoi LoaiCauHois { get; set; }
+        [ForeignKey("BaiDocNghe_ID")]
+        public virtual BaiDocNghe BaiDocNghes { get; set; }
+        [ForeignKey("ChuDe_ID")]
+        public virtual ChuDe ChuDe { get; set; }
+        public virtual IEnumerable<CauHoiDeThi> CauHoiDeThis { get; set; }
+        public virtual IEnumerable<CauTraLoiTracNghiem> CauTraLoiTracNghiems { get; set; }
+        public virtual IEnumerable<CauTraLoiBaiLam> CauTraLoiBaiLams { get; set; }
+
+
     }
 }

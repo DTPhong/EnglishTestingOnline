@@ -17,5 +17,6 @@ namespace EnglishTestingOnline.Model.Model
         [Required]
         [StringLength(250)]
         public string LoaiCauTraLoi { get; set; }
+        public virtual IEnumerable<CauTraLoiTracNghiem> CauTraLoiTracNghiems { get; set; }
     }
 }

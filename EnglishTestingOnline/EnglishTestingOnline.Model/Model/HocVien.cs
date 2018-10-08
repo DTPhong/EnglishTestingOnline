@@ -8,15 +8,25 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Model.Model
 {
-    [Table("ChuDes")]
-    class ChuDe
+    [Table("HocVien")]
+    class HocVien
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
         [StringLength(250)]
-        public string TenChuDe { get; set; }
-       public virtual IEnumerable<CauHoi> CauHois { get; set; }
+        public string Ten { get; set; }
+        [Required]
+        public DateTime NgaySinh { get; set; }
+        [Required]
+        [StringLength(250)]
+        public string Email { get; set; }
+        [Required]
+        [StringLength(250)]
+        public string DiaChi { get; set; }
+        public virtual IEnumerable<BaiLam> BaiLams { get; set; }
+
+
     }
 }

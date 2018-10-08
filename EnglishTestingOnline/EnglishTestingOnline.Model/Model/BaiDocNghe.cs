@@ -20,7 +20,7 @@ namespace EnglishTestingOnline.Model.Model
         public string NoiDung { get; set; }
 
         [ForeignKey("LoaiBaiDocNghe_ID")]
-        public virtual LoaiBaiDocNghe LoaiBaiDocNghe { get; set; }
+        public virtual LoaiBaiDocNghe LoaiBaiDocNghes { get; set; }
 
         public virtual IEnumerable<CauHoi> CauHois { get; set; }
     }

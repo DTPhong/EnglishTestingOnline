@@ -19,5 +19,11 @@ namespace EnglishTestingOnline.Model.Model
         public int DiemNoi { get; set; }
         public int DiemDoc { get; set; }
         public int DiemViet { get; set; }
+        [ForeignKey("DeThi_ID")]
+        public virtual DeThi Dethi { get; set; }
+        [ForeignKey("HocVien_ID")]
+        public virtual HocVien HocViens { get; set; }
+        public virtual IEnumerable<CauTraLoiBaiLam> CauTraLoiBaiLams { get; set; }
+
     }
 }

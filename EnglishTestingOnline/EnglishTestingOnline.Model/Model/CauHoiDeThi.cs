@@ -16,5 +16,7 @@ namespace EnglishTestingOnline.Model.Model
         [Key]
         [Column(Order = 2)]
         public int CauHoi_ID { get; set; }
+        [ForeignKey("CauHoi_ID")]
+        public virtual IEnumerable<CauHoi> CauHois { get; set; }
     }
 }

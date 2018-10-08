@@ -19,5 +19,6 @@ namespace EnglishTestingOnline.Model.Model
         [Required]
         [StringLength(250)]
         public DateTime? NgayThi { get; set; }
+        public virtual IEnumerable<CauTraLoiBaiLam> CauTraLoiBaiLams { get; set; }
     }
 }

@@ -17,6 +17,6 @@ namespace EnglishTestingOnline.Model.Model
         [Required]
         [StringLength(500)]
         public string Name { get; set; }
-
+        public virtual IEnumerable<BaiDocNghe> BaiDocNghes { get; set; }
     }
 }

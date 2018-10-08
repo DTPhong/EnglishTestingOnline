@@ -17,5 +17,6 @@ namespace EnglishTestingOnline.Model.Model
         public int KyThi_ID { get; set; }
         public DateTime? ThoiGianThi { get; set; }
         public DateTime? ThoiGianBatDau { get; set; }
+        public virtual IEnumerable<BaiLam> BaiLams { get; set; }
     }
 }
