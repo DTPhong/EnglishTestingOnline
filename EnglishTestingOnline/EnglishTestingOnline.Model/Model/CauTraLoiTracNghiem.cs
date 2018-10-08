@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Model.Model
 {
-    [Table("ChuDes")]
-    class ChuDe
+    [Table("CauTraLoiTracNghiems")]
+    class CauTraLoiTracNghiem
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        [Required]
+        public int CauHoi_ID { get; set; }
+        public int LoaiCauTraLoi_ID { get; set; }
         [StringLength(250)]
-        public string TenChuDe { get; set; }
-
+        public string NoiDung { get; set; }
     }
 }
