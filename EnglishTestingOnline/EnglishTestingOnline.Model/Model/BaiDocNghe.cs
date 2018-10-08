@@ -18,5 +18,10 @@ namespace EnglishTestingOnline.Model.Model
         [Required]
         [StringLength(250)]
         public string NoiDung { get; set; }
+
+        [ForeignKey("LoaiBaiDocNghe_ID")]
+        public virtual LoaiBaiDocNghe LoaiBaiDocNghe { get; set; }
+
+        public virtual IEnumerable<CauHoi> CauHois { get; set; }
     }
 }

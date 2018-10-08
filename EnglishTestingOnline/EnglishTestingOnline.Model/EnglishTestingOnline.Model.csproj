@@ -55,14 +55,13 @@
     <Compile Include="Model\CauHoi.cs" />
     <Compile Include="Model\CauHoiDeThi.cs" />
     <Compile Include="Model\CauTraLoiBaiLam.cs" />
+    <Compile Include="Model\CauTraLoiTracNghiem.cs" />
     <Compile Include="Model\ChuDe.cs" />
     <Compile Include="Model\DeThi.cs" />
     <Compile Include="Model\KyThi.cs" />
     <Compile Include="Model\LoaiBaiDocNghe.cs" />
     <Compile Include="Model\LoaiCauHoi.cs" />
     <Compile Include="Model\LoaiCauTraLoiTracNghiem.cs" />
-    <Compile Include="Model\PhongThiDeThi.cs" />
-    <Compile Include="phong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
