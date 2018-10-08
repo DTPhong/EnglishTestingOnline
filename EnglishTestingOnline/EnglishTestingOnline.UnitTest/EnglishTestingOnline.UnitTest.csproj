@@ -54,6 +54,20 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnglishTestingOnline.Data\EnglishTestingOnline.Data.csproj">
+      <Project>{83814fb4-2fd8-4a52-a719-123fce9a0e3f}</Project>
+      <Name>EnglishTestingOnline.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnglishTestingOnline.Model\EnglishTestingOnline.Model.csproj">
+      <Project>{b68d15b9-9cfa-41d6-ba02-8d5170ca6fc3}</Project>
+      <Name>EnglishTestingOnline.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnglishTestingOnline.Service\EnglishTestingOnline.Service.csproj">
+      <Project>{53c70c0a-040e-4a77-b0fa-2a352a37d0e7}</Project>
+      <Name>EnglishTestingOnline.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
