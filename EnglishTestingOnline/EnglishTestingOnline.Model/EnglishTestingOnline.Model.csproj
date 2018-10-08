@@ -64,7 +64,6 @@
     <Compile Include="Model\PhongThiDeThi.cs" />
     <Compile Include="phong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Quan.cs" />
     <Compile Include="thuan.cs" />
   </ItemGroup>
   <ItemGroup>
