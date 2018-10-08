@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Model.Model
 {
-    class CauHoiDeThi
+    public class CauHoiDeThi
     {
     }
 }
