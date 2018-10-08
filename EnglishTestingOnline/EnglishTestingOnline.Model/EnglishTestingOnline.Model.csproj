@@ -61,7 +61,7 @@
     <Compile Include="Model\LoaiBaiDocNghe.cs" />
     <Compile Include="Model\LoaiCauHoi.cs" />
     <Compile Include="Model\LoaiCauTraLoiTracNghiem.cs" />
-    <Compile Include="Model\PhongThiDeThi.cs" />
+    <Compile Include="Model\CauTraLoiTracNghiem.cs" />
     <Compile Include="phong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="thuan.cs" />
