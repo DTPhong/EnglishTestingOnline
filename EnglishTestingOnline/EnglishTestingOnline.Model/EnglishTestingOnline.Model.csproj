@@ -65,7 +65,6 @@
     <Compile Include="phong.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="thuan.cs" />
-    <Compile Include="thuan2123.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
