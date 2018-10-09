@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Model.Model
 {   [Table("BaiLams")]
-    class BaiLam
+    public class BaiLam
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

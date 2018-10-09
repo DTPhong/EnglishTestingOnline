@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EnglishTestingOnline.Model.Model
 {
     [Table("CauTraLoiTracNghiems")]
-    class CauTraLoiTracNghiem
+    public class CauTraLoiTracNghiem
     {
         [Key]
         public int ID { get; set; }

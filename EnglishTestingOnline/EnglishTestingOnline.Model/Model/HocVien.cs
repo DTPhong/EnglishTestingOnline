@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EnglishTestingOnline.Model.Model
 {
     [Table("HocVien")]
-    class HocVien
+    public class HocVien
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

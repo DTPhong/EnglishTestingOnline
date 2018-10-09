@@ -24,9 +24,9 @@ namespace EnglishTestingOnline.Model.Model
         [StringLength(250)]
         public string DapAn { get; set; }
         [ForeignKey("LoaiCauHoi_ID")]
-        public virtual LoaiCauHoi LoaiCauHois { get; set; }
+        public virtual LoaiCauHoi LoaiCauHoi { get; set; }
         [ForeignKey("BaiDocNghe_ID")]
-        public virtual BaiDocNghe BaiDocNghes { get; set; }
+        public virtual BaiDocNghe BaiDocNghe { get; set; }
         [ForeignKey("ChuDe_ID")]
         public virtual ChuDe ChuDe { get; set; }
         public virtual IEnumerable<CauHoiDeThi> CauHoiDeThis { get; set; }

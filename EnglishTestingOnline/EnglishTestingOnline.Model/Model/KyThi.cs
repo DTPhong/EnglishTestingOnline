@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace EnglishTestingOnline.Model.Model
 {
     [Table("Kythis")]
-    class KyThi
+    public class KyThi
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
