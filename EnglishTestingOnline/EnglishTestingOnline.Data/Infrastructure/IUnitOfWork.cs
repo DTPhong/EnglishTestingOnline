@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Data.Infrastructure
 {
-    class IUnitOfWork
+    public interface IUnitOfWork
     {
+        void Commit();
     }
 }

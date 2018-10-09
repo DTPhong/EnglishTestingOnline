@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Data.Infrastructure
 {
-    class DbFactory
+    public class DbFactory : Disposable, IDbFactory
     {
+        private EnglishDbContext dbContext;
+
+        public EnglishDbContext Init()
+        {
+            return dbContext ?? (dbContext = new EnglishDbContext());
+        }
+
+        protected override void DisposeCore()
+        {
+            if (dbContext != null)
+            {
+                dbContext.Dispose();
+            }
+        }
     }
 }

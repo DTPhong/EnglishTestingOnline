@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Data.Infrastructure
 {
-    class IDbFactory
+    public interface IDbFactory : IDisposable
     {
+        EnglishDbContext Init();
     }
 }

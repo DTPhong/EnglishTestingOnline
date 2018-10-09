@@ -28,6 +28,17 @@ namespace EnglishTestingOnline.Data
         // public virtual DbSet<MyEntity> MyEntities { get; set; }
         public virtual DbSet<BaiDocNghe> BaiDocNghes { get; set; }
         public virtual DbSet<BaiLam> BaiLams { get; set; }
+        public virtual DbSet<CauHoi> CauHois { get; set; }
+        public virtual DbSet<CauHoiDeThi> CauHoiDeThis { get; set; }
+        public virtual DbSet<CauTraLoiBaiLam> CauTraLoiBaiLams { get; set; }
+        public virtual DbSet<CauTraLoiTracNghiem> CauTraLoiTracNghiems { get; set; }
+        public virtual DbSet<ChuDe> ChuDes { get; set; }
+        public virtual DbSet<DeThi> DeThis { get; set; }
+        public virtual DbSet<HocVien> HocViens { get; set; }
+        public virtual DbSet<KyThi> KyThis { get; set; }
+        public virtual DbSet<LoaiBaiDocNghe> LoaiBaiDocNghes { get; set; }
+        public virtual DbSet<LoaiCauHoi> LoaiCauHois { get; set; }
+        public virtual DbSet<LoaiCauTraLoiTracNghiem> LoaiCauTraLoiTracNghiems { get; set; }
     }
 
     //public class MyEntity
