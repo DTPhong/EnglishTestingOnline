@@ -32,12 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -60,6 +58,11 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201810090714382_initdb.cs" />
+    <Compile Include="Migrations\201810090714382_initdb.Designer.cs">
+      <DependentUpon>201810090714382_initdb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Respositories\BaiDocNgheRepository.cs" />
     <Compile Include="Respositories\CauHoiRepository.cs" />
@@ -73,8 +76,7 @@
     <Compile Include="Respositories\KyThiRepository.cs" />
     <Compile Include="Respositories\LoaiBaiDocNgheRepository.cs" />
     <Compile Include="Respositories\LoaiCauHoiRepository.cs" />
-    <Compile Include="Respositories\LoaiCauHoiTracNghiem.cs" />
-    <Compile Include="Respositories\LoaiCauHoiTracNghiemRepository.cs" />
+    <Compile Include="Respositories\LoaiCauTraLoiTracNghiemRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -86,6 +88,10 @@
       <Name>EnglishTestingOnline.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810090714382_initdb.resx">
+      <DependentUpon>201810090714382_initdb.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

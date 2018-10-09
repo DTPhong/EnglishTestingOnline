@@ -11,14 +11,15 @@ namespace EnglishTestingOnline.Model.Model
     public class CauHoiDeThi
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
         public int DeThi_ID { get; set; }
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 2)]
         public int CauHoi_ID { get; set; }
+        [ForeignKey("DeThi_ID")]
+        public virtual DeThi DeThi { get; set; }
         [ForeignKey("CauHoi_ID")]
+        public virtual CauHoi CauHoi { get; set; }
         public virtual IEnumerable<CauHoi> CauHois { get; set; }
     }
 }
