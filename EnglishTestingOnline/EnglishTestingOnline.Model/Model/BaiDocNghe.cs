@@ -14,13 +14,13 @@ namespace EnglishTestingOnline.Model.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        public int LoaiBaiDocNghe_ID { get; set; }
+        public int? LoaiBaiDocNghe_ID { get; set; }
         [Required]
         [StringLength(250)]
         public string NoiDung { get; set; }
 
         [ForeignKey("LoaiBaiDocNghe_ID")]
-        public virtual LoaiBaiDocNghe LoaiBaiDocNghes { get; set; }
+        public virtual LoaiBaiDocNghe LoaiBaiDocNghe { get; set; }
 
         public virtual IEnumerable<CauHoi> CauHois { get; set; }
     }

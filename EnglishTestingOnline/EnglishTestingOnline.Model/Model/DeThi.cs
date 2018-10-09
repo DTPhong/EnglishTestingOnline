@@ -14,9 +14,15 @@ namespace EnglishTestingOnline.Model.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+        [Required]
         public int KyThi_ID { get; set; }
-        public DateTime? ThoiGianThi { get; set; }
-        public DateTime? ThoiGianBatDau { get; set; }
+        [Required]
+        public DateTime ThoiGianThi { get; set; }
+        [Required]
+        public DateTime ThoiGianBatDau { get; set; }
+        [ForeignKey("KyThi_ID")]
+        public virtual KyThi KyThi { get; set; }
         public virtual IEnumerable<BaiLam> BaiLams { get; set; }
+        public virtual IEnumerable<CauHoiDeThi> CauHoiDeThis { get; set; }
     }
 }

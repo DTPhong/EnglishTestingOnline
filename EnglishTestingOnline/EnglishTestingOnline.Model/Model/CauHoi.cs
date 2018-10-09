@@ -14,8 +14,10 @@ namespace EnglishTestingOnline.Model.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+        [Required]
         public int LoaiCauHoi_ID { get; set; }
-        public int BaiDocNghe_ID { get; set; }
+        public int? BaiDocNghe_ID { get; set; }
+        [Required]
         public int ChuDe_ID { get; set; }
         [Required]
         [StringLength(500)]

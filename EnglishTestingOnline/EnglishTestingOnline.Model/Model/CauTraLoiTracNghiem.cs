@@ -12,14 +12,17 @@ namespace EnglishTestingOnline.Model.Model
     public class CauTraLoiTracNghiem
     {
         [Key]
+        [Column(Order = 1)]
         public int ID { get; set; }
+        [Key]
+        [Column(Order = 2)]
         public int CauHoi_ID { get; set; }
         public int LoaiCauTraLoi_ID { get; set; }
         [StringLength(250)]
         public string NoiDung { get; set; }
         [ForeignKey("LoaiCauTraLoi_ID")]
-        public virtual LoaiCauTraLoiTracNghiem LoaiCauTraLoiTracNghiems { get; set; }
+        public virtual LoaiCauTraLoiTracNghiem LoaiCauTraLoiTracNghiem { get; set; }
         [ForeignKey("CauHoi_ID")]
-        public virtual CauHoi CauHois { get; set; }
+        public virtual CauHoi CauHoi { get; set; }
     }
 }

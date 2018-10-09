@@ -19,9 +19,9 @@ namespace EnglishTestingOnline.Model.Model
         [StringLength(250)]
         public string CauTraLoi { get; set; }
         [ForeignKey("CauHoi_ID")]
-        public virtual CauHoi CauHois { get; set; }
+        public virtual CauHoi CauHoi { get; set; }
         [ForeignKey("BaiLam_ID")]
-        public virtual BaiLam BaiLams { get; set; }
+        public virtual BaiLam BaiLam { get; set; }
 
 
     }

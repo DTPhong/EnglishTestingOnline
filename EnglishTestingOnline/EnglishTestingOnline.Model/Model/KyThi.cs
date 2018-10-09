@@ -15,10 +15,10 @@ namespace EnglishTestingOnline.Model.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
+        [StringLength(250)]
         public string TenKyThi { get; set; }
         [Required]
-        [StringLength(250)]
-        public DateTime? NgayThi { get; set; }
-        public virtual IEnumerable<CauTraLoiBaiLam> CauTraLoiBaiLams { get; set; }
+        public DateTime NgayThi { get; set; }
+        public virtual IEnumerable<DeThi> DeThis { get; set; }
     }
 }

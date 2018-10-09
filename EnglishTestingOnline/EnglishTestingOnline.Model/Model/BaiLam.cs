@@ -13,16 +13,18 @@ namespace EnglishTestingOnline.Model.Model
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
+        [Required]
         public int HocVien_ID { get; set; }
+        [Required]
         public int DeThi_ID { get; set; }
-        public int DiemNghe { get; set; }
-        public int DiemNoi { get; set; }
-        public int DiemDoc { get; set; }
-        public int DiemViet { get; set; }
+        public float? DiemNghe { get; set; }
+        public float? DiemNoi { get; set; }
+        public float? DiemDoc { get; set; }
+        public float? DiemViet { get; set; }
         [ForeignKey("DeThi_ID")]
         public virtual DeThi Dethi { get; set; }
         [ForeignKey("HocVien_ID")]
-        public virtual HocVien HocViens { get; set; }
+        public virtual HocVien HocVien { get; set; }
         public virtual IEnumerable<CauTraLoiBaiLam> CauTraLoiBaiLams { get; set; }
 
     }

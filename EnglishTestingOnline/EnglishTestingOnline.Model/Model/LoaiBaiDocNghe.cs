@@ -15,7 +15,7 @@ namespace EnglishTestingOnline.Model.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
-        [StringLength(500)]
+        [StringLength(250)]
         public string Name { get; set; }
         public virtual IEnumerable<BaiDocNghe> BaiDocNghes { get; set; }
     }

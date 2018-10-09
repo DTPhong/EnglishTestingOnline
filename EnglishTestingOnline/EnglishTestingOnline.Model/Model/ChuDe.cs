@@ -17,6 +17,6 @@ namespace EnglishTestingOnline.Model.Model
         [Required]
         [StringLength(250)]
         public string TenChuDe { get; set; }
-       public virtual IEnumerable<CauHoi> CauHois { get; set; }
+        public virtual IEnumerable<CauHoi> CauHois { get; set; }
     }
 }
