@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishTestingOnline.Servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishTestingOnline.UnitTest", "EnglishTestingOnline.UnitTest\EnglishTestingOnline.UnitTest.csproj", "{4DFF33E1-4031-4412-8F82-72436C297F51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishTestingOnline.Web", "EnglishTestingOnline.Web\EnglishTestingOnline.Web.csproj", "{AC0B0A3F-52B8-4B59-A3EC-C875F1251588}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4DFF33E1-4031-4412-8F82-72436C297F51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DFF33E1-4031-4412-8F82-72436C297F51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DFF33E1-4031-4412-8F82-72436C297F51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC0B0A3F-52B8-4B59-A3EC-C875F1251588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC0B0A3F-52B8-4B59-A3EC-C875F1251588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC0B0A3F-52B8-4B59-A3EC-C875F1251588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC0B0A3F-52B8-4B59-A3EC-C875F1251588}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
