@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Service
 {
-    class BaiLamService
+    public class BaiLamService
     {
     }
 }
