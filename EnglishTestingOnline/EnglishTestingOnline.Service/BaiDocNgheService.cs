@@ -20,8 +20,8 @@ namespace EnglishTestingOnline.Service
     }
     public class BaiDocNgheService : IBaiDocNgheSercive
     {
-        IBaiDocNgheRepository _baiDocNgheRepository;
-        IUnitOfWork _unitOfWork;
+        private IBaiDocNgheRepository _baiDocNgheRepository;
+        private IUnitOfWork _unitOfWork;
 
         public BaiDocNgheService(IBaiDocNgheRepository baiDocNgheRepository, IUnitOfWork unitOfWork)
         {
