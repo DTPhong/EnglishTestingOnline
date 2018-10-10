@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnglishTestingOnline.Web.Mappings;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,9 @@ namespace EnglishTestingOnline.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+
+            AutoMapperConfiguration.Configure();
         }
     }
 }
