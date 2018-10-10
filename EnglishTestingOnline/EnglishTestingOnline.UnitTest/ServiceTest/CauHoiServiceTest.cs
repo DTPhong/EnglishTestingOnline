@@ -37,7 +37,7 @@ namespace EnglishTestingOnline.UnitTest.ServiceTest
         }
 
         [TestMethod]
-        public void Product_Service_GetAll()
+        public void CauHoi_Service_GetAll()
         {
             //setup method
             _mockRepository.Setup(m => m.GetAll(null)).Returns(_listCauhoi);
@@ -50,38 +50,21 @@ namespace EnglishTestingOnline.UnitTest.ServiceTest
             Assert.AreEqual(5, result.Count);
         }
 
-        //[TestMethod]
-        //public void Product_Service_GetRelatedProduct()
-        //{
-        //    //setup method
-        //    _mockRepository.Setup(m => m.GetAll(null)).Returns(_listProduct);
+        [TestMethod]
+        public void CauHoi_Service_Create()
+        {
+            CauHoi cauHoi = new CauHoi() { ID = 5, LoaiCauHoi_ID = 1, BaiDocNghe_ID = 1, ChuDe_ID = 3, NoiDung = "Lorem lorem lorem", DapAn = "lorem" };
 
-        //    //call action
-        //    var result = _productService.GetReatedProducts(22,4) as List<Product>;
+            _mockRepository.Setup(m => m.Add(cauHoi)).Returns((CauHoi c) =>
+            {
+                c.ID = 5;
+                return c;
+            });
 
-        //    //compare
-        //    Assert.IsNotNull(result);
-        //    Assert.AreEqual(4, result.Count);
-        //}
+            var result = _cauhoiService.Add(cauHoi);
 
-        //[TestMethod]
-        //public void Product_Service_Create()
-        //{
-        //    Product product = new Product();
-        //    product.Name = "Test";
-        //    product.Alias = "test";
-        //    product.Status = true;
-
-        //    _mockRepository.Setup(m => m.Add(product)).Returns((Product p) =>
-        //    {
-        //        p.ID = 1;
-        //        return p;
-        //    });
-
-        //    var result = _productService.Add(product);
-
-        //    Assert.IsNotNull(result);
-        //    Assert.AreEqual(1, result.ID);
-        //}
+            Assert.IsNotNull(result);
+            Assert.AreEqual(5, result.ID);
+        }
     }
 }
