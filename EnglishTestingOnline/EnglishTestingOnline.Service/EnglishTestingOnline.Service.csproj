@@ -54,6 +54,12 @@
     <Compile Include="CauHoiService.cs" />
     <Compile Include="CauTraLoiBaiLamService.cs" />
     <Compile Include="CauTraLoiTracNghiemService.cs" />
+    <Compile Include="ChuDeService.cs" />
+    <Compile Include="LoaiCauTraLoiTracNghiemService.cs" />
+    <Compile Include="DeThiService.cs" />
+    <Compile Include="HocVienService.cs" />
+    <Compile Include="KyThiService.cs" />
+    <Compile Include="LoaiCauHoiService.cs" />
     <Compile Include="LoaiBaiDocNgheService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
