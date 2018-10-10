@@ -48,7 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaiDocNgheService.cs" />
+    <Compile Include="BaiLamService.cs" />
+    <Compile Include="CauHoiDeThiService.cs" />
     <Compile Include="CauHoiService.cs" />
+    <Compile Include="CauTraLoiBaiLamService.cs" />
+    <Compile Include="CauTraLoiTracNghiemService.cs" />
+    <Compile Include="LoaiBaiDocNgheService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
