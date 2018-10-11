@@ -13,5 +13,8 @@ namespace EnglishTestingOnline.Web.Models
         public int ChuDe_ID { get; set; }
         public string NoiDung { get; set; }
         public string DapAn { get; set; }
+        public virtual LoaiCauHoiViewModel LoaiCauHoi { get; set; }
+        public virtual BaiDocNgheViewModel BaiDocNghe { get; set; }
+        public virtual ChuDeViewModel ChuDe { get; set; }
     }
 }

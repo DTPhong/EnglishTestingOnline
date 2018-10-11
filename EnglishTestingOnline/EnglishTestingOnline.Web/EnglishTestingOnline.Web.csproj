@@ -201,7 +201,19 @@
     </Compile>
     <Compile Include="Infrastructure\Extensions\EntitiyExtension.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\BaiDocNgheViewModel.cs" />
+    <Compile Include="Models\BaiLamViewModel.cs" />
+    <Compile Include="Models\CauHoiDeThiViewModel.cs" />
     <Compile Include="Models\CauHoiViewModel.cs" />
+    <Compile Include="Models\CauTraLoiBaiLamViewModel.cs" />
+    <Compile Include="Models\CauTraLoiTracNghiemViewModel.cs" />
+    <Compile Include="Models\ChuDeViewModel.cs" />
+    <Compile Include="Models\DeThiViewModel.cs" />
+    <Compile Include="Models\HocVienViewModel.cs" />
+    <Compile Include="Models\KyThiViewModel.cs" />
+    <Compile Include="Models\LoaiBaiDocNgheViewModel.cs" />
+    <Compile Include="Models\LoaiCauHoiViewModel.cs" />
+    <Compile Include="Models\LoaiCauTraLoiTracNghiemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -46,7 +46,8 @@ namespace EnglishTestingOnline.Service
 
         public IEnumerable<CauHoi> GetAll()
         {
-            return _cauHoiRepository.GetAll();
+            string[] includes = {"ChuDe", "LoaiCauHoi" };
+            return _cauHoiRepository.GetAll(includes);
         }
 
         public CauHoi GetById(int id)
