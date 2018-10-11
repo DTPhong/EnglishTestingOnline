@@ -198,6 +198,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CauHoiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,6 +230,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\CauHoi\IndexPaging.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\CauHoi\Search.cshtml" />
+    <Content Include="Views\Admin\Sidebar.cshtml" />
+    <Content Include="Views\Admin\Navigation.cshtml" />
+    <Content Include="Views\Admin\Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -38,7 +38,7 @@ namespace EnglishTestingOnline.Web.Controllers
         //    return View(viewModel);
         //}
 
-        public ActionResult Index(int page = 1)
+        public ActionResult Index(string keyword, int page = 1)
         {
             //tổng record 1 page
             int pageSize = 5;
