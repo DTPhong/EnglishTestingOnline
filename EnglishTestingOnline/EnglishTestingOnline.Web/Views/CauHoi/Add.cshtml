@@ -24,8 +24,8 @@
                                         <label class="col-md-3 col-form-label">Loại câu hỏi</label>
                                         <div class="col-md-9">
                                             <div class="form-group has-default">
-                                                <input type="text" class="form-control">
-                                                @Html.DropDownListFor(model=>model.LoaiCauHoi_ID, new SelectList(ViewBag.ListLoaiCauHoi, "ID", "NoiDung"))
+                                                @*<input type="text" class="form-control">*@
+                                                @Html.DropDownListFor(model=>model.LoaiCauHoi_ID, new SelectList(ViewBag.ListLoaiCauHoi, "ID", "NoiDung"), new { @class = "selectpicker" })
                                             </div>
                                         </div>
                                     </div>
