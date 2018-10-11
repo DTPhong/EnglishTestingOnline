@@ -29,7 +29,7 @@ namespace EnglishTestingOnline.Web.Controllers
         public ActionResult Index(string keyword = null, int page = 1)
         {
             //tổng record 1 page
-            int pageSize = 5;
+            int pageSize = 20;
             //lấy từ record 0
             int totalRow = 0;
             IEnumerable<CauHoi> model = null;
@@ -103,6 +103,32 @@ namespace EnglishTestingOnline.Web.Controllers
             _cauHoiService.Save();
 
 
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            ViewBag.ListChuDe = _chuDeService.GetAll();
+            ViewBag.ListBaiDocNghe = _baiDocNgheSercive.GetAll();
+            ViewBag.ListLoaiCauHoi = _loaiCauHoiService.GetAll();
+            var cauHoi = _cauHoiService.GetById(id);
+            var cauHoiViewModel = Mapper.Map<CauHoi, CauHoiViewModel>(cauHoi);
+            return View(cauHoiViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(CauHoiViewModel cauHoiVM)
+        {
+            var cauHoi = _cauHoiService.GetById(cauHoiVM.ID);
+            cauHoi.UpdateCauHoi(cauHoiVM);
+            _cauHoiService.Update(cauHoi);
+            _cauHoiService.Save();
+            return RedirectToAction("Index");
+        }
+        public ActionResult Delete(int id)
+        {
+            _cauHoiService.Delete(id);
+            _cauHoiService.Save();
             return RedirectToAction("Index");
         }
 

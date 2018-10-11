@@ -1,8 +1,9 @@
 ﻿@model EnglishTestingOnline.Web.Models.CauHoiViewModel
 @{
-    ViewBag.Title = "Add";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <div class="content">
     <div class="container-fluid">
@@ -17,15 +18,15 @@
                             <h2 class="card-title ">Thêm mới câu hỏi</h2>
                         </div>
                         <div class="card-body">
-                            @using (Html.BeginForm("Add", "CauHoi", FormMethod.Post))
+                            @using (Html.BeginForm("Edit", "CauHoi", FormMethod.Post))
                             {
                                 <form class="form-horizontal">
                                     <div class="row">
                                         <label class="col-md-3 col-form-label">Loại câu hỏi</label>
                                         <div class="col-md-9">
                                             <div class="form-group has-default">
-                                                @*<input type="text" class="form-control">*@
-                                                @Html.DropDownListFor(model=>model.LoaiCauHoi_ID, new SelectList(ViewBag.ListLoaiCauHoi, "ID", "NoiDung"), new { @class = "selectpicker", @title="Chọn loại câu hỏi", @data_style="select-with-transition" })
+                                                @Html.HiddenFor(model => model.ID);
+                                                @Html.DropDownListFor(model => model.LoaiCauHoi_ID, new SelectList(ViewBag.ListLoaiCauHoi, "ID", "NoiDung"), new { @class = "selectpicker", @title = "Chọn loại câu hỏi", @data_style = "select-with-transition" })
                                             </div>
                                         </div>
                                     </div>
@@ -49,15 +50,15 @@
                                         <label class="col-md-3 col-form-label">Nội dung</label>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                               @Html.TextBoxFor(model => model.NoiDung, new { @class = "form-control" })
+                                                @Html.TextBoxFor(model => model.NoiDung, new { @class = "form-control" })
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <label class="col-md-3 col-form-label">Đáp án</label>
                                         <div class="col-md-9">
-                                            <div class="form-group"> 
-                                                @Html.TextBoxFor(model => model.DapAn, new { @class ="form-control" })
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(model => model.DapAn, new { @class = "form-control" })
                                             </div>
                                         </div>
                                     </div>
