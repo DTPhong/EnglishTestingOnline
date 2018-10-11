@@ -39,6 +39,8 @@ namespace EnglishTestingOnline.Data
         public virtual DbSet<LoaiBaiDocNghe> LoaiBaiDocNghes { get; set; }
         public virtual DbSet<LoaiCauHoi> LoaiCauHois { get; set; }
         public virtual DbSet<LoaiCauTraLoiTracNghiem> LoaiCauTraLoiTracNghiems { get; set; }
+
+   
     }
 
     //public class MyEntity
