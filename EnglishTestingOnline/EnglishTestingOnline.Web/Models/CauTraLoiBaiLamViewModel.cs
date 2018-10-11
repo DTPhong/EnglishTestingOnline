@@ -5,15 +5,12 @@ using System.Web;
 
 namespace EnglishTestingOnline.Web.Models
 {
-    public class CauHoiDeThiViewModel
+    public class CauTraLoiBaiLamViewModel
     {
-        public int DeThi_ID { get; set; }
-
+        public int BaiLam_ID { get; set; }
         public int CauHoi_ID { get; set; }
-
-        public virtual DeThiViewModel DeThi { get; set; }
-
+        public string CauTraLoi { get; set; }
         public virtual CauHoiViewModel CauHoi { get; set; }
-        public virtual IEnumerable<CauHoiViewModel> CauHois { get; set; }
+        public virtual BaiLamViewModel BaiLam { get; set; }
     }
 }
