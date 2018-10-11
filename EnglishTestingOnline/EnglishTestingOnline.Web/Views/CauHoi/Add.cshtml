@@ -33,7 +33,7 @@
                                         <label class="col-md-3 col-form-label">Bài đọc nghe</label>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control">
+                                                @Html.DropDownListFor(model => model.BaiDocNghe_ID, new SelectList(ViewBag.ListBaiDocNghe, "ID", "NoiDung"), new { @class = "selectpicker" })
                                             </div>
                                         </div>
                                     </div>
@@ -41,7 +41,7 @@
                                         <label class="col-md-3 col-form-label">Chủ đề</label>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control">
+                                                @Html.DropDownListFor(model => model.ChuDe_ID, new SelectList(ViewBag.ListChuDe, "ID", "TenChuDe"), new { @class = "selectpicker" })
                                             </div>
                                         </div>
                                     </div>
@@ -49,15 +49,15 @@
                                         <label class="col-md-3 col-form-label">Nội dung</label>
                                         <div class="col-md-9">
                                             <div class="form-group">
-                                                <input type="text" class="form-control">
+                                               @Html.TextBoxFor(model => model.NoiDung, new { @class = "form-control" })
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <label class="col-md-3 col-form-label">Đáp án</label>
                                         <div class="col-md-9">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control">
+                                            <div class="form-group"> 
+                                                @Html.TextBoxFor(model => model.DapAn, new { @class ="form-control" })
                                             </div>
                                         </div>
                                     </div>
