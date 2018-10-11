@@ -16,6 +16,9 @@ namespace EnglishTestingOnline.Service
         void Update(LoaiCauHoi LoaiCauHoi);
         LoaiCauHoi GetById(int id);
         IEnumerable<LoaiCauHoi> GetAll();
+        IEnumerable<LoaiCauHoi> GetAllPaging(int page, int pageSize, out int totalRow);
+
+        IEnumerable<LoaiCauHoi> SearchByName(string keyword, int page, int pageSize, out int totalRow);
         void Save();
     }
     public class LoaiCauHoiService : ILoaiCauHoiSercive
@@ -42,10 +45,24 @@ namespace EnglishTestingOnline.Service
         {
             return _LoaiCauHoiRepository.GetAll();
         }
+        public IEnumerable<LoaiCauHoi> SearchByName(string keyword, int page, int pageSize, out int totalRow)
+        {
+            var query = _LoaiCauHoiRepository.GetMulti(c => c.NoiDung.Contains(keyword));
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
 
         public LoaiCauHoi GetById(int id)
         {
             return _LoaiCauHoiRepository.GetSingleById(id);
+        }
+        public IEnumerable<LoaiCauHoi> GetAllPaging(int page, int pageSize, out int totalRow)
+        {
+            var query = _LoaiCauHoiRepository.GetAll();
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
         public void Save()

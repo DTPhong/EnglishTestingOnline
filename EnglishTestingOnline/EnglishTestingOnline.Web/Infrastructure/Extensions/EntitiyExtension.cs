@@ -18,5 +18,11 @@ namespace EnglishTestingOnline.Web.Infrastructure.Extensions
             cauHoi.NoiDung = cauHoiVM.NoiDung;
             cauHoi.DapAn = cauHoiVM.DapAn;
         }
+        public static void UpdateLoaiCauHoi(this LoaiCauHoi loaicauHoi, LoaiCauHoiViewModel loaicauHoiVM)
+        {
+            loaicauHoi.ID = loaicauHoiVM.ID;
+            loaicauHoi.NoiDung = loaicauHoiVM.NoiDung;
+  
+        }
     }
 }

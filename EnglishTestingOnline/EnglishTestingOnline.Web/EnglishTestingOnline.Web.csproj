@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CauHoiController.cs" />
+    <Compile Include="Controllers\LoaiCauHoiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +236,9 @@
     <Content Include="Views\Admin\Footer.cshtml" />
     <Content Include="Views\CauHoi\Add.cshtml" />
     <Content Include="Views\CauHoi\Edit.cshtml" />
+    <Content Include="Views\LoaiCauHoi\Index.cshtml" />
+    <Content Include="Views\LoaiCauHoi\Add.cshtml" />
+    <Content Include="Views\LoaiCauHoi\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
