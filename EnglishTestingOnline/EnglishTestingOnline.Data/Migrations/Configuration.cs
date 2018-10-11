@@ -18,6 +18,7 @@ namespace EnglishTestingOnline.Data.Migrations
         {
             CreateChudeSample(context);
             CreateLoaiCauHoiSample(context);
+            CreateCauHoiSample(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -67,6 +68,98 @@ namespace EnglishTestingOnline.Data.Migrations
                     },
             };
                 context.LoaiCauHois.AddRange(listLoaiCauHoi);
+                context.SaveChanges();
+            }
+        }
+
+        private void CreateCauHoiSample(EnglishDbContext context)
+        {
+            if (context.CauHois.Count() == 0)
+            {
+                List<CauHoi> listCauHoi = new List<CauHoi>()
+            {
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=3,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=3,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=3,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=3,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=3,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=3,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=3,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=3,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=3,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=3,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    }
+            };
+                context.CauHois.AddRange(listCauHoi);
                 context.SaveChanges();
             }
         }

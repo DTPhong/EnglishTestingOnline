@@ -15,6 +15,10 @@ namespace EnglishTestingOnline.Web.Mappings
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<CauHoi, CauHoiViewModel>();
+                cfg.CreateMap<BaiDocNghe, BaiDocNgheViewModel>();
+                cfg.CreateMap<ChuDe, ChuDeViewModel>();
+                cfg.CreateMap<LoaiBaiDocNghe, LoaiBaiDocNgheViewModel>();
+                cfg.CreateMap<LoaiCauHoi, LoaiCauHoiViewModel>();
             });
         }
     }

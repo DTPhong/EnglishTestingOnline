@@ -23,22 +23,18 @@ namespace EnglishTestingOnline.Web.Controllers
         {
             var model = _cauHoiService.GetAll();
             var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
+
+
+            //System.Xml.Serialization.XmlSerializer writer =
+            //    new System.Xml.Serialization.XmlSerializer(viewModel.GetType());
+
+            //var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "//XSLT/listCauHoi.xml";
+            //System.IO.FileStream file = System.IO.File.Create(path);
+
+            //writer.Serialize(file, viewModel);
+            //file.Close();
+
             return View(viewModel);
         }
-
-        //public void write()
-        //{
-
-
-        //    System.Xml.Serialization.XmlSerializer writer =
-        //        new System.Xml.Serialization.XmlSerializer(viewModel.GetType());
-
-        //    var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//SerializationOverview.xml";
-        //    System.IO.FileStream file = System.IO.File.Create(path);
-
-        //    writer.Serialize(file, viewModel);
-        //    file.Close();
-        //}
-
     }
 }

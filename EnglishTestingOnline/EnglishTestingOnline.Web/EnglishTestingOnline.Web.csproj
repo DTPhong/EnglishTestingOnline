@@ -146,7 +146,12 @@
     </Compile>
     <Compile Include="Infrastructure\Extensions\EntitiyExtension.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
+    <Compile Include="Models\BaiDocNgheViewModel.cs" />
+    <Compile Include="Models\CauHoiDeThiViewModel.cs" />
     <Compile Include="Models\CauHoiViewModel.cs" />
+    <Compile Include="Models\ChuDeViewModel.cs" />
+    <Compile Include="Models\LoaiBaiDocNgheViewModel.cs" />
+    <Compile Include="Models\LoaiCauHoiViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
