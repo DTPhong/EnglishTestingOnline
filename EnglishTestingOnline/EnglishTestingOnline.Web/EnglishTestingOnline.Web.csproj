@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -147,11 +148,18 @@
     <Compile Include="Infrastructure\Extensions\EntitiyExtension.cs" />
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\BaiDocNgheViewModel.cs" />
+    <Compile Include="Models\BaiLamViewModel.cs" />
     <Compile Include="Models\CauHoiDeThiViewModel.cs" />
     <Compile Include="Models\CauHoiViewModel.cs" />
+    <Compile Include="Models\CauTraLoiBaiLamViewModel.cs" />
+    <Compile Include="Models\CauTraLoiTracNghiemViewModel.cs" />
     <Compile Include="Models\ChuDeViewModel.cs" />
+    <Compile Include="Models\DeThiViewModel.cs" />
+    <Compile Include="Models\HocVienViewModel.cs" />
+    <Compile Include="Models\KyThiViewModel.cs" />
     <Compile Include="Models\LoaiBaiDocNgheViewModel.cs" />
     <Compile Include="Models\LoaiCauHoiViewModel.cs" />
+    <Compile Include="Models\LoaiCauTraLoiTracNghiemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
