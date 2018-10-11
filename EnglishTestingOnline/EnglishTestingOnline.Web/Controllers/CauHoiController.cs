@@ -38,14 +38,21 @@ namespace EnglishTestingOnline.Web.Controllers
         //    return View(viewModel);
         //}
 
-        public ActionResult Index(string keyword, int page = 1)
+        public ActionResult Index(string keyword = null, int page = 1)
         {
             //tổng record 1 page
             int pageSize = 5;
             //lấy từ record 0
             int totalRow = 0;
-
-            var model = _cauHoiService.GetAllPaging(page, pageSize, out totalRow);
+            IEnumerable<CauHoi> model = null;
+            if (keyword=="" || keyword==null)
+            {
+                model = _cauHoiService.GetAllPaging(page, pageSize, out totalRow);
+            }
+            else
+            {
+                model = _cauHoiService.SearchByName(keyword, page, pageSize, out totalRow);
+            }
             var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
 
             // tổng số page
@@ -61,6 +68,11 @@ namespace EnglishTestingOnline.Web.Controllers
             };
 
             return View(paginationSet);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
         }
 
         public ActionResult Search(string keyword, int page = 1)

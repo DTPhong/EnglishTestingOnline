@@ -20,7 +20,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <form method="get" action="/CauHoi/Search">
+                                <form method="get" action="/CauHoi/Index">
                                     <div class="input-group no-border">
                                         <input type="text" placeholder="Search here" id="txtKeyword" name="keyword" class="form-control">
                                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -43,6 +43,9 @@
                                 <table class="table">
                                     <thead class="text-primary">
                                         <tr>
+                                            <th style="width: 5%">
+                                                <input type="checkbox"/>
+                                            </th>
                                             <th style="width: 15%">
                                                 <h4>
                                                     <b>Loại câu hỏi</b>
@@ -75,6 +78,9 @@
                                         @foreach (var item in Model.Items)
                                         {
                                             <tr>
+                                                <td style="width: 5%">
+                                                    <input type="checkbox"/>
+                                                </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.LoaiCauHoi.NoiDung)
                                                 </td>
