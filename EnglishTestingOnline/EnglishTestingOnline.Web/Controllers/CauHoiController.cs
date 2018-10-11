@@ -24,5 +24,6 @@ namespace EnglishTestingOnline.Web.Controllers
             var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
             return View(viewModel);
         }
+
     }
 }

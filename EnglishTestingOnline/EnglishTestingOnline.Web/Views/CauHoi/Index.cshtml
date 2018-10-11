@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Index</h2>
@@ -10,48 +11,51 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.LoaiCauHoi_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BaiDocNghe_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChuDe_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NoiDung)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DapAn)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiCauHoi_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BaiDocNghe_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChuDe_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoiDung)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DapAn)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
+    <thead class="text-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LoaiCauHoi_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaiDocNghe_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChuDe_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NoiDung)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DapAn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiCauHoi_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BaiDocNghe_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChuDe_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NoiDung)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DapAn)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
