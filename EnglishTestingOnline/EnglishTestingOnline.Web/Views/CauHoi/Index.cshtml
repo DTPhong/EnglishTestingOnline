@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EnglishTestingOnline.Web.Models.CauHoiViewModel>
+﻿@model EnglishTestingOnline.Web.Infrastructure.Core.PaginationSet<EnglishTestingOnline.Web.Models.CauHoiViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -7,42 +7,61 @@
 
 <h2>Index</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
+<a href="" class="btn btn-success">
+    <i class="fa fa-plus-circle"></i> Add new
+</a>
+<a href="" class="btn btn-success">
+    <i class="fa fa-download"></i> Import
+
+</a>
+<a href="" class="btn btn-success">
+    <i class="fa fa-file-export"></i> Export
+
+</a>
+
+<div class="input-group no-border">
+    <input type="text" value="" class="form-control" placeholder="Search...">
+    <button type="submit" class="btn btn-white btn-round btn-just-icon">
+        <i class="material-icons">search</i>
+        <div class="ripple-container"></div>
+    </button>
+</div>
 <table class="table">
     <thead class="text-primary">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.LoaiCauHoi_ID)
+                @*@Html.DisplayNameFor(model => model.LoaiCauHoi_ID)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BaiDocNghe_ID)
+                @*@Html.DisplayNameFor(model => model.BaiDocNghe_ID)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ChuDe_ID)
+                @*@Html.DisplayNameFor(model => model.ChuDe_ID)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NoiDung)
+                @*@Html.DisplayNameFor(model => model.NoiDung)*@
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DapAn)
+                @*@Html.DisplayNameFor(model => model.DapAn)*@
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Items)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.LoaiCauHoi_ID)
+                    @Html.DisplayFor(modelItem => item.LoaiCauHoi.NoiDung)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.BaiDocNghe_ID)
+                    @Html.DisplayFor(modelItem => item.BaiDocNghe.NoiDung)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ChuDe_ID)
+                    @Html.DisplayFor(modelItem => item.ChuDe.TenChuDe)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.NoiDung)
@@ -51,11 +70,92 @@
                     @Html.DisplayFor(modelItem => item.DapAn)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btn btn-success" }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btn btn-info" }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btn btn-danger" })*@
+                    <a href="" class = "btn btn-success">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a href="" class = "btn btn-success">
+                        <i class="fa fa-info"></i>
+                    </a>
+                    <a href="" class = "btn btn-success">
+                        <i class="fa fa-trash"></i>
+                    </a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<div class="card-body">
+
+    @if (Model.TotalPages > 1)
+    {
+        // Create numeric links
+        var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+        var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+        <ul class="pagination">
+            @if (Model.Page > 1)
+                {
+                @*<li>
+                    <a href="?page=1">
+                        <i class="fa fa-angle-double-left"></i>
+                    </a>
+                </li>*@
+                <li class="page-item">
+                    <a class="page-link" href="?page=1" aria-label="Previous">
+                        <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                    </a>
+                </li>
+                        @*<li>
+                            <a href="?page=@(Model.Page-1)">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        </li>*@
+                <li class="page-item">
+                    <a class="page-link"  href="?page=@(Model.Page-1)"aria-label="Previous">
+                        <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+                    </a>
+                </li>
+            }
+
+            @for (int i = startPageIndex; i <= endPageIndex; i++)
+                {
+                    if (Model.Page == i)
+                    {
+                    <li class="page-item active" ><a class="page-link" href="?page=@i" title="Trang @i">@i</a></li>
+                }
+                else
+                {
+                    <li class="page-item"><a class="page-link" href="?page=@i" title="Trang @i">@i</a></li>
+                }
+            }
+            @if (Model.Page < Model.TotalPages)
+                {
+                @*<li class="page-item">
+                    <a href="?page=@(Model.Page+1)">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </li>*@
+                <li class="page-item">
+                    <a class="page-link" href="?page=@(Model.Page +1)" aria-label="Next">
+                        <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page=@(Model.TotalPages)" aria-label="Next">
+                        <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                    </a>
+                </li>
+                        @*<li class="page-item">
+                            <a class="page-link" href="?page=@Model.TotalPages">
+                                <i class="fa fa-angle-double-right"></i>
+                            </a>
+                        </li>*@
+               
+            }
+        </ul>
+
+    }
+</div>

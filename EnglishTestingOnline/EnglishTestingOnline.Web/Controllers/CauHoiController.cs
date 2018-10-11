@@ -20,28 +20,28 @@ namespace EnglishTestingOnline.Web.Controllers
             this._cauHoiService = cauhoiService;
         }
         // GET: CauHoi
-        public ActionResult Index()
-        {
-            var model = _cauHoiService.GetAll();
-            var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
+        //public ActionResult Index()
+        //{
+        //    var model = _cauHoiService.GetAll();
+        //    var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
 
 
-            //System.Xml.Serialization.XmlSerializer writer =
-            //    new System.Xml.Serialization.XmlSerializer(viewModel.GetType());
+        //    //System.Xml.Serialization.XmlSerializer writer =
+        //    //    new System.Xml.Serialization.XmlSerializer(viewModel.GetType());
 
-            //var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "//XSLT/listCauHoi.xml";
-            //System.IO.FileStream file = System.IO.File.Create(path);
+        //    //var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "//XSLT/listCauHoi.xml";
+        //    //System.IO.FileStream file = System.IO.File.Create(path);
 
-            //writer.Serialize(file, viewModel);
-            //file.Close();
+        //    //writer.Serialize(file, viewModel);
+        //    //file.Close();
 
-            return View(viewModel);
-        }
+        //    return View(viewModel);
+        //}
 
-        public ActionResult IndexPaging(int page = 1)
+        public ActionResult Index(int page = 1)
         {
             //tổng record 1 page
-            int pageSize = 20;
+            int pageSize = 5;
             //lấy từ record 0
             int totalRow = 0;
 
