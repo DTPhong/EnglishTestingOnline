@@ -234,6 +234,7 @@
     <Content Include="Views\Admin\Sidebar.cshtml" />
     <Content Include="Views\Admin\Navigation.cshtml" />
     <Content Include="Views\Admin\Footer.cshtml" />
+    <Content Include="Views\CauHoi\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

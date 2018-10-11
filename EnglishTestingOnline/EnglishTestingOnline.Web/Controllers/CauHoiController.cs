@@ -99,5 +99,10 @@ namespace EnglishTestingOnline.Web.Controllers
 
             return View(paginationSet);
         }
+        public ActionResult Add()
+        {
+            return View();
+        }
+
     }
 }
