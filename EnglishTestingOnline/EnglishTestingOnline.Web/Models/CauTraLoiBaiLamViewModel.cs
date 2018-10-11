@@ -10,7 +10,7 @@ namespace EnglishTestingOnline.Web.Models
         public int BaiLam_ID { get; set; }
         public int CauHoi_ID { get; set; }
         public string CauTraLoi { get; set; }
-        public virtual CauHoi CauHoi { get; set; }
-        public virtual BaiLam BaiLam { get; set; }
+        public virtual CauHoiViewModel CauHoi { get; set; }
+        public virtual BaiLamViewModel BaiLam { get; set; }
     }
 }

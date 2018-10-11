@@ -15,8 +15,8 @@ namespace EnglishTestingOnline.Web.Models
 
         public DateTime ThoiGianBatDau { get; set; }
 
-        public virtual KyThi KyThi { get; set; }
-        public virtual IEnumerable<BaiLam> BaiLams { get; set; }
-        public virtual IEnumerable<CauHoiDeThi> CauHoiDeThis { get; set; }
+        public virtual KyThiViewModel KyThi { get; set; }
+        public virtual IEnumerable<BaiLamViewModel> BaiLams { get; set; }
+        public virtual IEnumerable<CauHoiDeThiViewModel> CauHoiDeThis { get; set; }
     }
 }

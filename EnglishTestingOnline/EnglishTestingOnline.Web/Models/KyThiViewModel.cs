@@ -10,6 +10,6 @@ namespace EnglishTestingOnline.Web.Models
         public int ID { get; set; }
         public string TenKyThi { get; set; }
         public DateTime NgayThi { get; set; }
-        public virtual IEnumerable<DeThi> DeThis { get; set; }
+        public virtual IEnumerable<DeThiViewModel> DeThis { get; set; }
     }
 }

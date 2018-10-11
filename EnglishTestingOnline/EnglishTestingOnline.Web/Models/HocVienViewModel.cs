@@ -15,6 +15,6 @@ namespace EnglishTestingOnline.Web.Models
         public string Email { get; set; }
 
         public string DiaChi { get; set; }
-        public virtual IEnumerable<BaiLam> BaiLams { get; set; }
+        public virtual IEnumerable<BaiLamViewModel> BaiLams { get; set; }
     }
 }

@@ -10,6 +10,6 @@ namespace EnglishTestingOnline.Web.Models
         public int ID { get; set; }
         
         public string LoaiCauTraLoi { get; set; }
-        public virtual IEnumerable<CauTraLoiTracNghiem> CauTraLoiTracNghiems { get; set; }
+        public virtual IEnumerable<CauTraLoiTracNghiemViewModel> CauTraLoiTracNghiems { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace EnglishTestingOnline.Web.Models
         public int CauHoi_ID { get; set; }
         public int LoaiCauTraLoi_ID { get; set; }
         public string NoiDung { get; set; }
-        public virtual LoaiCauTraLoiTracNghiem LoaiCauTraLoiTracNghiem { get; set; }
-        public virtual CauHoi CauHoi { get; set; }
+        public virtual LoaiCauTraLoiTracNghiemViewModel LoaiCauTraLoiTracNghiem { get; set; }
+        public virtual CauHoiViewModel CauHoi { get; set; }
     }
 }
