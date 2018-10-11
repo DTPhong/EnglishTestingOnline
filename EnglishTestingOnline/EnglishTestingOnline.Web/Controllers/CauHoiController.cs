@@ -10,6 +10,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Serialization;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace EnglishTestingOnline.Web.Controllers
 {
@@ -19,6 +21,8 @@ namespace EnglishTestingOnline.Web.Controllers
         private IChuDeSercive _chuDeService;
         private IBaiDocNgheSercive _baiDocNgheSercive;
         private ILoaiCauHoiSercive _loaiCauHoiService;
+        
+        
         public CauHoiController(ICauhoiService cauhoiService, IChuDeSercive chuDeService, IBaiDocNgheSercive baiDocNgheSercive, ILoaiCauHoiSercive loaiCauHoiService)
         {
             this._cauHoiService = cauhoiService;
@@ -42,10 +46,9 @@ namespace EnglishTestingOnline.Web.Controllers
                 model = _cauHoiService.SearchByName(keyword, page, pageSize, out totalRow);
             }
             var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
-
             // tổng số page
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-
+            Session["listCauHoi"] = viewModel;
             var paginationSet = new PaginationSet<CauHoiViewModel>()
             {
                 Items = viewModel,
@@ -130,6 +133,55 @@ namespace EnglishTestingOnline.Web.Controllers
             _cauHoiService.Delete(id);
             _cauHoiService.Save();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Export()
+        {
+            try
+            {
+                Excel.Application application = new Excel.Application();
+                Excel.Workbook workbook = application.Workbooks.Add(System.Reflection.Missing.Value);
+                Excel.Worksheet worksheet = workbook.ActiveSheet;
+                worksheet.Cells[1, 1] = "Loại câu hỏi";
+                worksheet.Cells[1, 2] = "ID bài đọc";
+                worksheet.Cells[1, 3] = "Chủ đề";
+                worksheet.Cells[1, 4] = "Nội dung câu hỏi";
+                worksheet.Cells[1, 5] = "Đáp án";
+                int row = 2;
+                foreach (CauHoiViewModel c in (IEnumerable<CauHoiViewModel>)Session["listCauHoi"])
+                {
+                    worksheet.Cells[row, 1] = c.LoaiCauHoi.NoiDung;
+                    worksheet.Cells[row, 2] = c.BaiDocNghe_ID;
+                    worksheet.Cells[row, 3] = c.ChuDe.TenChuDe;
+                    worksheet.Cells[row, 4] = c.NoiDung;
+                    worksheet.Cells[row, 5] = c.DapAn; ;
+                    row++;
+                }
+
+                //format
+                worksheet.get_Range("A1", "F1").EntireColumn.AutoFit();
+
+                //format heading
+                var range_heading = worksheet.get_Range("A1", "F1");
+                range_heading.Font.Bold = true;
+                range_heading.Font.Color = System.Drawing.Color.Red;
+                range_heading.Font.Size = 13;
+
+               
+
+                workbook.SaveAs("d:\\test\\myproduct.xls");
+                workbook.Close();
+                Marshal.ReleaseComObject(workbook);
+                application.Quit();
+                Marshal.FinalReleaseComObject(application);
+                ViewBag.Result = "DOne";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+
+                return RedirectToAction("Index");
+            }
         }
 
     }
