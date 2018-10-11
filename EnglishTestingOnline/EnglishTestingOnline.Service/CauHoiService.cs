@@ -19,6 +19,8 @@ namespace EnglishTestingOnline.Service
 
         IEnumerable<CauHoi> GetAll();
 
+        IEnumerable<CauHoi> GetAllPaging(int page, int pageSize, out int totalRow);
+
         CauHoi GetById(int id);
 
         void Save();
@@ -27,6 +29,8 @@ namespace EnglishTestingOnline.Service
     {
         private ICauHoiRepository _cauHoiRepository;
         private IUnitOfWork _unitOfWork;
+
+        string[] includes = { "ChuDe", "LoaiCauHoi" };
 
         public CauHoiService(ICauHoiRepository cauHoiRepository, IUnitOfWork unitOfWork)
         {
@@ -46,8 +50,15 @@ namespace EnglishTestingOnline.Service
 
         public IEnumerable<CauHoi> GetAll()
         {
-            string[] includes = {"ChuDe", "LoaiCauHoi" };
             return _cauHoiRepository.GetAll(includes);
+        }
+
+        public IEnumerable<CauHoi> GetAllPaging(int page, int pageSize, out int totalRow)
+        {
+            var query = _cauHoiRepository.GetAll(includes);
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
         public CauHoi GetById(int id)
