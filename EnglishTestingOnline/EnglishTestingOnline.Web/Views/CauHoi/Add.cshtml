@@ -1,4 +1,4 @@
-﻿
+﻿@model EnglishTestingOnline.Web.Models.CauHoiViewModel
 @{
     ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -17,58 +17,52 @@
                             <h2 class="card-title ">Thêm mới câu hỏi</h2>
                         </div>
                         <div class="card-body">
-                            <form class="form-horizontal">
-                                <div class="row">
-                                    <label class="col-md-3 col-form-label">Loại câu hỏi</label>
-                                    <div class="col-md-9">
-                                        <div class="form-group has-default">
-                                            <input type="text" class="form-control">
+                            @using (Html.BeginForm("Add", "CauHoi", FormMethod.Post))
+                            {
+                                <form class="form-horizontal">
+                                    <div class="row">
+                                        <label class="col-md-3 col-form-label">Loại câu hỏi</label>
+                                        <div class="col-md-9">
+                                            <div class="form-group has-default">
+                                                <input type="text" class="form-control">
+                                                @Html.DropDownListFor(model=>model.LoaiCauHoi_ID, new SelectList(ViewBag.ListLoaiCauHoi, "ID", "NoiDung"))
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <label class="col-md-3 col-form-label">Bài đọc nghe</label>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control">
+                                    <div class="row">
+                                        <label class="col-md-3 col-form-label">Bài đọc nghe</label>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <label class="col-md-3 col-form-label">Chủ đề</label>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control">
+                                    <div class="row">
+                                        <label class="col-md-3 col-form-label">Chủ đề</label>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <label class="col-md-3 col-form-label">Nội dung</label>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control">
+                                    <div class="row">
+                                        <label class="col-md-3 col-form-label">Nội dung</label>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <label class="col-md-3 col-form-label">Đáp án</label>
-                                    <div class="col-md-9">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control">
+                                    <div class="row">
+                                        <label class="col-md-3 col-form-label">Đáp án</label>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <label class="col-md-3"></label>
-                                    <div class="col-md-9">
-                                        <div class="form-check">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" type="checkbox" value=""> Remember me
-                                                <span class="form-check-sign">
-                                                    <span class="check"></span>
-                                                </span>
-                                            </label>
-                                        </div>
+                                    <div class="row">
+                                        <label class="col-md-3"></label>
                                         <div class="card-footer ">
                                             <div class="row">
                                                 <div class="col-md-9">
@@ -77,8 +71,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            }
                         </div>
                     </div>
                 </div>

@@ -44,7 +44,7 @@
                                     <thead class="text-primary">
                                         <tr>
                                             <th style="width: 5%">
-                                                <input type="checkbox"/>
+                                                <input type="checkbox" />
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
@@ -69,8 +69,11 @@
                                             <th style="width: 15%">
                                                 <h4><b>Đáp án</b></h4>
                                             </th>
-                                            <th style="width: 15%">
-                                                <h4><b>Sửa / Xóa</b></h4> 
+                                            <th style="width: 5%">
+                                                <h4><b>Sửa</b></h4>
+                                            </th>
+                                            <th style="width: 5%">
+                                                <h4><b>Xóa</b></h4>
                                             </th>
                                         </tr>
                                     </thead>
@@ -79,7 +82,7 @@
                                         {
                                             <tr>
                                                 <td style="width: 5%">
-                                                    <input type="checkbox"/>
+                                                    <input type="checkbox" />
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.LoaiCauHoi.NoiDung)
@@ -100,6 +103,8 @@
                                                     <a href="" class="btn btn-sm btn-info">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
+                                                </td>
+                                                <td>
                                                     <a href="" class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </a>

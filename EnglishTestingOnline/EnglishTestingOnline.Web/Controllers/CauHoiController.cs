@@ -2,6 +2,7 @@
 using EnglishTestingOnline.Model.Model;
 using EnglishTestingOnline.Service;
 using EnglishTestingOnline.Web.Infrastructure.Core;
+using EnglishTestingOnline.Web.Infrastructure.Extensions;
 using EnglishTestingOnline.Web.Models;
 using System;
 using System.Collections.Generic;
@@ -15,29 +16,16 @@ namespace EnglishTestingOnline.Web.Controllers
     public class CauHoiController : Controller
     {
         private ICauhoiService _cauHoiService;
-        public CauHoiController(ICauhoiService cauhoiService)
+        private IChuDeSercive _chuDeService;
+        private IBaiDocNgheSercive _baiDocNgheSercive;
+        private ILoaiCauHoiSercive _loaiCauHoiService;
+        public CauHoiController(ICauhoiService cauhoiService, IChuDeSercive chuDeService, IBaiDocNgheSercive baiDocNgheSercive, ILoaiCauHoiSercive loaiCauHoiService)
         {
             this._cauHoiService = cauhoiService;
+            this._chuDeService = chuDeService;
+            this._baiDocNgheSercive = baiDocNgheSercive;
+            this._loaiCauHoiService = loaiCauHoiService;
         }
-        // GET: CauHoi
-        //public ActionResult Index()
-        //{
-        //    var model = _cauHoiService.GetAll();
-        //    var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
-
-
-        //    //System.Xml.Serialization.XmlSerializer writer =
-        //    //    new System.Xml.Serialization.XmlSerializer(viewModel.GetType());
-
-        //    //var path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "//XSLT/listCauHoi.xml";
-        //    //System.IO.FileStream file = System.IO.File.Create(path);
-
-        //    //writer.Serialize(file, viewModel);
-        //    //file.Close();
-
-        //    return View(viewModel);
-        //}
-
         public ActionResult Index(string keyword = null, int page = 1)
         {
             //tổng record 1 page
@@ -101,7 +89,21 @@ namespace EnglishTestingOnline.Web.Controllers
         }
         public ActionResult Add()
         {
+            ViewBag.ListChuDe = _chuDeService.GetAll();
+            ViewBag.ListBaiDocNghe = _baiDocNgheSercive.GetAll();
+            ViewBag.ListLoaiCauHoi = _loaiCauHoiService.GetAll();
             return View();
+        }
+        [HttpPost]
+        public ActionResult Add(CauHoiViewModel cauHoiVM)
+        {
+            var cauHoi = new CauHoi();
+            cauHoi.UpdateCauHoi(cauHoiVM);
+            _cauHoiService.Add(cauHoi);
+            _cauHoiService.Save();
+
+
+            return RedirectToAction("Index");
         }
 
     }

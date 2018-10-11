@@ -228,7 +228,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\CauHoi\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\CauHoi\IndexPaging.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\CauHoi\Search.cshtml" />
     <Content Include="Views\Admin\Sidebar.cshtml" />
