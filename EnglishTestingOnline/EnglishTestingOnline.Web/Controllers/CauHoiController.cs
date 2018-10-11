@@ -62,5 +62,30 @@ namespace EnglishTestingOnline.Web.Controllers
 
             return View(paginationSet);
         }
+
+        public ActionResult Search(string keyword, int page = 1)
+        {
+            //tổng record 1 page
+            int pageSize = 20;
+            //lấy từ record 0
+            int totalRow = 0;
+
+            var model = _cauHoiService.SearchByName(keyword, page, pageSize, out totalRow);
+            var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
+
+            // tổng số page
+            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+
+            var paginationSet = new PaginationSet<CauHoiViewModel>()
+            {
+                Items = viewModel,
+                MaxPage = 5,
+                Page = page,
+                TotalCount = totalRow,
+                TotalPages = totalPage
+            };
+
+            return View(paginationSet);
+        }
     }
 }

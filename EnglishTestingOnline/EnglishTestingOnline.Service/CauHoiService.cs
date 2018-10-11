@@ -21,6 +21,8 @@ namespace EnglishTestingOnline.Service
 
         IEnumerable<CauHoi> GetAllPaging(int page, int pageSize, out int totalRow);
 
+        IEnumerable<CauHoi> SearchByName(string keyword,int page, int pageSize, out int totalRow);
+
         CauHoi GetById(int id);
 
         void Save();
@@ -69,6 +71,14 @@ namespace EnglishTestingOnline.Service
         public void Save()
         {
             _unitOfWork.Commit();
+        }
+
+        public IEnumerable<CauHoi> SearchByName(string keyword, int page, int pageSize, out int totalRow)
+        {
+            var query = _cauHoiRepository.GetMulti(c=>c.NoiDung.Contains(keyword),includes);
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
         public void Update(CauHoi cauHoi)
