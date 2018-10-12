@@ -27,5 +27,10 @@ namespace EnglishTestingOnline.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult SettingButton()
+        {
+            return View();
+        }
     }
 }
