@@ -11,9 +11,8 @@ using EnglishTestingOnline.Service;
 using EnglishTestingOnline.Model.Model;
 using Microsoft.Owin;
 using Owin;
-using Microsoft.AspNet.Identity;
-using Microsoft.Owin.Security.DataProtection;
 using System.Web;
+using Microsoft.Owin.Security.DataProtection;
 
 [assembly: OwinStartup(typeof(EnglishTestingOnline.Web.App_Start.Startup))]
 
@@ -53,10 +52,10 @@ namespace EnglishTestingOnline.Web.App_Start
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
             //Aspnet Identity
-            //builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
-            //builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
-            //builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
-            //builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
         }
     }
