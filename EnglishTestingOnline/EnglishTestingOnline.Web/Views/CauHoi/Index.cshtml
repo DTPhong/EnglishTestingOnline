@@ -18,6 +18,13 @@
                             </div>
                             <h2 class="card-title ">Danh sách câu hỏi</h2>
                         </div>
+                        @using (Html.BeginForm("Import", "CauHoi", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.Raw(ViewBag.Error)
+                            <span>Excel File </span><input type="file" name="excelfile" />
+                            <br />
+                            <input type="submit" value="Import" />
+                        }
                         <div class="card-body">
                             <div class="table-responsive">
                                 <form method="get" action="/CauHoi/Index">
