@@ -76,13 +76,20 @@ namespace EnglishTestingOnline.Web.Controllers
         [HttpPost]
         public ActionResult Add(CauHoiViewModel cauHoiVM)
         {
-            var cauHoi = new CauHoi();
-            cauHoi.UpdateCauHoi(cauHoiVM);
-            _cauHoiService.Add(cauHoi);
-            _cauHoiService.Save();
+            ViewBag.ListChuDe = _chuDeService.GetAll();
+            ViewBag.ListBaiDocNghe = _baiDocNgheSercive.GetAll();
+            ViewBag.ListLoaiCauHoi = _loaiCauHoiService.GetAll();
+            if (ModelState.IsValid)
+            {
+                var cauHoi = new CauHoi();
+                cauHoi.UpdateCauHoi(cauHoiVM);
+                _cauHoiService.Add(cauHoi);
+                _cauHoiService.Save();
 
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+            return View(cauHoiVM);
         }
 
         public ActionResult Edit(int id)
