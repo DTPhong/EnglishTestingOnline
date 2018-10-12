@@ -8,14 +8,18 @@ using EnglishTestingOnline.Data;
 using EnglishTestingOnline.Data.Infrastructure;
 using EnglishTestingOnline.Data.Respositories;
 using EnglishTestingOnline.Service;
+using EnglishTestingOnline.Model.Model;
 using Microsoft.Owin;
 using Owin;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security.DataProtection;
+using System.Web;
 
 [assembly: OwinStartup(typeof(EnglishTestingOnline.Web.App_Start.Startup))]
 
 namespace EnglishTestingOnline.Web.App_Start
 {
-    public class Startup
+    public partial class Startup
     {
         public void Configuration(IAppBuilder app)
         {
@@ -47,6 +51,12 @@ namespace EnglishTestingOnline.Web.App_Start
 
             Autofac.IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            //Aspnet Identity
+            //builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+            //builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            //builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            //builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
         }
     }

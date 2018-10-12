@@ -4,8 +4,9 @@ namespace EnglishTestingOnline.Data
     using System.Data.Entity;
     using System.Linq;
     using EnglishTestingOnline.Model.Model;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class EnglishDbContext : DbContext
+    public class EnglishDbContext : IdentityDbContext<UserApplication>
     {
         // Your context has been configured to use a 'EnglishDbContext' connection string from your application's 
         // configuration file (App.config or Web.config). By default, this connection string targets the 
@@ -39,13 +40,25 @@ namespace EnglishTestingOnline.Data
         public virtual DbSet<LoaiBaiDocNghe> LoaiBaiDocNghes { get; set; }
         public virtual DbSet<LoaiCauHoi> LoaiCauHois { get; set; }
         public virtual DbSet<LoaiCauTraLoiTracNghiem> LoaiCauTraLoiTracNghiems { get; set; }
+        //public virtual DbSet<IdentityUserRole> IdentityUserRoles { get; set; }
+        //public virtual DbSet<IdentityUser> IdentityUsers { get; set; }
+        //public virtual DbSet<IdentityUserClaim> IdentityUserClaims { get; set; }
+        //public virtual DbSet<IdentityRole> IdentityRoles { get; set; }
+        //public virtual DbSet<IdentityUserLogin> IdentityUserLogins { get; set; }
 
-   
+
+        protected override void OnModelCreating(DbModelBuilder builder)
+        {
+            builder.Entity<IdentityUser>().HasKey(i => i.Id);
+            builder.Entity<IdentityRole>().HasKey(i => i.Id);
+            builder.Entity<IdentityUserClaim>().HasKey(i => i.Id);
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => new { i.UserId, i.ProviderKey, i.LoginProvider });
+            
+         
+            
+        }
     }
 
-    //public class MyEntity
-    //{
-    //    public int Id { get; set; }
-    //    public string Name { get; set; }
-    //}
+   
 }
