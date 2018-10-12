@@ -15,6 +15,7 @@ using System.Runtime.InteropServices;
 
 namespace EnglishTestingOnline.Web.Controllers
 {
+    [Authorize]
     public class CauHoiController : Controller
     {
         private ICauhoiService _cauHoiService;

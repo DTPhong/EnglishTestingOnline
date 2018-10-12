@@ -144,6 +144,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Admin\css\material-dashboard.min40a0.css" />
+    <Content Include="Assets\Admin\demo\demo.css" />
+    <Content Include="Assets\Admin\demo\demo.js" />
+    <Content Include="Assets\Admin\demo\jquery.sharrre.js" />
     <Content Include="Assets\Admin\img\apple-icon.png" />
     <Content Include="Assets\Admin\img\bg-pricing.jpg" />
     <Content Include="Assets\Admin\img\card-1.jpg" />
@@ -178,7 +181,6 @@
     <Content Include="Assets\Admin\js\core\bootstrap-material-design.min.js" />
     <Content Include="Assets\Admin\js\core\jquery.min.js" />
     <Content Include="Assets\Admin\js\core\popper.min.js" />
-    <Content Include="Assets\Admin\js\material-dashboard.min40a0.js" />
     <Content Include="Assets\Admin\js\plugins\arrive.min.js" />
     <Content Include="Assets\Admin\js\plugins\bootstrap-datetimepicker.min.js" />
     <Content Include="Assets\Admin\js\plugins\bootstrap-notify.js" />
@@ -195,6 +197,7 @@
     <Content Include="Assets\Admin\js\plugins\nouislider.min.js" />
     <Content Include="Assets\Admin\js\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Assets\Admin\js\plugins\sweetalert2.js" />
+    <Content Include="Assets\Admin\maxcdn.bootstrapcdn.com\font-awesome\latest\css\font-awesome.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -245,7 +248,7 @@
     <Content Include="Views\LoaiCauHoi\Edit.cshtml" />
     <Content Include="Views\Admin\SettingButton.cshtml" />
     <Content Include="Views\Shared\_AdminLoginLayout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Admin\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -255,19 +258,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\buttons.github.io\" />
-    <Folder Include="Assets\cdn-cgi\scripts\5c5dd728\cloudflare-static\" />
-    <Folder Include="Assets\cdnjs.cloudflare.com\ajax\libs\bootstrap-rtl\3.4.0\css\" />
-    <Folder Include="Assets\cdnjs.cloudflare.com\ajax\libs\core-js\2.4.1\" />
-    <Folder Include="Assets\css\" />
-    <Folder Include="Assets\demo\" />
-    <Folder Include="Assets\img\faces\" />
-    <Folder Include="Assets\img\flags\" />
-    <Folder Include="Assets\js\core\" />
-    <Folder Include="Assets\js\plugins\" />
-    <Folder Include="Assets\maxcdn.bootstrapcdn.com\font-awesome\latest\css\" />
     <Folder Include="fonts\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnglishTestingOnline.Data\EnglishTestingOnline.Data.csproj">
