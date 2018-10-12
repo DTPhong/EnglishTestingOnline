@@ -40,7 +40,7 @@
                                     <i class="fa fa-upload"></i> Export
 
                                 </a>
-                                <a href="" class="btn btn-danger">
+                                <a href="" class="btn btn-danger" id="deleteMulti">
                                     <i class="fa fa-trash"></i> Delete multi
 
                                 </a>
@@ -48,7 +48,7 @@
                                     <thead class="text-primary">
                                         <tr>
                                             <th style="width: 5%">
-                                                <input type="checkbox" id="selectAll"/>
+                                                <input type="checkbox" id="selectAll" />
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
@@ -86,7 +86,7 @@
                                         {
                                             <tr>
                                                 <td style="width: 5%">
-                                                    <input type="checkbox" />
+                                                    <input type="checkbox" value="@item.ID" name="item" />
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.LoaiCauHoi.NoiDung)

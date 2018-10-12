@@ -117,6 +117,16 @@ namespace EnglishTestingOnline.Web.Controllers
             _cauHoiService.Save();
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult DeleteMulti(int[] listId)
+        {
+            foreach (var id in listId)
+            {
+                _cauHoiService.Delete(id);
+            }
+            _cauHoiService.Save();
+            return RedirectToAction("Index");
+        }
 
         public ActionResult Export()
         {

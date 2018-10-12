@@ -1,14 +1,32 @@
 ﻿$(document).ready(function () {
-    var isSelectAll = false;
     // Select all
-    $("input#selectAll").click(function () {
-        if (isSelectAll == false) {
-            $(" INPUT[type='checkbox']").attr('checked', true);
-            isSelectAll = true;
-        }
-        else {
-            $(" INPUT[type='checkbox']").attr('checked', false);
-            isSelectAll = false;
-        }
+    $('#selectAll').click(function () {
+        var c = this.checked;
+        $(':checkbox').prop('checked', c);
     });
+
+    $('#deleteMulti').click(function () {
+        var listId = [];
+        $.each($("input[name='item']:checked"), function () {
+            listId.push($(this).val());
+        });
+        listId.forEach(function (e) {
+            console.log(e);
+        });
+        var config = {
+            params: {
+                listId: JSON.stringify(listId)
+            }
+        };
+        $.ajax({
+            url: '/CauHoi/DeleteMulti',
+            data: {
+                listId: listId
+            },
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+            }
+        });
+    })
 });
