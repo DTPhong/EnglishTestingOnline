@@ -212,6 +212,14 @@ namespace EnglishTestingOnline.Web.Controllers
                         c.DapAn = ((Excel.Range)range.Cells[row, 5]).Text;
                         _cauHoiService.Add(c);
                     }
+
+                    Marshal.ReleaseComObject(range);
+                    Marshal.ReleaseComObject(worksheet);
+                    workbook.Close();
+                    Marshal.ReleaseComObject(workbook);
+                    application.Quit();
+                    Marshal.ReleaseComObject(application);
+
                     _cauHoiService.Save();
                     return RedirectToAction("Index");
                 }
