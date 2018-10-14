@@ -3,7 +3,6 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 <div class="content">
     <div class="container-fluid">
         <div class="container-fluid">
@@ -66,12 +65,12 @@
                                         {
                                             <tr>
                                                 <td style="width: 5%">
-                                                    <input type="checkbox" value="@item.ID" name="item"/>
+                                                    <input type="checkbox" value="@item.ID" name="item" />
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.NoiDung)
                                                 </td>
-                                               
+
                                                 <td>
                                                     <a href="/LoaiCauHoi/Edit?id=@item.ID" class="btn btn-sm btn-info">
                                                         <i class="fa fa-edit"></i>

@@ -178,5 +178,51 @@ namespace EnglishTestingOnline.Web.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult Import(HttpPostedFileBase excelfile)
+        {
+            if (excelfile == null || excelfile.ContentLength == 0)
+            {
+                ViewBag.Error = "Please select an excel file<br>";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                if (excelfile.FileName.EndsWith("xls") || excelfile.FileName.EndsWith("xlsx"))
+                {
+                    string path = Server.MapPath("~/Assets/" + excelfile.FileName);
+                    if (System.IO.File.Exists(path))
+                    {
+                        System.IO.File.Delete(path);
+                    }
+
+                    excelfile.SaveAs(path);
+                    //read data from excel file
+                    Excel.Application application = new Excel.Application();
+                    Excel.Workbook workbook = application.Workbooks.Open(path);
+                    Excel.Worksheet worksheet = workbook.ActiveSheet;
+                    Excel.Range range = worksheet.UsedRange;
+                    List<CauHoi> listCauHois = new List<CauHoi>();
+                    for (int row = 5; row < range.Rows.Count; row++)
+                    {
+                        CauHoi c = new CauHoi();
+                        c.LoaiCauHoi_ID= Convert.ToInt32(((Excel.Range)range.Cells[row, 1]).Text);
+                        c.BaiDocNghe_ID = Convert.ToInt32(((Excel.Range)range.Cells[row, 2]).Text);
+                        c.ChuDe_ID = Convert.ToInt32(((Excel.Range)range.Cells[row, 3]).Text);
+                        c.NoiDung = ((Excel.Range)range.Cells[row, 4]).Text;
+                        c.DapAn = ((Excel.Range)range.Cells[row, 5]).Text;
+                        _cauHoiService.Add(c);
+                    }
+                    _cauHoiService.Save();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Error = "File type is incorrect<br>";
+                    return RedirectToAction("Index");
+                }
+            }
+
+        }
     }
 }
