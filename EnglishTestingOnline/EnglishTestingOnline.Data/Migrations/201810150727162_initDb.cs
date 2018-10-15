@@ -3,7 +3,7 @@ namespace EnglishTestingOnline.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initdb : DbMigration
+    public partial class initDb : DbMigration
     {
         public override void Up()
         {
@@ -42,7 +42,7 @@ namespace EnglishTestingOnline.Data.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.DeThis", t => t.DeThi_ID, cascadeDelete: true)
-                .ForeignKey("dbo.HocVien", t => t.HocVien_ID, cascadeDelete: true)
+                .ForeignKey("dbo.HocViens", t => t.HocVien_ID, cascadeDelete: true)
                 .Index(t => t.HocVien_ID)
                 .Index(t => t.DeThi_ID);
             
@@ -70,7 +70,7 @@ namespace EnglishTestingOnline.Data.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.HocVien",
+                "dbo.HocViens",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -182,7 +182,7 @@ namespace EnglishTestingOnline.Data.Migrations
             DropForeignKey("dbo.CauHois", "LoaiCauHoi_ID", "dbo.LoaiCauHois");
             DropForeignKey("dbo.CauHois", "ChuDe_ID", "dbo.ChuDes");
             DropForeignKey("dbo.CauHois", "BaiDocNghe_ID", "dbo.BaiDocNghes");
-            DropForeignKey("dbo.BaiLams", "HocVien_ID", "dbo.HocVien");
+            DropForeignKey("dbo.BaiLams", "HocVien_ID", "dbo.HocViens");
             DropForeignKey("dbo.BaiLams", "DeThi_ID", "dbo.DeThis");
             DropForeignKey("dbo.DeThis", "KyThi_ID", "dbo.Kythis");
             DropForeignKey("dbo.BaiDocNghes", "LoaiBaiDocNghe_ID", "dbo.LoaiBaiDocNghes");
@@ -206,7 +206,7 @@ namespace EnglishTestingOnline.Data.Migrations
             DropTable("dbo.ChuDes");
             DropTable("dbo.CauHois");
             DropTable("dbo.CauHoiDeThis");
-            DropTable("dbo.HocVien");
+            DropTable("dbo.HocViens");
             DropTable("dbo.Kythis");
             DropTable("dbo.DeThis");
             DropTable("dbo.BaiLams");

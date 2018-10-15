@@ -153,7 +153,6 @@
     <Content Include="Assets\Admin\img\sidebar-3.jpg" />
     <Content Include="Assets\Admin\img\sidebar-4.jpg" />
     <Content Include="Assets\Admin\js\custom.js" />
-    <Content Include="Assets\Admin\js\plugins\bootstrap-filestyle.min.js" />
     <Content Include="Assets\Admin\js\plugins\buttons.js" />
     <Content Include="Assets\Admin\js\plugins\core.js" />
     <Content Include="Assets\Admin\js\core\bootstrap-material-design.min.js" />
@@ -176,7 +175,6 @@
     <Content Include="Assets\Admin\js\plugins\nouislider.min.js" />
     <Content Include="Assets\Admin\js\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Assets\Admin\js\plugins\sweetalert2.js" />
-    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>

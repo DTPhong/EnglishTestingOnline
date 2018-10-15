@@ -1,8 +1,10 @@
 ﻿@model EnglishTestingOnline.Web.Infrastructure.Core.PaginationSet<EnglishTestingOnline.Web.Models.CauHoiViewModel>
 
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <div class="content">
@@ -17,6 +19,30 @@
                         <h2 class="card-title ">Danh sách câu hỏi</h2>
                     </div>
                     <div class="card-body">
+                        @if (TempData["message"] != null)
+                        {
+
+                            <div class="alert alert-success">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <i class="material-icons">close</i>
+                                </button>
+                                <span>
+                                    @TempData["message"]
+                                </span>
+                            </div>
+                        }
+                        @if (TempData["error"] != null)
+                        {
+
+                            <div class="alert alert-danger">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <i class="material-icons">close</i>
+                                </button>
+                                <span>
+                                    @TempData["error"]
+                                </span>
+                            </div>
+                        }
                         <div class="toolbar">
 
                             <a href="/CauHoi/Add" class="btn btn-success">
