@@ -60,11 +60,6 @@ namespace EnglishTestingOnline.Web.Controllers
 
             return View(paginationSet);
         }
-
-        public ActionResult Create()
-        {
-            return View();
-        }
         
         public ActionResult Add()
         {

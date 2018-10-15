@@ -15,6 +15,8 @@ namespace EnglishTestingOnline.Service
         BaiDocNghe Delete(int id);
         void Update(BaiDocNghe baiDocNghe);
         BaiDocNghe GetById(int id);
+        IEnumerable<BaiDocNghe> GetAllPaging(int page, int pageSize, out int totalRow);
+        IEnumerable<BaiDocNghe> SearchByName(string keyword, int page, int pageSize, out int totalRow);
         IEnumerable<BaiDocNghe> GetAll();
         void Save();
     }
@@ -48,7 +50,20 @@ namespace EnglishTestingOnline.Service
         {
             return _baiDocNgheRepository.GetSingleById(id);
         }
+        public IEnumerable<BaiDocNghe> SearchByName(string keyword, int page, int pageSize, out int totalRow)
+        {
+            var query = _baiDocNgheRepository.GetMulti(c => c.NoiDung.Contains(keyword));
+            totalRow = query.Count();
 
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+        public IEnumerable<BaiDocNghe> GetAllPaging(int page, int pageSize, out int totalRow)
+        {
+            var query = _baiDocNgheRepository.GetAll();
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
         public void Save()
         {
             _unitOfWork.Commit();
