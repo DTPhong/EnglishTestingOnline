@@ -1,5 +1,7 @@
-﻿using EnglishTestingOnline.Web.App_Start;
+﻿using EnglishTestingOnline.Data;
+using EnglishTestingOnline.Web.App_Start;
 using EnglishTestingOnline.Web.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -12,6 +14,9 @@ namespace EnglishTestingOnline.Web.Controllers
 {
     public class AdminController : Controller
     {
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
         // GET: Admin
         public ActionResult Index()
         {
@@ -36,19 +41,40 @@ namespace EnglishTestingOnline.Web.Controllers
         {
             return View();
         }
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+       
 
         // GET: Home
   
-        public AdminController() { }
+        public AdminController()
+        {}
 
         public AdminController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             SignInManager = signInManager;
             UserManager = userManager;
         }
-        [AllowAnonymous]
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
@@ -102,28 +128,7 @@ namespace EnglishTestingOnline.Web.Controllers
 
         //
         // GET: /Account/VerifyCode
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set
-            {
-                _signInManager = value;
-            }
-        }
+       
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -131,6 +136,54 @@ namespace EnglishTestingOnline.Web.Controllers
                 return Redirect(returnUrl);
             }
             return RedirectToAction("Index", "CauHoi");
+        }
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser()
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    //string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    //ViewBag.ThongBao = "Chúng tôi đã gửi 1 email để xác thực tài khoản đến email bạn đã đăng ký. Vui lòng kiểm tra email";
+                    //return View(model);
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error);
+            }
         }
     }
 }

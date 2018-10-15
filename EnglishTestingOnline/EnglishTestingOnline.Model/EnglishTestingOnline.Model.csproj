@@ -56,10 +56,6 @@
   <ItemGroup>
     <Compile Include="Abstract\Auditable.cs" />
     <Compile Include="Abstract\IAuditable.cs" />
-    <Compile Include="Model\ApplicationUser.cs" />
-    <Compile Include="Model\ApplicationUserClaim.cs" />
-    <Compile Include="Model\ApplicationUserLogin.cs" />
-    <Compile Include="Model\ApplicationUserRole.cs" />
     <Compile Include="Model\BaiDocNghe.cs" />
     <Compile Include="Model\BaiLam.cs" />
     <Compile Include="Model\CauHoi.cs" />
@@ -73,7 +69,6 @@
     <Compile Include="Model\LoaiBaiDocNghe.cs" />
     <Compile Include="Model\LoaiCauHoi.cs" />
     <Compile Include="Model\LoaiCauTraLoiTracNghiem.cs" />
-    <Compile Include="Model\UserApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
