@@ -14,6 +14,7 @@ using Owin;
 using System.Web;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.AspNet.Identity;
+using Microsoft.Owin.Security.Cookies;
 
 [assembly: OwinStartup(typeof(EnglishTestingOnline.Web.App_Start.Startup))]
 
@@ -38,7 +39,7 @@ namespace EnglishTestingOnline.Web.App_Start
 
             builder.RegisterType<EnglishDbContext>().AsSelf().InstancePerRequest();
 
-
+            app.UseCookieAuthentication(new CookieAuthenticationOptions());
             //Respositories
             builder.RegisterAssemblyTypes(typeof(CauHoiRepository).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))

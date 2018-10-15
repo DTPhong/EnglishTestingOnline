@@ -14,7 +14,9 @@ namespace EnglishTestingOnline.Web.Controllers
 {
     public class AdminController : Controller
     {
-       
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
         // GET: Admin
         public ActionResult Index()
         {
@@ -39,8 +41,7 @@ namespace EnglishTestingOnline.Web.Controllers
         {
             return View();
         }
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+       
 
         // GET: Home
   
