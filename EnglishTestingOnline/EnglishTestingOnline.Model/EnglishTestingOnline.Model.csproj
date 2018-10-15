@@ -74,7 +74,6 @@
     <Compile Include="Model\LoaiBaiDocNghe.cs" />
     <Compile Include="Model\LoaiCauHoi.cs" />
     <Compile Include="Model\LoaiCauTraLoiTracNghiem.cs" />
-    <Compile Include="Model\UserApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
