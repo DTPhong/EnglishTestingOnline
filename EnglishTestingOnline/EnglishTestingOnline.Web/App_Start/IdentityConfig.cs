@@ -18,6 +18,13 @@ using EnglishTestingOnline.Data;
 
 namespace EnglishTestingOnline.Web.App_Start
 {
+    public class ApplicationUserStore : UserStore<ApplicationUser>
+    {
+        public ApplicationUserStore(EnglishDbContext context)
+            : base(context)
+        {
+        }
+    }
     public class EmailService : IIdentityMessageService
     {
         public Task SendAsync(IdentityMessage message)
