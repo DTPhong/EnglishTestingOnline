@@ -1,10 +1,24 @@
 namespace EnglishTestingOnline.Data
 {
     using EnglishTestingOnline.Model.Model;
+    using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System.Data.Entity;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
 
-    public class EnglishDbContext : IdentityDbContext<UserApplication>
+    public class ApplicationUser : IdentityUser
+    {
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        {
+            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            // Add custom user claims here
+            return userIdentity;
+        }
+    }
+    public class EnglishDbContext : IdentityDbContext<ApplicationUser>
     {
         // Your context has been configured to use a 'EnglishDbContext' connection string from your application's
         // configuration file (App.config or Web.config). By default, this connection string targets the
@@ -12,9 +26,8 @@ namespace EnglishTestingOnline.Data
         //
         // If you wish to target a different database and/or database provider, modify the 'EnglishDbContext'
         // connection string in the application configuration file.
-        public EnglishDbContext() : base("TPshopDbContext")
+        public EnglishDbContext() : base("EnglishDbContext")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public static EnglishDbContext Create()
