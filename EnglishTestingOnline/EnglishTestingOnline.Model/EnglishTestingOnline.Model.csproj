@@ -58,7 +58,6 @@
   <ItemGroup>
     <Compile Include="Abstract\Auditable.cs" />
     <Compile Include="Abstract\IAuditable.cs" />
-    <Compile Include="Model\ApplicationUser.cs" />
     <Compile Include="Model\ApplicationUserClaim.cs" />
     <Compile Include="Model\ApplicationUserLogin.cs" />
     <Compile Include="Model\ApplicationUserRole.cs" />

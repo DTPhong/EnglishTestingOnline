@@ -207,6 +207,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CauHoiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -260,6 +261,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Account\" />
     <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
