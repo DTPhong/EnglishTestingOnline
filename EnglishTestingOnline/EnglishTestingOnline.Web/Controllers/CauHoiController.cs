@@ -6,12 +6,10 @@ using EnglishTestingOnline.Web.Infrastructure.Extensions;
 using EnglishTestingOnline.Web.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
-using System.Xml.Serialization;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
 
 namespace EnglishTestingOnline.Web.Controllers
 {
@@ -21,8 +19,7 @@ namespace EnglishTestingOnline.Web.Controllers
         private IChuDeSercive _chuDeService;
         private IBaiDocNgheSercive _baiDocNgheSercive;
         private ILoaiCauHoiSercive _loaiCauHoiService;
-        
-        
+
         public CauHoiController(ICauhoiService cauhoiService, IChuDeSercive chuDeService, IBaiDocNgheSercive baiDocNgheSercive, ILoaiCauHoiSercive loaiCauHoiService)
         {
             this._cauHoiService = cauhoiService;
@@ -30,6 +27,7 @@ namespace EnglishTestingOnline.Web.Controllers
             this._baiDocNgheSercive = baiDocNgheSercive;
             this._loaiCauHoiService = loaiCauHoiService;
         }
+
         public ActionResult Index(string keyword = null, int page = 1)
         {
             //tổng record 1 page
@@ -37,7 +35,7 @@ namespace EnglishTestingOnline.Web.Controllers
             //lấy từ record 0
             int totalRow = 0;
             IEnumerable<CauHoi> model = null;
-            if (keyword=="" || keyword==null)
+            if (keyword == "" || keyword == null)
             {
                 model = _cauHoiService.GetAllPaging(page, pageSize, out totalRow);
             }
@@ -60,12 +58,7 @@ namespace EnglishTestingOnline.Web.Controllers
 
             return View(paginationSet);
         }
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-        
+        [HttpGet]
         public ActionResult Add()
         {
             ViewBag.ListChuDe = _chuDeService.GetAll();
@@ -73,6 +66,7 @@ namespace EnglishTestingOnline.Web.Controllers
             ViewBag.ListLoaiCauHoi = _loaiCauHoiService.GetAll();
             return View();
         }
+
         [HttpPost]
         public ActionResult Add(CauHoiViewModel cauHoiVM)
         {
@@ -86,12 +80,11 @@ namespace EnglishTestingOnline.Web.Controllers
                 _cauHoiService.Add(cauHoi);
                 _cauHoiService.Save();
 
-
                 return RedirectToAction("Index");
             }
             return View(cauHoiVM);
         }
-
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             ViewBag.ListChuDe = _chuDeService.GetAll();
@@ -117,6 +110,7 @@ namespace EnglishTestingOnline.Web.Controllers
             _cauHoiService.Save();
             return RedirectToAction("Index");
         }
+
         [HttpPost]
         public ActionResult DeleteMulti(int[] listId)
         {
@@ -136,7 +130,7 @@ namespace EnglishTestingOnline.Web.Controllers
                 Excel.Workbook workbook = application.Workbooks.Add(System.Reflection.Missing.Value);
                 Excel.Worksheet worksheet = workbook.ActiveSheet;
                 worksheet.Cells[1, 1] = "Loại câu hỏi";
-                worksheet.Cells[1, 2] = "ID bài đọc";
+                worksheet.Cells[1, 2] = "Bài đọc";
                 worksheet.Cells[1, 3] = "Chủ đề";
                 worksheet.Cells[1, 4] = "Nội dung câu hỏi";
                 worksheet.Cells[1, 5] = "Đáp án";
@@ -144,7 +138,7 @@ namespace EnglishTestingOnline.Web.Controllers
                 foreach (CauHoiViewModel c in (IEnumerable<CauHoiViewModel>)Session["listCauHoi"])
                 {
                     worksheet.Cells[row, 1] = c.LoaiCauHoi.NoiDung;
-                    worksheet.Cells[row, 2] = c.BaiDocNghe_ID;
+                    worksheet.Cells[row, 2] = c.BaiDocNghe.NoiDung;
                     worksheet.Cells[row, 3] = c.ChuDe.TenChuDe;
                     worksheet.Cells[row, 4] = c.NoiDung;
                     worksheet.Cells[row, 5] = c.DapAn; ;
@@ -160,8 +154,6 @@ namespace EnglishTestingOnline.Web.Controllers
                 range_heading.Font.Color = System.Drawing.Color.Red;
                 range_heading.Font.Size = 13;
 
-               
-
                 workbook.SaveAs("d:\\test\\myproduct.xlsx");
                 workbook.Close();
                 Marshal.ReleaseComObject(workbook);
@@ -170,9 +162,8 @@ namespace EnglishTestingOnline.Web.Controllers
                 ViewBag.Result = "DOne";
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
                 return RedirectToAction("Index");
             }
         }
@@ -205,7 +196,7 @@ namespace EnglishTestingOnline.Web.Controllers
                     for (int row = 5; row < range.Rows.Count; row++)
                     {
                         CauHoi c = new CauHoi();
-                        c.LoaiCauHoi_ID= Convert.ToInt32(((Excel.Range)range.Cells[row, 1]).Text);
+                        c.LoaiCauHoi_ID = Convert.ToInt32(((Excel.Range)range.Cells[row, 1]).Text);
                         c.BaiDocNghe_ID = Convert.ToInt32(((Excel.Range)range.Cells[row, 2]).Text);
                         c.ChuDe_ID = Convert.ToInt32(((Excel.Range)range.Cells[row, 3]).Text);
                         c.NoiDung = ((Excel.Range)range.Cells[row, 4]).Text;
@@ -229,7 +220,6 @@ namespace EnglishTestingOnline.Web.Controllers
                     return RedirectToAction("Index");
                 }
             }
-
         }
     }
 }
