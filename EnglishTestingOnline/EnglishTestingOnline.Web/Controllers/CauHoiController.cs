@@ -46,7 +46,15 @@ namespace EnglishTestingOnline.Web.Controllers
             var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
             // tổng số page
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-            Session["listCauHoi"] = viewModel;
+            if (keyword == null)
+            {
+                Session["listCauHoi"] = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(_cauHoiService.GetAll());
+
+            }
+            else
+            {
+                Session["listCauHoi"] = viewModel;
+            }
             var paginationSet = new PaginationSet<CauHoiViewModel>()
             {
                 Items = viewModel,
@@ -58,6 +66,7 @@ namespace EnglishTestingOnline.Web.Controllers
 
             return View(paginationSet);
         }
+
         [HttpGet]
         public ActionResult Add()
         {
@@ -80,10 +89,12 @@ namespace EnglishTestingOnline.Web.Controllers
                 _cauHoiService.Add(cauHoi);
                 _cauHoiService.Save();
 
+                TempData["message"] = "Thêm mới câu hỏi thành công.";
                 return RedirectToAction("Index");
             }
             return View(cauHoiVM);
         }
+
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -102,24 +113,36 @@ namespace EnglishTestingOnline.Web.Controllers
             cauHoi.UpdateCauHoi(cauHoiVM);
             _cauHoiService.Update(cauHoi);
             _cauHoiService.Save();
+            TempData["message"] = "Sửa câu hỏi thành công.";
             return RedirectToAction("Index");
         }
+
         public ActionResult Delete(int id)
         {
             _cauHoiService.Delete(id);
             _cauHoiService.Save();
+            TempData["message"] = "Xoá câu hỏi " + id + " thành công.";
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public ActionResult DeleteMulti(int[] listId)
         {
-            foreach (var id in listId)
+            if (listId != null)
             {
-                _cauHoiService.Delete(id);
+                foreach (var id in listId)
+                {
+                    _cauHoiService.Delete(id);
+                }
+                _cauHoiService.Save();
+                TempData["message"] = "Xoá nhiều record thành công.";
+                return RedirectToAction("Index");
             }
-            _cauHoiService.Save();
-            return RedirectToAction("Index");
+            else
+            {
+                TempData["error"] = "Không có record để xoá.";
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Export()
@@ -154,16 +177,17 @@ namespace EnglishTestingOnline.Web.Controllers
                 range_heading.Font.Color = System.Drawing.Color.Red;
                 range_heading.Font.Size = 13;
 
-                workbook.SaveAs("d:\\test\\myproduct.xlsx");
+                workbook.SaveAs(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\export.xlsx");
                 workbook.Close();
                 Marshal.ReleaseComObject(workbook);
                 application.Quit();
                 Marshal.FinalReleaseComObject(application);
-                ViewBag.Result = "DOne";
+                TempData["message"] = "Xuất file dữ liệu ra desktop thành công.";
                 return RedirectToAction("Index");
             }
             catch (Exception)
             {
+                TempData["error"] = "Xuất file dữ liệu ra desktop không thành công.";
                 return RedirectToAction("Index");
             }
         }
@@ -173,7 +197,7 @@ namespace EnglishTestingOnline.Web.Controllers
         {
             if (excelfile == null || excelfile.ContentLength == 0)
             {
-                ViewBag.Error = "Please select an excel file<br>";
+                TempData["error"] = "Please select an excel file";
                 return RedirectToAction("Index");
             }
             else
@@ -212,11 +236,12 @@ namespace EnglishTestingOnline.Web.Controllers
                     Marshal.ReleaseComObject(application);
 
                     _cauHoiService.Save();
+                    TempData["message"] = "Nhập file dữ liệu vào database thành công";
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    ViewBag.Error = "File type is incorrect<br>";
+                    TempData["error"] = "Nhập file dữ liệu vào database không thành công";
                     return RedirectToAction("Index");
                 }
             }

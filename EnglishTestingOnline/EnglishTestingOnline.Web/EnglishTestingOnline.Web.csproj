@@ -175,7 +175,6 @@
     <Content Include="Assets\Admin\js\plugins\nouislider.min.js" />
     <Content Include="Assets\Admin\js\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Assets\Admin\js\plugins\sweetalert2.js" />
-    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
