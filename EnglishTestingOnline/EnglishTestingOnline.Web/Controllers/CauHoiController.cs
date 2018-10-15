@@ -49,7 +49,6 @@ namespace EnglishTestingOnline.Web.Controllers
             if (keyword == null)
             {
                 Session["listCauHoi"] = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(_cauHoiService.GetAll());
-
             }
             else
             {
