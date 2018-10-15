@@ -1,8 +1,6 @@
 namespace EnglishTestingOnline.Data.Migrations
 {
-    using Model.Model;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -16,38 +14,10 @@ namespace EnglishTestingOnline.Data.Migrations
 
         protected override void Seed(EnglishTestingOnline.Data.EnglishDbContext context)
         {
-            CreateChudeSample(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
-        }
-        private void CreateChudeSample(EnglishDbContext context)
-        {
-            if (context.ChuDes.Count() == 0)
-            {
-                List<ChuDe> listChuDe = new List<ChuDe>()
-            {
-                    new ChuDe()
-                    {
-                        TenChuDe="Reading"
-                    },
-                    new ChuDe()
-                    {
-                        TenChuDe="Speaking"
-                    },
-                    new ChuDe()
-                    {
-                        TenChuDe="Listening"
-                    },
-                    new ChuDe()
-                    {
-                        TenChuDe="Writing"
-                    }
-            };
-                context.ChuDes.AddRange(listChuDe);
-                context.SaveChanges();
-            }
         }
     }
 }

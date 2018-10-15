@@ -59,13 +59,13 @@ namespace EnglishTestingOnline.Data
         //public virtual DbSet<IdentityRole> IdentityRoles { get; set; }
         //public virtual DbSet<IdentityUserLogin> IdentityUserLogins { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder builder)
-        {
-            builder.Entity<IdentityUser>().HasKey(i => i.Id);
-            builder.Entity<IdentityRole>().HasKey(i => i.Id);
-            builder.Entity<IdentityUserClaim>().HasKey(i => i.Id);
-            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
-            builder.Entity<IdentityUserLogin>().HasKey(i => new { i.UserId, i.ProviderKey, i.LoginProvider });
-        }
+        //protected override void OnModelCreating(DbModelBuilder builder)
+        //{
+        //    builder.Entity<IdentityUser>().HasKey(i => i.Id);
+        //    builder.Entity<IdentityRole>().HasKey(i => i.Id);
+        //    builder.Entity<IdentityUserClaim>().HasKey(i => i.Id);
+        //    builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+        //    builder.Entity<IdentityUserLogin>().HasKey(i => new { i.UserId, i.ProviderKey, i.LoginProvider });
+        //}
     }
 }

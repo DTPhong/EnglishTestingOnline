@@ -7,13 +7,13 @@ namespace EnglishTestingOnline.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class xxx : IMigrationMetadata
+    public sealed partial class createDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(xxx));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(createDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810150719300_xxx"; }
+            get { return "201810150745450_createDb"; }
         }
         
         string IMigrationMetadata.Source
