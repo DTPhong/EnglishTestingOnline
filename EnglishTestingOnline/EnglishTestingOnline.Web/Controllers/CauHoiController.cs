@@ -13,7 +13,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace EnglishTestingOnline.Web.Controllers
 {
-    [Authorize]
+ [Authorize]
     public class CauHoiController : Controller
     {
         private ICauhoiService _cauHoiService;
