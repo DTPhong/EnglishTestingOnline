@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201810150745450_createDb.Designer.cs">
       <DependentUpon>201810150745450_createDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810160437589_updateField.cs" />
+    <Compile Include="Migrations\201810160437589_updateField.Designer.cs">
+      <DependentUpon>201810160437589_updateField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Respositories\BaiDocNgheRepository.cs" />
@@ -102,6 +106,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810150745450_createDb.resx">
       <DependentUpon>201810150745450_createDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810160437589_updateField.resx">
+      <DependentUpon>201810160437589_updateField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

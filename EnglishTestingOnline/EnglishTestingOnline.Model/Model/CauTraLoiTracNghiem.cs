@@ -12,6 +12,7 @@ namespace EnglishTestingOnline.Model.Model
     public class CauTraLoiTracNghiem
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
         public int ID { get; set; }
         [Key]

@@ -28,44 +28,47 @@ namespace EnglishTestingOnline.Web.Controllers
             this._baiDocNgheSercive = baiDocNgheSercive;
             this._loaiCauHoiService = loaiCauHoiService;
         }
-
+        [Authorize(Roles ="Admin")]
         public ActionResult Index(string keyword = null, int page = 1)
         {
-            //tổng record 1 page
-            int pageSize = 20;
-            //lấy từ record 0
-            int totalRow = 0;
-            IEnumerable<CauHoi> model = null;
-            if (keyword == "" || keyword == null)
-            {
-                model = _cauHoiService.GetAllPaging(page, pageSize, out totalRow);
-            }
-            else
-            {
-                model = _cauHoiService.SearchByName(keyword, page, pageSize, out totalRow);
-            }
-            var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
-            // tổng số page
-            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-            if (keyword == null)
-            {
-                Session["listCauHoi"] = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(_cauHoiService.GetAll());
-            }
-            else
-            {
-                Session["listCauHoi"] = viewModel;
-            }
-            var paginationSet = new PaginationSet<CauHoiViewModel>()
-            {
-                Items = viewModel,
-                MaxPage = 5,
-                Page = page,
-                TotalCount = totalRow,
-                TotalPages = totalPage
-            };
+                //tổng record 1 page
+                int pageSize = 20;
+                //lấy từ record 0
+                int totalRow = 0;
+                IEnumerable<CauHoi> model = null;
+                if (keyword == "" || keyword == null)
+                {
+                    model = _cauHoiService.GetAllPaging(page, pageSize, out totalRow);
+                }
+                else
+                {
+                    model = _cauHoiService.SearchByName(keyword, page, pageSize, out totalRow);
+                }
+                var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
+                // tổng số page
+                int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+                if (keyword == null)
+                {
+                    Session["listCauHoi"] = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(_cauHoiService.GetAll());
+                }
+                else
+                {
+                    Session["listCauHoi"] = viewModel;
+                }
+                var paginationSet = new PaginationSet<CauHoiViewModel>()
+                {
+                    Items = viewModel,
+                    MaxPage = 5,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = totalPage
+                };
 
-            return View(paginationSet);
-        }
+                return View(paginationSet);
+            }
+          
+           
+        
 
         [HttpGet]
         public ActionResult Add()

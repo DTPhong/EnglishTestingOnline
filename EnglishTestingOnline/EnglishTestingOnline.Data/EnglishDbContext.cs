@@ -17,6 +17,9 @@ namespace EnglishTestingOnline.Data
             // Add custom user claims here
             return userIdentity;
         }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address { get; set; }
     }
     public class EnglishDbContext : IdentityDbContext<ApplicationUser>
     {

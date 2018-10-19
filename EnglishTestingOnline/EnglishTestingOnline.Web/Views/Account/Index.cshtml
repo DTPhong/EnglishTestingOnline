@@ -1,0 +1,189 @@
+﻿@model IEnumerable<EnglishTestingOnline.Data.ApplicationUser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-icon card-header-rose">
+                            <div class="card-icon">
+                                <i class="material-icons">assignment</i>
+                            </div>
+                            <h2 class="card-title ">Danh sách tài khoản</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <form method="get" action="/CauHoi/Index">
+                                    <div class="input-group no-border">
+                                        <input type="text" placeholder="Search here" id="txtKeyword" name="keyword" class="form-control">
+                                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                            <i class="material-icons">search</i>
+                                            <div class="ripple-container"></div>
+                                        </button>
+                                    </div>
+                                </form>
+                                <a href="/LoaiCauHoi/Add" class="btn btn-success">
+                                    <i class="fa fa-plus-circle"></i> Add new
+                                </a>
+                                <a href="" class="btn btn-default">
+                                    <i class="fa fa-download"></i> Import
+
+                                </a>
+                                <a href="" class="btn btn-warning">
+                                    <i class="fa fa-upload"></i> Export
+
+                                </a>
+                                <button class="btn btn-danger" id="deleteMulti">
+                                    <i class="fa fa-trash"></i> Delete multi
+
+                                </button>
+                                <table class="table">
+                                    <thead class="text-primary">
+                                        <tr>
+                                            <th style="width: 5%">
+                                                <input type="checkbox" />
+                                            </th>
+                                            <th style="width: 15%">
+                                                <h4>
+                                                    <b>ID</b>
+                                                </h4>
+                                            </th>
+                                            <th style="width: 15%">
+                                                <h4>
+                                                    <b>Username</b>
+                                                </h4>
+                                            </th>
+                                            <th style="width: 15%">
+                                                <h4>
+                                                    <b>First Name</b>
+                                                </h4>
+                                            </th>
+                                            <th style="width: 15%">
+                                                <h4>
+                                                    <b>Last Name</b>
+                                                </h4>
+                                            </th>
+                                            <th style="width: 15%">
+                                                <h4>
+                                                    <b>Email</b>
+                                                </h4>
+                                            </th>
+                                           
+                                            <th style="width: 15%">
+                                                <h4>
+                                                    <b>Phone number</b>
+                                                </h4>
+                                            </th>
+                                            <th style="width: 5%">
+                                                <h4><b>Sửa</b></h4>
+                                            </th>
+                                            <th style="width: 5%">
+                                                <h4><b>Xóa</b></h4>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td style="width: 5%">
+                                                    <input type="checkbox" value="" name="item" />
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Id)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.UserName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.FirstName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.LastName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Email)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                                </td>
+                                                <td>
+                                                    <a href="/Account/EditUser?id=@item.Id" class="btn btn-sm btn-info">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a href="/Account/Delete?id=@item.Id" class="btn btn-sm btn-danger">
+                                                        <i class="fa fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+                                @*<div class="card-body">
+
+                                    @if (Model.TotalPages > 1)
+                                    {
+                                        // Create numeric links
+                                        var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+                                        var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+                                        <ul class="pagination">
+                                            @if (Model.Page > 1)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=1" aria-label="Previous">
+                                                        <span aria-hidden="true"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span>
+                                                    </a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=@(Model.Page-1)" aria-label="Previous">
+                                                        <span aria-hidden="true"><i class="fa fa-angle-left" aria-hidden="true"></i></span>
+                                                    </a>
+                                                </li>
+                                            }
+
+                                            @for (int i = startPageIndex; i <= endPageIndex; i++)
+                                            {
+                                                if (Model.Page == i)
+                                                {
+                                                    <li class="page-item active"><a class="page-link" href="?page=@i" title="Trang @i">@i</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li class="page-item"><a class="page-link" href="?page=@i" title="Trang @i">@i</a></li>
+                                                }
+                                            }
+                                            @if (Model.Page < Model.TotalPages)
+                                            {
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=@(Model.Page +1)" aria-label="Next">
+                                                        <span aria-hidden="true"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                                                    </a>
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=@(Model.TotalPages)" aria-label="Next">
+                                                        <span aria-hidden="true"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+
+                                    }
+                                </div>*@
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
