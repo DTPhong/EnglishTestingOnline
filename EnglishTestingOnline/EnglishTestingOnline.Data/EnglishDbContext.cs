@@ -3,6 +3,7 @@ namespace EnglishTestingOnline.Data
     using EnglishTestingOnline.Model.Model;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
+    using System.ComponentModel.DataAnnotations;
     using System.Data.Entity;
     using System.Security.Claims;
     using System.Threading.Tasks;
@@ -17,9 +18,27 @@ namespace EnglishTestingOnline.Data
             // Add custom user claims here
             return userIdentity;
         }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string AccountName { get; set; }
+        
         public string Address { get; set; }
+        public string AddressShortened { get { return Address.ToString().SubStringTo(30); } }
+    }
+    public static class StringExtensions
+    {
+        public static string SubStringTo(this string thatString, int limit)
+        {
+
+            if (thatString.Length > limit)
+            {
+                return thatString.Substring(0, limit)+"...";
+            }
+            return thatString;
+
+        }
+    }
+    public class ApplicationRole: IdentityRole {
+            public ApplicationRole() : base(){ }
+            public ApplicationRole(string roleName): base(roleName) { }
     }
     public class EnglishDbContext : IdentityDbContext<ApplicationUser>
     {

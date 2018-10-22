@@ -7,13 +7,13 @@ namespace EnglishTestingOnline.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class updateField : IMigrationMetadata
+    public sealed partial class completeDb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updateField));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(completeDb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201810160437589_updateField"; }
+            get { return "201810220741220_completeDb"; }
         }
         
         string IMigrationMetadata.Source

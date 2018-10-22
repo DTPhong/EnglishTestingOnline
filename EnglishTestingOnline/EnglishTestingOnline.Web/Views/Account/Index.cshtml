@@ -27,7 +27,7 @@
                                         </button>
                                     </div>
                                 </form>
-                                <a href="/LoaiCauHoi/Add" class="btn btn-success">
+                                <a href="/Account/CreateNewUser" class="btn btn-success">
                                     <i class="fa fa-plus-circle"></i> Add new
                                 </a>
                                 <a href="" class="btn btn-default">
@@ -50,27 +50,17 @@
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>ID</b>
+                                                    <b>Tài khoản</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>Username</b>
+                                                    <b>Tên chủ sở hữu</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>First Name</b>
-                                                </h4>
-                                            </th>
-                                            <th style="width: 15%">
-                                                <h4>
-                                                    <b>Last Name</b>
-                                                </h4>
-                                            </th>
-                                            <th style="width: 15%">
-                                                <h4>
-                                                    <b>Email</b>
+                                                    <b>Địa chỉ</b>
                                                 </h4>
                                             </th>
                                            
@@ -95,19 +85,13 @@
                                                     <input type="checkbox" value="" name="item" />
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Id)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.UserName)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.FirstName)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.LastName)
-                                                </td>
-                                                <td>
                                                     @Html.DisplayFor(modelItem => item.Email)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.AccountName)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.AddressShortened)
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.PhoneNumber)
