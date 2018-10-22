@@ -1,4 +1,5 @@
 ﻿using EnglishTestingOnline.Data;
+using EnglishTestingOnline.Model.Model;
 using EnglishTestingOnline.Web.App_Start;
 using EnglishTestingOnline.Web.Models;
 using Microsoft.AspNet.Identity;

@@ -14,7 +14,7 @@ namespace EnglishTestingOnline.Model.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
-        public int HocVien_ID { get; set; }
+        public string HocVien_ID { get; set; }
         [Required]
         public int DeThi_ID { get; set; }
         public float? DiemNghe { get; set; }
@@ -24,7 +24,7 @@ namespace EnglishTestingOnline.Model.Model
         [ForeignKey("DeThi_ID")]
         public virtual DeThi Dethi { get; set; }
         [ForeignKey("HocVien_ID")]
-        public virtual HocVien HocVien { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual IEnumerable<CauTraLoiBaiLam> CauTraLoiBaiLams { get; set; }
 
     }

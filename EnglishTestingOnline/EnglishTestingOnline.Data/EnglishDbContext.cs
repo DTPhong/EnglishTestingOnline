@@ -7,39 +7,7 @@ namespace EnglishTestingOnline.Data
     using System.Data.Entity;
     using System.Security.Claims;
     using System.Threading.Tasks;
-
-    public class ApplicationUser : IdentityUser
-    {
-
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
-        {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
-            return userIdentity;
-        }
-        public string AccountName { get; set; }
-        
-        public string Address { get; set; }
-        public string AddressShortened { get { return Address.ToString().SubStringTo(30); } }
-    }
-    public static class StringExtensions
-    {
-        public static string SubStringTo(this string thatString, int limit)
-        {
-
-            if (thatString.Length > limit)
-            {
-                return thatString.Substring(0, limit)+"...";
-            }
-            return thatString;
-
-        }
-    }
-    public class ApplicationRole: IdentityRole {
-            public ApplicationRole() : base(){ }
-            public ApplicationRole(string roleName): base(roleName) { }
-    }
+ 
     public class EnglishDbContext : IdentityDbContext<ApplicationUser>
     {
         // Your context has been configured to use a 'EnglishDbContext' connection string from your application's
@@ -70,24 +38,10 @@ namespace EnglishTestingOnline.Data
         public virtual DbSet<CauTraLoiTracNghiem> CauTraLoiTracNghiems { get; set; }
         public virtual DbSet<ChuDe> ChuDes { get; set; }
         public virtual DbSet<DeThi> DeThis { get; set; }
-        public virtual DbSet<HocVien> HocViens { get; set; }
         public virtual DbSet<KyThi> KyThis { get; set; }
         public virtual DbSet<LoaiBaiDocNghe> LoaiBaiDocNghes { get; set; }
         public virtual DbSet<LoaiCauHoi> LoaiCauHois { get; set; }
         public virtual DbSet<LoaiCauTraLoiTracNghiem> LoaiCauTraLoiTracNghiems { get; set; }
-        //public virtual DbSet<IdentityUserRole> IdentityUserRoles { get; set; }
-        //public virtual DbSet<IdentityUser> IdentityUsers { get; set; }
-        //public virtual DbSet<IdentityUserClaim> IdentityUserClaims { get; set; }
-        //public virtual DbSet<IdentityRole> IdentityRoles { get; set; }
-        //public virtual DbSet<IdentityUserLogin> IdentityUserLogins { get; set; }
-
-        //protected override void OnModelCreating(DbModelBuilder builder)
-        //{
-        //    builder.Entity<IdentityUser>().HasKey(i => i.Id);
-        //    builder.Entity<IdentityRole>().HasKey(i => i.Id);
-        //    builder.Entity<IdentityUserClaim>().HasKey(i => i.Id);
-        //    builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
-        //    builder.Entity<IdentityUserLogin>().HasKey(i => new { i.UserId, i.ProviderKey, i.LoginProvider });
-        //}
+ 
     }
 }
