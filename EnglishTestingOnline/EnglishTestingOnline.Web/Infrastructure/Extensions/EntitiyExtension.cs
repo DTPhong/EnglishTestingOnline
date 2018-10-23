@@ -53,5 +53,47 @@ namespace EnglishTestingOnline.Web.Infrastructure.Extensions
             cauHoiDeThi.DeThi_ID = cauHoiDeThiVM.DeThi_ID;
             cauHoiDeThi.CauHoi_ID = cauHoiDeThiVM.CauHoi_ID;
         }
+        public static void UpdateChuDe(this ChuDe chuDe, ChuDeViewModel chuDeVM)
+        {
+            chuDe.ID = chuDeVM.ID;
+            chuDe.TenChuDe = chuDeVM.TenChuDe;
+        }
+        public static void UpdateCauTraLoiBaiLam(this CauTraLoiBaiLam cauTraLoiBaiLam, CauTraLoiBaiLamViewModel cauTraLoiBaiLamVM)
+        {
+            cauTraLoiBaiLam.BaiLam_ID = cauTraLoiBaiLamVM.BaiLam_ID;
+            cauTraLoiBaiLam.CauHoi_ID = cauTraLoiBaiLamVM.CauHoi_ID;
+            cauTraLoiBaiLam.CauTraLoi = cauTraLoiBaiLamVM.CauTraLoi;
+        }
+        public static void UpdateDeThi(this DeThi deThi, DeThiViewModel deThiVM)
+        {
+            deThi.ID = deThiVM.ID;
+            deThi.KyThi_ID = deThiVM.KyThi_ID;
+            deThi.ThoiGianThi = deThiVM.ThoiGianThi;
+            deThi.ThoiGianBatDau = deThiVM.ThoiGianBatDau;
+        }
+        public static void UpdateHocVien(this HocVien hocVien, HocVienViewModel hocVienVM)
+        {
+            hocVien.ID = hocVienVM.ID;
+            hocVien.Ten = hocVienVM.Ten;
+            hocVien.NgaySinh = hocVienVM.NgaySinh;
+            hocVien.Email = hocVienVM.Email;
+            hocVien.DiaChi = hocVienVM.DiaChi;
+        }
+        public static void UpdateKyThi(this KyThi kyThi, KyThiViewModel kyThiVM)
+        {
+            kyThi.ID = kyThiVM.ID;
+            kyThi.TenKyThi = kyThiVM.TenKyThi;
+            kyThi.NgayThi = kyThiVM.NgayThi;
+        }
+        public static void UpdateLoaiBaiDocNghe(this LoaiBaiDocNghe loaiBaiDocNghe, LoaiBaiDocNgheViewModel loaiBaiDocNgheVM)
+        {
+            loaiBaiDocNghe.ID = loaiBaiDocNgheVM.ID;
+            loaiBaiDocNghe.Name = loaiBaiDocNgheVM.Name;
+        }
+        public static void UpdateLoaiCauTraLoiTracNghiem(this LoaiCauTraLoiTracNghiem loaiCauTraLoiTracNghiem, LoaiCauTraLoiTracNghiemViewModel loaiCauTraLoiTracNghiemVM)
+        {
+            loaiCauTraLoiTracNghiem.ID = loaiCauTraLoiTracNghiemVM.ID;
+            loaiCauTraLoiTracNghiem.LoaiCauTraLoi = loaiCauTraLoiTracNghiemVM.LoaiCauTraLoi;
+        }
     }
 }

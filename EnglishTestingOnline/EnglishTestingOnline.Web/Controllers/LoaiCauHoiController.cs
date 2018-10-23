@@ -91,6 +91,15 @@ namespace EnglishTestingOnline.Web.Controllers
             _loaiCauHoiService.Save();
             return RedirectToAction("Index");
         }
-
+        [HttpPost]
+        public ActionResult DeleteTypeAns(int[] listId)
+        {
+            foreach (var id in listId)
+            {
+                _loaiCauHoiService.Delete(id);
+            }
+            _loaiCauHoiService.Save();
+            return RedirectToAction("Index");
+        }
     }
 }

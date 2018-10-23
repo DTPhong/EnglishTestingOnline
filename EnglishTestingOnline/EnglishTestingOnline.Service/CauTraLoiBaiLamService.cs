@@ -1,4 +1,4 @@
-﻿using EnglishTestingOnline.Data.Respositories;
+﻿    using EnglishTestingOnline.Data.Respositories;
 using EnglishTestingOnline.Model.Model;
 using System;
 using System.Collections.Generic;
@@ -16,6 +16,8 @@ namespace EnglishTestingOnline.Service
         CauTraLoiBaiLam Delete(int id);
         void Update(CauTraLoiBaiLam cauTraLoiBaiLam);
         IEnumerable<CauTraLoiBaiLam> GetAll();
+        IEnumerable<CauTraLoiBaiLam> GetAllPaging(int page, int pageSize, out int totalRow);
+        IEnumerable<CauTraLoiBaiLam> SearchByName(int keyword, int page, int pageSize, out int totalRow);
         CauTraLoiBaiLam GetById(int id);
 
         void Save();
@@ -54,6 +56,22 @@ namespace EnglishTestingOnline.Service
         public void Save()
         {
             _unitOfWork.Commit();
+        }
+
+        public IEnumerable<CauTraLoiBaiLam> GetAllPaging(int page, int pageSize, out int totalRow)
+        {
+            var query = _cauTraLoiBaiLamRepository.GetAll();
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public IEnumerable<CauTraLoiBaiLam> SearchByName(int keyword, int page, int pageSize, out int totalRow)
+        {
+            var query = _cauTraLoiBaiLamRepository.GetMulti(c => c.BaiLam_ID.Equals(keyword));
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
         public void Update(CauTraLoiBaiLam cauTraLoiBaiLam)

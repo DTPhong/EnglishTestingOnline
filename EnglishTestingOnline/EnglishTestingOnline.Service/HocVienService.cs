@@ -16,6 +16,8 @@ namespace EnglishTestingOnline.Service
         void Update(HocVien HocVien);
         HocVien GetById(int id);
         IEnumerable<HocVien> GetAll();
+        IEnumerable<HocVien> GetAllPaging(int page, int pageSize, out int totalRow);
+        IEnumerable<HocVien> SearchByName(string keyword, int page, int pageSize, out int totalRow);
         void Save();
     }
     public class HocVienService : IHocVienSercive
@@ -27,6 +29,21 @@ namespace EnglishTestingOnline.Service
         {
             this._HocVienRepository = HocVienRepository;
             this._unitOfWork = unitOfWork;
+        }
+        public IEnumerable<HocVien> GetAllPaging(int page, int pageSize, out int totalRow)
+        {
+            var query = _HocVienRepository.GetAll();
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public IEnumerable<HocVien> SearchByName(string keyword, int page, int pageSize, out int totalRow)
+        {
+            var query = _HocVienRepository.GetMulti(c => c.Ten.Contains(keyword));
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
         public HocVien Add(HocVien HocVien)
         {

@@ -183,9 +183,18 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaiDocNgheController.cs" />
+    <Compile Include="Controllers\BaiLamController.cs" />
     <Compile Include="Controllers\CauHoiController.cs" />
+    <Compile Include="Controllers\CauHoiDeThiController.cs" />
+    <Compile Include="Controllers\CauTraLoiBaiLamController.cs" />
     <Compile Include="Controllers\CauTraLoiTracNghiemController.cs" />
+    <Compile Include="Controllers\ChuDeController.cs" />
+    <Compile Include="Controllers\DeThiController.cs" />
+    <Compile Include="Controllers\HocVienController.cs" />
+    <Compile Include="Controllers\KyThiController.cs" />
+    <Compile Include="Controllers\LoaiBaiDocNgheController.cs" />
     <Compile Include="Controllers\LoaiCauHoiController.cs" />
+    <Compile Include="Controllers\LoaiCauTraLoiTracNghiemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,7 +240,16 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\BaiDocNghe\" />
+    <Folder Include="Views\BaiLam\" />
+    <Folder Include="Views\CauHoiDeThi\" />
+    <Folder Include="Views\CauTraLoiBaiLam\" />
     <Folder Include="Views\CauTraLoiTracNghiem\" />
+    <Folder Include="Views\ChuDe\" />
+    <Folder Include="Views\DeThi\" />
+    <Folder Include="Views\HocVien\" />
+    <Folder Include="Views\KyThi\" />
+    <Folder Include="Views\LoaiBaiDocNghe\" />
+    <Folder Include="Views\LoaiCauTraLoiTracNghiem\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnglishTestingOnline.Data\EnglishTestingOnline.Data.csproj">
