@@ -71,7 +71,6 @@ namespace EnglishTestingOnline.Data.Migrations
                 context.SaveChanges();
             }
         }
-
         private void CreateCauHoiSample(EnglishDbContext context)
         {
             if (context.CauHois.Count() == 0)
