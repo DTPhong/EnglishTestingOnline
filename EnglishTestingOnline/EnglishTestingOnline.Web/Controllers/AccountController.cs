@@ -64,8 +64,21 @@ namespace EnglishTestingOnline.Web.Controllers
         }
         public ActionResult Index()
         {
-            IEnumerable<ApplicationUser> model = UserManager.Users;
-            return View(model);
+            var usersWithRoles = (from user in db.Users
+                                  from userRole in user.Roles
+                                  join role in db.Roles on userRole.RoleId equals
+                                  role.Id
+                                  select new UserViewModel()
+                                  {
+                                      Username = user.UserName,
+                                      Email = user.Email,
+                                      Role = role.Name,
+                                      Address =user.Address,
+                                      Id =user.Id,
+                                      Phone=user.PhoneNumber
+                                  }).ToList();
+            //IEnumerable<ApplicationUser> model = UserManager.Users;
+            return View(usersWithRoles);
         }
 
         public ActionResult EditUser(string id)

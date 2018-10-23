@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EnglishTestingOnline.Data.ApplicationUser>
+﻿@model IEnumerable<EnglishTestingOnline.Web.Models.UserViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -66,7 +66,12 @@
                                            
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>Phone number</b>
+                                                    <b>SĐT</b>
+                                                </h4>
+                                            </th>
+                                            <th style="width: 15%">
+                                                <h4>
+                                                    <b>Vai trò</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 5%">
@@ -84,17 +89,21 @@
                                                 <td style="width: 5%">
                                                     <input type="checkbox" value="" name="item" />
                                                 </td>
+                                                
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.Email)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.AccountName)
+                                                    @Html.DisplayFor(modelItem => item.Username)
                                                 </td>
                                                 <td>
                                                     @Html.DisplayFor(modelItem => item.AddressShortened)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                                    @Html.DisplayFor(modelItem => item.Phone)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Role)
                                                 </td>
                                                 <td>
                                                     <a href="/Account/EditUser?id=@item.Id" class="btn btn-sm btn-info">

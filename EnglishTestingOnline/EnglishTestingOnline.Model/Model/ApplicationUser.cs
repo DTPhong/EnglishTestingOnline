@@ -22,19 +22,6 @@ namespace EnglishTestingOnline.Model.Model
         public string AccountName { get; set; }
 
         public string Address { get; set; }
-        public string AddressShortened { get { return Address.ToString().SubStringTo(30); } }
     }
-    public static class StringExtensions
-    {
-        public static string SubStringTo(this string thatString, int limit)
-        {
 
-            if (thatString.Length > limit)
-            {
-                return thatString.Substring(0, limit) + "...";
-            }
-            return thatString;
-
-        }
-    }
 }
