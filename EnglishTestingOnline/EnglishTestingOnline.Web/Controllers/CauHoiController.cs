@@ -13,7 +13,6 @@ using Excel = Microsoft.Office.Interop.Excel;
 
 namespace EnglishTestingOnline.Web.Controllers
 {
- [Authorize]
     public class CauHoiController : Controller
     {
         private ICauhoiService _cauHoiService;
@@ -28,7 +27,7 @@ namespace EnglishTestingOnline.Web.Controllers
             this._baiDocNgheSercive = baiDocNgheSercive;
             this._loaiCauHoiService = loaiCauHoiService;
         }
-        [Authorize(Roles ="Admin")]
+        //[Authorize(Roles ="Admin")]
         public ActionResult Index(string keyword = null, int page = 1)
         {
                 //tổng record 1 page

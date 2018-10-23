@@ -229,8 +229,6 @@ namespace EnglishTestingOnline.Web.Controllers
             return View(model);
         }
 
-
-
         public ActionResult UserLogin(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
