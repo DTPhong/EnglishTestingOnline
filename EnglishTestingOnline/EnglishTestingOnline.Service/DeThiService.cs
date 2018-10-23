@@ -16,6 +16,8 @@ namespace EnglishTestingOnline.Service
         void Update(DeThi DeThi);
         DeThi GetById(int id);
         IEnumerable<DeThi> GetAll();
+        IEnumerable<DeThi> GetAllPaging(int page, int pageSize, out int totalRow);
+        IEnumerable<DeThi> SearchByName(int keyword, int page, int pageSize, out int totalRow);
         void Save();
     }
     public class DeThiService : IDeThiSercive
@@ -28,6 +30,23 @@ namespace EnglishTestingOnline.Service
             this._DeThiRepository = DeThiRepository;
             this._unitOfWork = unitOfWork;
         }
+
+        public IEnumerable<DeThi> GetAllPaging(int page, int pageSize, out int totalRow)
+        {
+            var query = _DeThiRepository.GetAll();
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public IEnumerable<DeThi> SearchByName(int keyword, int page, int pageSize, out int totalRow)
+        {
+            var query = _DeThiRepository.GetMulti(c => c.ID.Equals(keyword));
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
         public DeThi Add(DeThi DeThi)
         {
             return _DeThiRepository.Add(DeThi);

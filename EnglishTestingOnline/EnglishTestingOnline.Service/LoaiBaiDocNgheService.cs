@@ -16,6 +16,8 @@ namespace EnglishTestingOnline.Service
         void Update(LoaiBaiDocNghe LoaiBaiDocNghe);
         LoaiBaiDocNghe GetById(int id);
         IEnumerable<LoaiBaiDocNghe> GetAll();
+        IEnumerable<LoaiBaiDocNghe> GetAllPaging(int page, int pageSize, out int totalRow);
+        IEnumerable<LoaiBaiDocNghe> SearchByName(int keyword, int page, int pageSize, out int totalRow);
         void Save();
     }
     public class LoaiBaiDocNgheService : ILoaiBaiDocNgheSercive
@@ -27,6 +29,21 @@ namespace EnglishTestingOnline.Service
         {
             this._LoaiBaiDocNgheRepository = LoaiBaiDocNgheRepository;
             this._unitOfWork = unitOfWork;
+        }
+        public IEnumerable<LoaiBaiDocNghe> GetAllPaging(int page, int pageSize, out int totalRow)
+        {
+            var query = _LoaiBaiDocNgheRepository.GetAll();
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        public IEnumerable<LoaiBaiDocNghe> SearchByName(int keyword, int page, int pageSize, out int totalRow)
+        {
+            var query = _LoaiBaiDocNgheRepository.GetMulti(c => c.ID.Equals(keyword));
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
         public LoaiBaiDocNghe Add(LoaiBaiDocNghe LoaiBaiDocNghe)
         {

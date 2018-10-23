@@ -16,6 +16,9 @@ namespace EnglishTestingOnline.Service
         void Update(CauHoiDeThi cauHoiDeThi);
         CauHoiDeThi GetById(int id);
         IEnumerable<CauHoiDeThi> GetAll();
+        IEnumerable<CauHoiDeThi> GetAllPaging(int page, int pageSize, out int totalRow);
+
+        
         void Save();
     }
     public class CauHoiDeThiService : ICauHoiDeThiService
@@ -28,6 +31,7 @@ namespace EnglishTestingOnline.Service
             this._cauHoiDeThiRepository = cauHoiDeThiRepository;
             this._unitOfWork = unitOfWork;
         }
+       
         public CauHoiDeThi Add(CauHoiDeThi cauHoiDeThi)
         {
             return _cauHoiDeThiRepository.Add(cauHoiDeThi);
@@ -47,7 +51,14 @@ namespace EnglishTestingOnline.Service
         {
             return _cauHoiDeThiRepository.GetSingleById(id);
         }
+        
+        public IEnumerable<CauHoiDeThi> GetAllPaging(int page, int pageSize, out int totalRow)
+        {
+            var query = _cauHoiDeThiRepository.GetAll();
+            totalRow = query.Count();
 
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
         public void Save()
         {
             _unitOfWork.Commit();
@@ -57,5 +68,7 @@ namespace EnglishTestingOnline.Service
         {
             _cauHoiDeThiRepository.Update(cauHoiDeThi);
         }
+
+        
     }
 }

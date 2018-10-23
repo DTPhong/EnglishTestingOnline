@@ -32,7 +32,7 @@ namespace EnglishTestingOnline.Service
         private ICauHoiRepository _cauHoiRepository;
         private IUnitOfWork _unitOfWork;
 
-        string[] includes = { "ChuDe", "LoaiCauHoi" };
+        string[] includes = { "ChuDe", "LoaiCauHoi","BaiDocNghe" };
 
         public CauHoiService(ICauHoiRepository cauHoiRepository, IUnitOfWork unitOfWork)
         {

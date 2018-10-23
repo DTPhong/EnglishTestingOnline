@@ -56,7 +56,7 @@ namespace EnglishTestingOnline.Web.Controllers
         }
         public ActionResult Add()
         {
-            ViewBag.ListLoaiBaiDocNghe = _loaiBaiDocNgheService.GetAll();
+
             return View();
         }
         [HttpPost]

@@ -16,6 +16,9 @@ namespace EnglishTestingOnline.Service
         void Update(BaiLam baiLam);
         BaiLam GetById(int id);
         IEnumerable<BaiLam> GetAll();
+        IEnumerable<BaiLam> GetAllPaging(int page, int pageSize, out int totalRow);
+
+        IEnumerable<BaiLam> SearchByName(int keyword, int page, int pageSize, out int totalRow);
         void Save();
     }
     public class BaiLamService : IBaiLamSercive
@@ -52,10 +55,25 @@ namespace EnglishTestingOnline.Service
         {
             _unitOfWork.Commit();
         }
+        
+        public IEnumerable<BaiLam> GetAllPaging(int page, int pageSize, out int totalRow)
+        {
+            var query = _baiLamRepository.GetAll();
+            totalRow = query.Count();
 
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
+        }
         public void Update(BaiLam baiLam)
         {
             _baiLamRepository.Update(baiLam);
+        }
+
+        public IEnumerable<BaiLam> SearchByName(int keyword, int page, int pageSize, out int totalRow)
+        {
+            var query = _baiLamRepository.GetMulti(c => c.HocVien_ID.Equals(keyword));
+            totalRow = query.Count();
+
+            return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
     }
 }
