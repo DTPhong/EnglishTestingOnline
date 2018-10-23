@@ -94,10 +94,7 @@
       <Name>EnglishTestingOnline.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\" />
-    <Folder Include="bin\Release\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810220940100_completeDb.resx">
       <DependentUpon>201810220940100_completeDb.cs</DependentUpon>
