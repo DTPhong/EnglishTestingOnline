@@ -1,4 +1,5 @@
 ﻿using EnglishTestingOnline.Data;
+using EnglishTestingOnline.Model.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -154,6 +155,29 @@ namespace EnglishTestingOnline.Web.Models
         public string Id { get; set; }
         public string Name { get; set; }
     }
-   
+    public class UserViewModel
+    {
+        public string Id { get; set; }
+        public string Email { get; set; }
+        public string Username { get; set; }
+        public string Role { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+        public string AddressShortened { get { return Address.ToString().SubStringTo(30); } }
+    }
+    public static class StringExtensions
+    {
+        public static string SubStringTo(this string thatString, int limit)
+        {
+
+            if (thatString.Length > limit)
+            {
+                return thatString.Substring(0, limit) + "...";
+            }
+            return thatString;
+
+        }
+    }
+
 
 }

@@ -57,7 +57,6 @@
     <Compile Include="ChuDeService.cs" />
     <Compile Include="LoaiCauTraLoiTracNghiemService.cs" />
     <Compile Include="DeThiService.cs" />
-    <Compile Include="HocVienService.cs" />
     <Compile Include="KyThiService.cs" />
     <Compile Include="LoaiCauHoiService.cs" />
     <Compile Include="LoaiBaiDocNgheService.cs" />

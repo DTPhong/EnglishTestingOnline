@@ -162,6 +162,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\Admin\css\material-dashboard.min40a0.css" />
+    <Content Include="Assets\Admin\demo\demo.css" />
+    <Content Include="Assets\Admin\demo\demo.js" />
+    <Content Include="Assets\Admin\demo\jquery.sharrre.js" />
     <Content Include="Assets\Admin\img\apple-icon.png" />
     <Content Include="Assets\Admin\img\bg-pricing.jpg" />
     <Content Include="Assets\Admin\img\card-1.jpg" />
@@ -191,12 +194,12 @@
     <Content Include="Assets\Admin\img\sidebar-3.jpg" />
     <Content Include="Assets\Admin\img\sidebar-4.jpg" />
     <Content Include="Assets\Admin\js\custom.js" />
+    <Content Include="Assets\Admin\js\material-dashboard.min40a0.js" />
     <Content Include="Assets\Admin\js\plugins\buttons.js" />
     <Content Include="Assets\Admin\js\plugins\core.js" />
     <Content Include="Assets\Admin\js\core\bootstrap-material-design.min.js" />
     <Content Include="Assets\Admin\js\core\jquery.min.js" />
     <Content Include="Assets\Admin\js\core\popper.min.js" />
-    <Content Include="Assets\Admin\js\material-dashboard.min40a0.js" />
     <Content Include="Assets\Admin\js\plugins\arrive.min.js" />
     <Content Include="Assets\Admin\js\plugins\bootstrap-datetimepicker.min.js" />
     <Content Include="Assets\Admin\js\plugins\bootstrap-notify.js" />
@@ -213,6 +216,7 @@
     <Content Include="Assets\Admin\js\plugins\nouislider.min.js" />
     <Content Include="Assets\Admin\js\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Assets\Admin\js\plugins\sweetalert2.js" />
+    <Content Include="Assets\Admin\maxcdn.bootstrapcdn.com\font-awesome\latest\css\font-awesome.min.css" />
     <Content Include="Assets\User\css\main.css" />
     <Content Include="Assets\User\css\util.css" />
     <Content Include="Assets\User\fonts\font-awesome-4.7.0\css\font-awesome.css" />

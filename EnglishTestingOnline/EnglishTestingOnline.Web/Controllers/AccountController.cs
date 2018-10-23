@@ -1,4 +1,5 @@
 ﻿using EnglishTestingOnline.Data;
+using EnglishTestingOnline.Model.Model;
 using EnglishTestingOnline.Web.App_Start;
 using EnglishTestingOnline.Web.Models;
 using Microsoft.AspNet.Identity;
@@ -63,34 +64,22 @@ namespace EnglishTestingOnline.Web.Controllers
         }
         public ActionResult Index()
         {
-            IEnumerable<ApplicationUser> model = UserManager.Users;
-            return View(model);
+            var usersWithRoles = (from user in db.Users
+                                  from userRole in user.Roles
+                                  join role in db.Roles on userRole.RoleId equals
+                                  role.Id
+                                  select new UserViewModel()
+                                  {
+                                      Username = user.UserName,
+                                      Email = user.Email,
+                                      Role = role.Name,
+                                      Address =user.Address,
+                                      Id =user.Id,
+                                      Phone=user.PhoneNumber
+                                  }).ToList();
+            //IEnumerable<ApplicationUser> model = UserManager.Users;
+            return View(usersWithRoles);
         }
-        //[HttpGet]
-        //public async Task<IActionResult> EditUser(string id)
-        //{
-        //    EditUserViewModel model = new EditUserViewModel();
-        //    model.ApplicationRoles = roleManager.Roles.Select(r => new SelectListItem
-        //    {
-        //        Text = r.Name,
-        //        Value = r.Id
-        //    }).ToList();
-
-
-
-        //    if (!String.IsNullOrEmpty(id))
-        //    {
-        //        ApplicationUser user = await userManager.FindByIdAsync(id);
-        //        if (user != null)
-        //        {
-        //            model.Name = user.Name;
-        //            model.Email = user.Email;
-        //            model.ApplicationRoleId = RoleManager.Roles.Single(r => r.Name == UserManager.GetRoles(id).Single()).Id; // Here crashing .. I don't know why.. Server 500 error
-        //            ViewBag.RoleId = new SelectList(RoleManager.Roles, "Id", "Name", model.ApplicationRoleId);
-        //        }
-        //    }
-        //    return PartialView("_EditUser", model);
-        //}
 
         public ActionResult EditUser(string id)
         {
