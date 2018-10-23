@@ -256,7 +256,9 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaiDocNgheController.cs" />
     <Compile Include="Controllers\CauHoiController.cs" />
+    <Compile Include="Controllers\CauTraLoiTracNghiemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiCauHoiController.cs" />
     <Compile Include="Global.asax.cs">
@@ -409,6 +411,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\BaiDocNghe\" />
+    <Folder Include="Views\CauTraLoiTracNghiem\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnglishTestingOnline.Data\EnglishTestingOnline.Data.csproj">

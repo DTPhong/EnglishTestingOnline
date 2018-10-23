@@ -13,7 +13,7 @@ namespace EnglishTestingOnline.Data.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201810150727162_initDb"; }
+            get { return "201810230433466_initDb"; }
         }
         
         string IMigrationMetadata.Source
