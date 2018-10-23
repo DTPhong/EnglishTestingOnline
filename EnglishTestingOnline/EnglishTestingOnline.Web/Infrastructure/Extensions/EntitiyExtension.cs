@@ -41,7 +41,6 @@ namespace EnglishTestingOnline.Web.Infrastructure.Extensions
         public static void UpdateBaiLam (this BaiLam baiLam, BaiLamViewModel baiLamVM)
         {
             baiLam.ID = baiLamVM.ID;
-            baiLam.HocVien_ID = baiLamVM.HocVien_ID;
             baiLam.DeThi_ID = baiLamVM.DeThi_ID;
             baiLam.DiemNghe = baiLamVM.DiemNghe;
             baiLam.DiemNoi = baiLamVM.DiemNoi;
@@ -70,14 +69,6 @@ namespace EnglishTestingOnline.Web.Infrastructure.Extensions
             deThi.KyThi_ID = deThiVM.KyThi_ID;
             deThi.ThoiGianThi = deThiVM.ThoiGianThi;
             deThi.ThoiGianBatDau = deThiVM.ThoiGianBatDau;
-        }
-        public static void UpdateHocVien(this HocVien hocVien, HocVienViewModel hocVienVM)
-        {
-            hocVien.ID = hocVienVM.ID;
-            hocVien.Ten = hocVienVM.Ten;
-            hocVien.NgaySinh = hocVienVM.NgaySinh;
-            hocVien.Email = hocVienVM.Email;
-            hocVien.DiaChi = hocVienVM.DiaChi;
         }
         public static void UpdateKyThi(this KyThi kyThi, KyThiViewModel kyThiVM)
         {
