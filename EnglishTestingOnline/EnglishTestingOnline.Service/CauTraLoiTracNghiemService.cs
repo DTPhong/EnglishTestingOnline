@@ -20,6 +20,8 @@ namespace EnglishTestingOnline.Service
         IEnumerable<CauTraLoiTracNghiem> GetAll();
         IEnumerable<CauTraLoiTracNghiem> GetAllPaging(int page, int pageSize, out int totalRow);
 
+        IEnumerable<CauTraLoiTracNghiem> GetByCauhoiId(int id);
+
         CauTraLoiTracNghiem GetById(int id);
         IEnumerable<CauTraLoiTracNghiem> SearchByName(string keyword, int page, int pageSize, out int totalRow);
 
@@ -77,6 +79,11 @@ namespace EnglishTestingOnline.Service
         public void Update(CauTraLoiTracNghiem cauTraLoiTracNghiem)
         {
             _cauTraLoiTracNghiemRepository.Update(cauTraLoiTracNghiem);
+        }
+
+        public IEnumerable<CauTraLoiTracNghiem> GetByCauhoiId(int id)
+        {
+            return _cauTraLoiTracNghiemRepository.GetMulti(x => x.CauHoi_ID == id);
         }
     }
 }

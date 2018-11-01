@@ -17,7 +17,7 @@ namespace EnglishTestingOnline.Service
         KyThi GetById(int id);
         IEnumerable<KyThi> GetAll();
         IEnumerable<KyThi> GetAllPaging(int page, int pageSize, out int totalRow);
-        IEnumerable<KyThi> SearchByName(int keyword, int page, int pageSize, out int totalRow);
+        IEnumerable<KyThi> SearchByName(string keyword, int page, int pageSize, out int totalRow);
         void Save();
     }
     public class KyThiService : IKyThiSercive
@@ -39,9 +39,9 @@ namespace EnglishTestingOnline.Service
             return query.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
-        public IEnumerable<KyThi> SearchByName(int keyword, int page, int pageSize, out int totalRow)
+        public IEnumerable<KyThi> SearchByName(string keyword, int page, int pageSize, out int totalRow)
         {
-            var query = _KyThiRepository.GetMulti(c => c.ID.Equals(keyword));
+            var query = _KyThiRepository.GetMulti(c => c.TenKyThi.Contains(keyword));
             totalRow = query.Count();
 
             return query.Skip((page - 1) * pageSize).Take(pageSize);

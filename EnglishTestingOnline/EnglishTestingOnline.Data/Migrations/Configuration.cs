@@ -3,10 +3,8 @@ namespace EnglishTestingOnline.Data.Migrations
     using EnglishTestingOnline.Model.Model;
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using EnglishTestingOnline.Model.Model;
 
     internal sealed class Configuration : DbMigrationsConfiguration<EnglishTestingOnline.Data.EnglishDbContext>
     {
@@ -20,10 +18,24 @@ namespace EnglishTestingOnline.Data.Migrations
             CreateChudeSample(context);
             CreateLoaiCauHoiSample(context);
             CreateCauHoiSample(context);
-            //  This method will be called after migrating to the latest version.
+            CreateKyThiSample(context);
+        }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+        private void CreateKyThiSample(EnglishDbContext context)
+        {
+            if (context.KyThis.Count() == 0)
+            {
+                List<KyThi> listKyThi = new List<KyThi>
+                {
+                    new KyThi(){TenKyThi="Test1",NgayThi=DateTime.Now},
+                    new KyThi(){TenKyThi="Test2",NgayThi=DateTime.Now},
+                    new KyThi(){TenKyThi="Test3",NgayThi=DateTime.Now},
+                    new KyThi(){TenKyThi="Test4",NgayThi=DateTime.Now},
+                    new KyThi(){TenKyThi="Test5",NgayThi=DateTime.Now}
+                };
+                context.KyThis.AddRange(listKyThi);
+                context.SaveChanges();
+            }
         }
 
         private void CreateChudeSample(EnglishDbContext context)
@@ -53,6 +65,7 @@ namespace EnglishTestingOnline.Data.Migrations
                 context.SaveChanges();
             }
         }
+
         private void CreateLoaiCauHoiSample(EnglishDbContext context)
         {
             if (context.LoaiCauHois.Count() == 0)
@@ -72,6 +85,7 @@ namespace EnglishTestingOnline.Data.Migrations
                 context.SaveChanges();
             }
         }
+
         private void CreateCauHoiSample(EnglishDbContext context)
         {
             if (context.CauHois.Count() == 0)

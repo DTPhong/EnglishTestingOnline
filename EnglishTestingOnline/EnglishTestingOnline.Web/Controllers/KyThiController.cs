@@ -23,18 +23,21 @@ namespace EnglishTestingOnline.Web.Controllers
             this._deThiSercive = deThiSercive;
         }
 
-        public ActionResult Index(int keyword, int page = 1)
+        public ActionResult Index(string keyword = null, int page = 1)
         {
             //tổng record 1 page
             int pageSize = 20;
             //lấy từ record 0
             int totalRow = 0;
             IEnumerable<KyThi> model = null;
-
-            model = _kyThiService.GetAllPaging(page, pageSize, out totalRow);
-
-            model = _kyThiService.SearchByName(keyword, page, pageSize, out totalRow);
-
+            if (String.IsNullOrEmpty(keyword))
+            {
+                model = _kyThiService.GetAllPaging(page, pageSize, out totalRow);
+            }
+            else
+            {
+                model = _kyThiService.SearchByName(keyword, page, pageSize, out totalRow);
+            }
             var viewModel = Mapper.Map<IEnumerable<KyThi>, IEnumerable<KyThiViewModel>>(model);
             // tổng số page
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);

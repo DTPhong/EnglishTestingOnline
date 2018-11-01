@@ -21,5 +21,7 @@ namespace EnglishTestingOnline.Web.Models
         public virtual LoaiCauHoiViewModel LoaiCauHoi { get; set; }
         public virtual BaiDocNgheViewModel BaiDocNghe { get; set; }
         public virtual ChuDeViewModel ChuDe { get; set; }
+
+        public virtual IEnumerable<CauTraLoiTracNghiemViewModel> CauTraLoiTracNghiems { get; set; }
     }
 }

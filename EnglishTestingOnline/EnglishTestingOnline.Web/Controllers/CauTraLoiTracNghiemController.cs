@@ -31,20 +31,24 @@ namespace EnglishTestingOnline.Web.Controllers
             int pageSize = 20;
             //lấy từ record 0
             int totalRow = 0;
-            IEnumerable<CauTraLoiTracNghiem> model = null;
+            IEnumerable<CauHoi> model = null;
             if (keyword == "" || keyword == null)
             {
-                model = _cauTraLoiTracNghiemService.GetAllPaging(page, pageSize, out totalRow);
+                model = _cauHoiService.GetAllPaging(page, pageSize, out totalRow);
             }
             else
             {
-                model = _cauTraLoiTracNghiemService.SearchByName(keyword, page, pageSize, out totalRow);
+                model = _cauHoiService.SearchByName(keyword, page, pageSize, out totalRow);
             }
-            var viewModel = Mapper.Map<IEnumerable<CauTraLoiTracNghiem>, IEnumerable<CauTraLoiTracNghiemViewModel>>(model);
+            foreach (var item in model)
+            {
+                var xxx = _cauTraLoiTracNghiemService.GetByCauhoiId(item.ID);
+            }
+            var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
             // tổng số page
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
             Session["listCauTraLoiTracNghiem"] = viewModel;
-            var paginationSet = new PaginationSet<CauTraLoiTracNghiemViewModel>()
+            var paginationSet = new PaginationSet<CauHoiViewModel>()
             {
                 Items = viewModel,
                 MaxPage = 5,

@@ -268,7 +268,6 @@
     <Compile Include="Controllers\CauTraLoiTracNghiemController.cs" />
     <Compile Include="Controllers\ChuDeController.cs" />
     <Compile Include="Controllers\DeThiController.cs" />
-    <Compile Include="Controllers\HocVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KyThiController.cs" />
     <Compile Include="Controllers\LoaiBaiDocNgheController.cs" />
@@ -415,6 +414,8 @@
     <Content Include="Views\Account\UserRegister.cshtml" />
     <Content Include="Views\Account\UserLogin.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\CauTraLoiTracNghiem\Index.cshtml" />
+    <Content Include="Views\KyThi\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -428,10 +429,8 @@
     <Folder Include="Views\BaiLam\" />
     <Folder Include="Views\CauHoiDeThi\" />
     <Folder Include="Views\CauTraLoiBaiLam\" />
-    <Folder Include="Views\CauTraLoiTracNghiem\" />
     <Folder Include="Views\ChuDe\" />
     <Folder Include="Views\DeThi\" />
-    <Folder Include="Views\KyThi\" />
     <Folder Include="Views\LoaiBaiDocNghe\" />
     <Folder Include="Views\LoaiCauTraLoiTracNghiem\" />
   </ItemGroup>
