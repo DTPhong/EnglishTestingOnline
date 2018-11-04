@@ -6,24 +6,21 @@ using EnglishTestingOnline.Web.Infrastructure.Extensions;
 using EnglishTestingOnline.Web.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
-using System.Xml.Serialization;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Runtime.InteropServices;
 
 namespace EnglishTestingOnline.Web.Controllers
 {
-    [Authorize]
+ [Authorize]
     public class CauHoiController : Controller
     {
         private ICauhoiService _cauHoiService;
         private IChuDeSercive _chuDeService;
         private IBaiDocNgheSercive _baiDocNgheSercive;
         private ILoaiCauHoiSercive _loaiCauHoiService;
-        
-        
+
         public CauHoiController(ICauhoiService cauhoiService, IChuDeSercive chuDeService, IBaiDocNgheSercive baiDocNgheSercive, ILoaiCauHoiSercive loaiCauHoiService)
         {
             this._cauHoiService = cauhoiService;
@@ -31,42 +28,49 @@ namespace EnglishTestingOnline.Web.Controllers
             this._baiDocNgheSercive = baiDocNgheSercive;
             this._loaiCauHoiService = loaiCauHoiService;
         }
+        [Authorize(Roles ="Admin")]
         public ActionResult Index(string keyword = null, int page = 1)
         {
-            //tổng record 1 page
-            int pageSize = 20;
-            //lấy từ record 0
-            int totalRow = 0;
-            IEnumerable<CauHoi> model = null;
-            if (keyword=="" || keyword==null)
-            {
-                model = _cauHoiService.GetAllPaging(page, pageSize, out totalRow);
-            }
-            else
-            {
-                model = _cauHoiService.SearchByName(keyword, page, pageSize, out totalRow);
-            }
-            var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
-            // tổng số page
-            int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-            Session["listCauHoi"] = viewModel;
-            var paginationSet = new PaginationSet<CauHoiViewModel>()
-            {
-                Items = viewModel,
-                MaxPage = 5,
-                Page = page,
-                TotalCount = totalRow,
-                TotalPages = totalPage
-            };
+                //tổng record 1 page
+                int pageSize = 20;
+                //lấy từ record 0
+                int totalRow = 0;
+                IEnumerable<CauHoi> model = null;
+                if (keyword == "" || keyword == null)
+                {
+                    model = _cauHoiService.GetAllPaging(page, pageSize, out totalRow);
+                }
+                else
+                {
+                    model = _cauHoiService.SearchByName(keyword, page, pageSize, out totalRow);
+                }
+                var viewModel = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(model);
+                // tổng số page
+                int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
+                if (keyword == null)
+                {
+                    Session["listCauHoi"] = Mapper.Map<IEnumerable<CauHoi>, IEnumerable<CauHoiViewModel>>(_cauHoiService.GetAll());
+                }
+                else
+                {
+                    Session["listCauHoi"] = viewModel;
+                }
+                var paginationSet = new PaginationSet<CauHoiViewModel>()
+                {
+                    Items = viewModel,
+                    MaxPage = 5,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = totalPage
+                };
 
-            return View(paginationSet);
-        }
-
-        public ActionResult Create()
-        {
-            return View();
-        }
+                return View(paginationSet);
+            }
+          
+           
         
+
+        [HttpGet]
         public ActionResult Add()
         {
             ViewBag.ListChuDe = _chuDeService.GetAll();
@@ -74,6 +78,7 @@ namespace EnglishTestingOnline.Web.Controllers
             ViewBag.ListLoaiCauHoi = _loaiCauHoiService.GetAll();
             return View();
         }
+
         [HttpPost]
         public ActionResult Add(CauHoiViewModel cauHoiVM)
         {
@@ -87,12 +92,13 @@ namespace EnglishTestingOnline.Web.Controllers
                 _cauHoiService.Add(cauHoi);
                 _cauHoiService.Save();
 
-
+                TempData["message"] = "Thêm mới câu hỏi thành công.";
                 return RedirectToAction("Index");
             }
             return View(cauHoiVM);
         }
 
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             ViewBag.ListChuDe = _chuDeService.GetAll();
@@ -110,23 +116,36 @@ namespace EnglishTestingOnline.Web.Controllers
             cauHoi.UpdateCauHoi(cauHoiVM);
             _cauHoiService.Update(cauHoi);
             _cauHoiService.Save();
+            TempData["message"] = "Sửa câu hỏi thành công.";
             return RedirectToAction("Index");
         }
+
         public ActionResult Delete(int id)
         {
             _cauHoiService.Delete(id);
             _cauHoiService.Save();
+            TempData["message"] = "Xoá câu hỏi " + id + " thành công.";
             return RedirectToAction("Index");
         }
+
         [HttpPost]
         public ActionResult DeleteMulti(int[] listId)
         {
-            foreach (var id in listId)
+            if (listId != null)
             {
-                _cauHoiService.Delete(id);
+                foreach (var id in listId)
+                {
+                    _cauHoiService.Delete(id);
+                }
+                _cauHoiService.Save();
+                TempData["message"] = "Xoá nhiều record thành công.";
+                return RedirectToAction("Index");
             }
-            _cauHoiService.Save();
-            return RedirectToAction("Index");
+            else
+            {
+                TempData["error"] = "Không có record để xoá.";
+                return RedirectToAction("Index");
+            }
         }
 
         public ActionResult Export()
@@ -137,7 +156,7 @@ namespace EnglishTestingOnline.Web.Controllers
                 Excel.Workbook workbook = application.Workbooks.Add(System.Reflection.Missing.Value);
                 Excel.Worksheet worksheet = workbook.ActiveSheet;
                 worksheet.Cells[1, 1] = "Loại câu hỏi";
-                worksheet.Cells[1, 2] = "ID bài đọc";
+                worksheet.Cells[1, 2] = "Bài đọc";
                 worksheet.Cells[1, 3] = "Chủ đề";
                 worksheet.Cells[1, 4] = "Nội dung câu hỏi";
                 worksheet.Cells[1, 5] = "Đáp án";
@@ -145,7 +164,7 @@ namespace EnglishTestingOnline.Web.Controllers
                 foreach (CauHoiViewModel c in (IEnumerable<CauHoiViewModel>)Session["listCauHoi"])
                 {
                     worksheet.Cells[row, 1] = c.LoaiCauHoi.NoiDung;
-                    worksheet.Cells[row, 2] = c.BaiDocNghe_ID;
+                    worksheet.Cells[row, 2] = c.BaiDocNghe.NoiDung;
                     worksheet.Cells[row, 3] = c.ChuDe.TenChuDe;
                     worksheet.Cells[row, 4] = c.NoiDung;
                     worksheet.Cells[row, 5] = c.DapAn; ;
@@ -161,19 +180,17 @@ namespace EnglishTestingOnline.Web.Controllers
                 range_heading.Font.Color = System.Drawing.Color.Red;
                 range_heading.Font.Size = 13;
 
-               
-
-                workbook.SaveAs("d:\\test\\myproduct.xlsx");
+                workbook.SaveAs(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory) + "\\export.xlsx");
                 workbook.Close();
                 Marshal.ReleaseComObject(workbook);
                 application.Quit();
                 Marshal.FinalReleaseComObject(application);
-                ViewBag.Result = "DOne";
+                TempData["message"] = "Xuất file dữ liệu ra desktop thành công.";
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                TempData["error"] = "Xuất file dữ liệu ra desktop không thành công.";
                 return RedirectToAction("Index");
             }
         }
@@ -183,7 +200,7 @@ namespace EnglishTestingOnline.Web.Controllers
         {
             if (excelfile == null || excelfile.ContentLength == 0)
             {
-                ViewBag.Error = "Please select an excel file<br>";
+                TempData["error"] = "Please select an excel file";
                 return RedirectToAction("Index");
             }
             else
@@ -206,23 +223,31 @@ namespace EnglishTestingOnline.Web.Controllers
                     for (int row = 5; row < range.Rows.Count; row++)
                     {
                         CauHoi c = new CauHoi();
-                        c.LoaiCauHoi_ID= Convert.ToInt32(((Excel.Range)range.Cells[row, 1]).Text);
+                        c.LoaiCauHoi_ID = Convert.ToInt32(((Excel.Range)range.Cells[row, 1]).Text);
                         c.BaiDocNghe_ID = Convert.ToInt32(((Excel.Range)range.Cells[row, 2]).Text);
                         c.ChuDe_ID = Convert.ToInt32(((Excel.Range)range.Cells[row, 3]).Text);
                         c.NoiDung = ((Excel.Range)range.Cells[row, 4]).Text;
                         c.DapAn = ((Excel.Range)range.Cells[row, 5]).Text;
                         _cauHoiService.Add(c);
                     }
+
+                    Marshal.ReleaseComObject(range);
+                    Marshal.ReleaseComObject(worksheet);
+                    workbook.Close();
+                    Marshal.ReleaseComObject(workbook);
+                    application.Quit();
+                    Marshal.ReleaseComObject(application);
+
                     _cauHoiService.Save();
+                    TempData["message"] = "Nhập file dữ liệu vào database thành công";
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    ViewBag.Error = "File type is incorrect<br>";
+                    TempData["error"] = "Nhập file dữ liệu vào database không thành công";
                     return RedirectToAction("Index");
                 }
             }
-
         }
     }
 }

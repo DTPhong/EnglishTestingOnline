@@ -13,6 +13,7 @@ using Microsoft.Owin;
 using Owin;
 using System.Web;
 using Microsoft.Owin.Security.DataProtection;
+using Microsoft.AspNet.Identity;
 
 [assembly: OwinStartup(typeof(EnglishTestingOnline.Web.App_Start.Startup))]
 
@@ -23,7 +24,9 @@ namespace EnglishTestingOnline.Web.App_Start
         public void Configuration(IAppBuilder app)
         {
             // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
+            ConfigureAuth(app);
             ConfigAutofac(app);
+            
         }
 
         private void ConfigAutofac(IAppBuilder app)
@@ -37,6 +40,13 @@ namespace EnglishTestingOnline.Web.App_Start
 
             builder.RegisterType<EnglishDbContext>().AsSelf().InstancePerRequest();
 
+            //Asp.net Identity
+            builder.RegisterType<ApplicationUserStore>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
+           
+            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
+            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
+            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
             //Respositories
             builder.RegisterAssemblyTypes(typeof(CauHoiRepository).Assembly)
@@ -51,11 +61,6 @@ namespace EnglishTestingOnline.Web.App_Start
             Autofac.IContainer container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
-            //Aspnet Identity
-            builder.RegisterType<ApplicationUserManager>().AsSelf().InstancePerRequest();
-            builder.RegisterType<ApplicationSignInManager>().AsSelf().InstancePerRequest();
-            builder.Register(c => HttpContext.Current.GetOwinContext().Authentication).InstancePerRequest();
-            builder.Register(c => app.GetDataProtectionProvider()).InstancePerRequest();
 
         }
     }
