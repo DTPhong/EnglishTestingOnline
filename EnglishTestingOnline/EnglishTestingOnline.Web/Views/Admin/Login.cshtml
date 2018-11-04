@@ -27,7 +27,7 @@
     <!-- CSS Files -->
     <link href="~/assets/admin/css/material-dashboard.min40a0.css?v=2.0.2" rel="stylesheet" />
     <!-- Google Tag Manager -->
-    <script>
+    @*<script>
         (function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
@@ -35,7 +35,7 @@
             }); var f = d.getElementsByTagName(s)[0],
             j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
             '../../../../www.googletagmanager.com/gtm5445.html?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');</script>
+        })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');</script>*@
     <!-- End Google Tag Manager -->
 </head>
 
@@ -160,7 +160,7 @@
                                                 </span>
                                             </div>
                                             @*<input type="text" class="form-control" placeholder="Username...">*@
-                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Username..." })
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Username...", @required = "required" })
                                         </div>
                                     </span>
                                     <span class="bmd-form-group">
@@ -171,13 +171,13 @@
                                                 </span>
                                             </div>
                                             @*<input type="password" class="form-control" placeholder="Password...">*@
-                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control",@type="Password", @placeholder = "Password..." })
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control",@type="Password", @placeholder = "Password...", @required = "required" })
                                         </div>
                                     </span>
                                 </div>
                                 <div class="card-footer justify-content-center">
-                                    <a href="#pablo" class="btn btn-rose btn-link btn-lg">Lets Go</a>
-                                    <input type="submit" value="Log in" class="btn btn-default" />
+                                    @*<a href="#pablo" class="btn btn-rose btn-link btn-lg">Lets Go</a>*@
+                                    <input type="submit" value="Lets go" class="btn btn-rose btn-link btn-lg" />
                                     
                                 </div>
                             </div>
@@ -489,7 +489,7 @@
     <script src="~/assets/admin/demo/jquery.sharrre.js"></script>
 
 
-    <script>
+    @*<script>
         $(document).ready(function () {
 
 
@@ -573,7 +573,7 @@
             }
 
         });
-    </script>
+    </script>*@
     <noscript>
         <img height="1" width="1" style="display:none"
              src="https://www.facebook.com/tr?id=111649226022273&amp;ev=PageView&amp;noscript=1" />

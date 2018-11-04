@@ -1,0 +1,58 @@
+﻿@model EnglishTestingOnline.Web.Models.RoleViewModel
+@{
+    ViewBag.Title = "CreateUserRole";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    @using (Html.BeginForm("CreateUserRole", "Role", FormMethod.Post))
+                    { @Html.AntiForgeryToken()
+                        <form class="form-horizontal">
+                            <div class="card">
+                                <div class="card-header card-header-icon card-header-rose">
+                                    <div class="card-icon">
+                                        <i class="material-icons">assignment</i>
+                                    </div>
+                                    <h2 class="card-title ">Thêm mới quyền truy cập</h2>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <label class="col-sm-2 col-form-label">Vai trò</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group">
+                                                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @required = "required" })
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-3 label-on-right text-danger">
+                                            @Html.ValidationMessageFor(model => model.Name)
+                                        </label>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-3"></label>
+                                        <div class="card-footer ">
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <div class="row">
+                                                        <button type="submit" class="btn btn-fill btn-rose">Submit</button>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

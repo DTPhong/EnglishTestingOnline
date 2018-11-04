@@ -22,4 +22,5 @@ namespace EnglishTestingOnline.Web.Models
         public virtual BaiDocNgheViewModel BaiDocNghe { get; set; }
         public virtual ChuDeViewModel ChuDe { get; set; }
     }
+  
 }
