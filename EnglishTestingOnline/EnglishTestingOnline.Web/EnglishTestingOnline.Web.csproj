@@ -260,9 +260,20 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaiDocNgheController.cs" />
+    <Compile Include="Controllers\BaiLamController.cs" />
     <Compile Include="Controllers\CauHoiController.cs" />
+    <Compile Include="Controllers\CauHoiDeThiController.cs" />
+    <Compile Include="Controllers\CauTraLoiBaiLamController.cs" />
+    <Compile Include="Controllers\CauTraLoiTracNghiemController.cs" />
+    <Compile Include="Controllers\ChuDeController.cs" />
+    <Compile Include="Controllers\DeThiController.cs" />
+    <Compile Include="Controllers\HocVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KyThiController.cs" />
+    <Compile Include="Controllers\LoaiBaiDocNgheController.cs" />
     <Compile Include="Controllers\LoaiCauHoiController.cs" />
+    <Compile Include="Controllers\LoaiCauTraLoiTracNghiemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -404,6 +415,12 @@
     <Content Include="Views\Account\UserRegister.cshtml" />
     <Content Include="Views\Account\UserLogin.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\BaiDocNghe\Index.cshtml" />
+    <Content Include="Views\BaiDocNghe\Add.cshtml" />
+    <Content Include="Views\BaiDocNghe\Edit.cshtml" />
+    <Content Include="Views\BaiLam\Index.cshtml" />
+    <Content Include="Views\BaiLam\Add.cshtml" />
+    <Content Include="Views\BaiLam\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
