@@ -47,7 +47,7 @@
                                     </div>
                                    
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label">Address</label>
+                                        <label class="col-sm-2 col-form-label">Địa chỉ</label>
                                         <div class="col-sm-7">
                                             <div class="form-group">
                                                 @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
@@ -59,7 +59,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label">Phone</label>
+                                        <label class="col-sm-2 col-form-label">Số điện thoại</label>
                                         <div class="col-sm-7">
                                             <div class="form-group">
                                                 @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
@@ -70,7 +70,7 @@
                                         </label>
                                     </div>
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label">Roles</label>
+                                        <label class="col-sm-2 col-form-label">Quyền</label>
                                         <div class="col-sm-7">
                                             <div class="form-group">
                                                 @Html.DropDownListFor(model => model.RoleName, new SelectList(ViewBag.Roles, "Value", "Text"), new { @class = "selectpicker", @title = Model.RoleName, @data_style = "select-with-transition" })
@@ -81,7 +81,7 @@
                                         </label>
                                     </div>
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label">New Password</label>
+                                        <label class="col-sm-2 col-form-label">Mật khẩu mới</label>
                                         <div class="col-sm-7">
                                             <div class="form-group">
                                                 @Html.TextBoxFor(model => model.NewPassword, new { @class = "form-control" })
@@ -92,7 +92,7 @@
                                         </label>
                                     </div>
                                     <div class="row">
-                                        <label class="col-sm-2 col-form-label">Confirm new Password</label>
+                                        <label class="col-sm-2 col-form-label">Xác nhận mật khẩu</label>
                                         <div class="col-sm-7">
                                             <div class="form-group">
                                                 @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control" })

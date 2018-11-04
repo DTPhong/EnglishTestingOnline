@@ -10,7 +10,8 @@ namespace EnglishTestingOnline.Web.Models
         public int ID { get; set; }
         public int? LoaiBaiDocNghe_ID { get; set; }
         public string NoiDung { get; set; }
-        
+        public string NoiDungShortened { get { return NoiDung.ToString().SubStringTo(30); } }
         public virtual LoaiBaiDocNgheViewModel LoaiBaiDocNghe { get; set; }
     }
+
 }

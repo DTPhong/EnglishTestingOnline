@@ -10,7 +10,7 @@ namespace EnglishTestingOnline.Web.Models
        
         public int ID { get; set; }
 
-        public int HocVien_ID { get; set; }
+        public string HocVien_ID { get; set; }
 
         public int DeThi_ID { get; set; }
         public float? DiemNghe { get; set; }
