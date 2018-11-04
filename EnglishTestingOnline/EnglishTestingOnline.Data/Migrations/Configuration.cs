@@ -6,9 +6,8 @@ namespace EnglishTestingOnline.Data.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using EnglishTestingOnline.Model.Model;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EnglishTestingOnline.Data.EnglishDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EnglishDbContext>
     {
         public Configuration()
         {

@@ -268,12 +268,12 @@
     <Compile Include="Controllers\CauTraLoiTracNghiemController.cs" />
     <Compile Include="Controllers\ChuDeController.cs" />
     <Compile Include="Controllers\DeThiController.cs" />
-    <Compile Include="Controllers\HocVienController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KyThiController.cs" />
     <Compile Include="Controllers\LoaiBaiDocNgheController.cs" />
     <Compile Include="Controllers\LoaiCauHoiController.cs" />
     <Compile Include="Controllers\LoaiCauTraLoiTracNghiemController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -421,6 +421,32 @@
     <Content Include="Views\BaiLam\Index.cshtml" />
     <Content Include="Views\BaiLam\Add.cshtml" />
     <Content Include="Views\BaiLam\Edit.cshtml" />
+    <Content Include="Views\Role\CreateUserRole.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\CauHoiDeThi\Index.cshtml" />
+    <Content Include="Views\CauHoiDeThi\Edit.cshtml" />
+    <Content Include="Views\CauHoiDeThi\Add.cshtml" />
+    <Content Include="Views\CauTraLoiBaiLam\Index.cshtml" />
+    <Content Include="Views\CauTraLoiBaiLam\Edit.cshtml" />
+    <Content Include="Views\CauTraLoiBaiLam\Add.cshtml" />
+    <Content Include="Views\CauTraLoiTracNghiem\Index.cshtml" />
+    <Content Include="Views\CauTraLoiTracNghiem\Edit.cshtml" />
+    <Content Include="Views\CauTraLoiTracNghiem\Add.cshtml" />
+    <Content Include="Views\ChuDe\Index.cshtml" />
+    <Content Include="Views\ChuDe\Edit.cshtml" />
+    <Content Include="Views\ChuDe\Add.cshtml" />
+    <Content Include="Views\DeThi\Index.cshtml" />
+    <Content Include="Views\DeThi\Edit.cshtml" />
+    <Content Include="Views\DeThi\Add.cshtml" />
+    <Content Include="Views\KyThi\Index.cshtml" />
+    <Content Include="Views\KyThi\Edit.cshtml" />
+    <Content Include="Views\KyThi\Add.cshtml" />
+    <Content Include="Views\LoaiBaiDocNghe\Index.cshtml" />
+    <Content Include="Views\LoaiBaiDocNghe\Edit.cshtml" />
+    <Content Include="Views\LoaiBaiDocNghe\Add.cshtml" />
+    <Content Include="Views\LoaiCauTraLoiTracNghiem\Index.cshtml" />
+    <Content Include="Views\LoaiCauTraLoiTracNghiem\Edit.cshtml" />
+    <Content Include="Views\LoaiCauTraLoiTracNghiem\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

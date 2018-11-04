@@ -1,4 +1,4 @@
-﻿@model EnglishTestingOnline.Web.Models.BaiLamViewModel
+﻿@model EnglishTestingOnline.Web.Models.CauHoiDeThiViewModel
 @{
     ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -17,40 +17,30 @@
                             <h2 class="card-title ">Thêm mới bài đọc nghe</h2>
                         </div>
                         <div class="card-body">
-                            @using (Html.BeginForm("Add", "BaiLam", FormMethod.Post))
+                            @using (Html.BeginForm("Add", "BaiDocNghe", FormMethod.Post))
                             {
                                 <form class="form-horizontal">
                                     <div class="row">
-                                        <label class="col-md-3 col-form-label">Điểm đọc</label>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                @Html.TextBoxFor(model => model.DiemDoc, new { @class = "form-control" })
+                                        <label class="col-sm-2 col-form-label">Đề thi</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group has-default">
+                                                @Html.DropDownListFor(model => model.DeThi_ID, new SelectList(ViewBag.ListLoaiCauHoi, "ID", "ID"), new { @class = "selectpicker", @title = "Chọn đề thi", @data_style = "select-with-transition" })
                                             </div>
                                         </div>
+                                        <label class="col-sm-3 label-on-right text-danger">
+                                            @Html.ValidationMessageFor(model => model.DeThi_ID)
+                                        </label>
                                     </div>
                                     <div class="row">
-                                        <label class="col-md-3 col-form-label">Điểm nghe</label>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                @Html.TextBoxFor(model => model.DiemNghe, new { @class = "form-control" })
+                                        <label class="col-sm-2 col-form-label">Câu hỏi</label>
+                                        <div class="col-sm-7">
+                                            <div class="form-group has-default">
+                                                @Html.DropDownListFor(model => model.CauHoi_ID, new SelectList(ViewBag.ListCauHoi, "ID", "NoiDung"), new { @class = "selectpicker", @title = "Chọn loại câu hỏi", @data_style = "select-with-transition" })
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <label class="col-md-3 col-form-label">Điểm Nói</label>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                @Html.TextBoxFor(model => model.DiemNoi, new { @class = "form-control" })
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <label class="col-md-3 col-form-label">Điểm Viết</label>
-                                        <div class="col-md-9">
-                                            <div class="form-group">
-                                                @Html.TextBoxFor(model => model.DiemViet, new { @class = "form-control" })
-                                            </div>
-                                        </div>
+                                        <label class="col-sm-3 label-on-right text-danger">
+                                            @Html.ValidationMessageFor(model => model.CauHoi_ID)
+                                        </label>
                                     </div>
                                     <div class="row">
                                         <label class="col-md-3"></label>

@@ -1,4 +1,4 @@
-﻿@model EnglishTestingOnline.Web.Infrastructure.Core.PaginationSet<EnglishTestingOnline.Web.Models.BaiDocNgheViewModel>
+﻿@model EnglishTestingOnline.Web.Infrastructure.Core.PaginationSet<EnglishTestingOnline.Web.Models.ChuDeViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -49,12 +49,7 @@
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>Loại bài đọc nghe</b>
-                                                </h4>
-                                            </th>
-                                            <th style="width: 15%">
-                                                <h4>
-                                                    <b>Nội Dung</b>
+                                                    <b>Tên Chủ Đề</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 5%">
@@ -73,19 +68,16 @@
                                                     <input type="checkbox" value="@item.ID" name="item" />
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.LoaiBaiDocNghe.Name)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.NoiDung)
+                                                    @Html.DisplayFor(modelItem => item.TenChuDe)
                                                 </td>
 
                                                 <td>
-                                                    <a href="/BaiDocNghe/Edit?id=@item.ID" class="btn btn-sm btn-info">
+                                                    <a href="/LoaiCauHoi/Edit?id=@item.ID" class="btn btn-sm btn-info">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a href="/BaiDocNghe/Delete?id=@item.ID" class="btn btn-sm btn-danger">
+                                                    <a href="/LoaiCauHoi/Delete?id=@item.ID" class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </td>

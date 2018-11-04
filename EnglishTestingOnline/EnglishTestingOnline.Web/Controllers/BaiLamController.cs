@@ -16,7 +16,6 @@ namespace EnglishTestingOnline.Web.Controllers
     {
         private IBaiLamSercive _baiLamService;
         private ICauTraLoiBaiLamService _cauTraLoiBaiLamService;
-        private IHocVienSercive _hocVienService;
         private IDeThiSercive _deThiService;
         public BaiLamController(IBaiLamSercive baiLamService, ICauTraLoiBaiLamService cauTraLoiBaiLamService)
         {
@@ -52,7 +51,7 @@ namespace EnglishTestingOnline.Web.Controllers
         public ActionResult Add()
         {
             ViewBag.ListCauTraLoiBaiLam = _cauTraLoiBaiLamService.GetAll();
-            ViewBag.ListHocVien = _hocVienService.GetAll();
+            //ViewBag.ListHocVien = _hocVienService.GetAll();
             ViewBag.ListDeThi = _deThiService.GetAll();
             return View();
         }
@@ -60,7 +59,7 @@ namespace EnglishTestingOnline.Web.Controllers
         public ActionResult Add(BaiLamViewModel baiLamVM)
         {
             ViewBag.ListCauTraLoiBaiLam = _cauTraLoiBaiLamService.GetAll();
-            ViewBag.ListHocVien = _hocVienService.GetAll();
+            //ViewBag.ListHocVien = _hocVienService.GetAll();
             ViewBag.ListDeThi = _deThiService.GetAll();
             if (ModelState.IsValid)
             {
@@ -77,7 +76,7 @@ namespace EnglishTestingOnline.Web.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.ListCauTraLoiBaiLam = _cauTraLoiBaiLamService.GetAll();
-            ViewBag.ListHocVien = _hocVienService.GetAll();
+            //ViewBag.ListHocVien = _hocVienService.GetAll();
             ViewBag.ListDeThi = _deThiService.GetAll();
             var baiLam = _baiLamService.GetById(id);
             var baiLamViewModel = Mapper.Map<BaiLam, BaiLamViewModel>(baiLam);

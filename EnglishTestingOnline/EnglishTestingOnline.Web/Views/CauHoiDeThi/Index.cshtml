@@ -1,4 +1,4 @@
-﻿@model EnglishTestingOnline.Web.Infrastructure.Core.PaginationSet<EnglishTestingOnline.Web.Models.BaiDocNgheViewModel>
+﻿@model EnglishTestingOnline.Web.Infrastructure.Core.PaginationSet<EnglishTestingOnline.Web.Models.CauHoiDeThiViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -44,17 +44,17 @@
                                 <table class="table">
                                     <thead class="text-primary">
                                         <tr>
-                                            <th style="width: 5%">
+                                            @*<th style="width: 5%">
                                                 <input type="checkbox" />
-                                            </th>
+                                            </th>*@
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>Loại bài đọc nghe</b>
+                                                    <b>Đề thi ID</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>Nội Dung</b>
+                                                    <b>Câu hỏi ID</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 5%">
@@ -69,23 +69,23 @@
                                         @foreach (var item in Model.Items)
                                         {
                                             <tr>
-                                                <td style="width: 5%">
+                                                @*<td style="width: 5%">
                                                     <input type="checkbox" value="@item.ID" name="item" />
+                                                </td>*@
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.DeThi_ID)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.LoaiBaiDocNghe.Name)
-                                                </td>
-                                                <td>
-                                                    @Html.DisplayFor(modelItem => item.NoiDung)
+                                                    @Html.DisplayFor(modelItem => item.CauHoi_ID)
                                                 </td>
 
                                                 <td>
-                                                    <a href="/BaiDocNghe/Edit?id=@item.ID" class="btn btn-sm btn-info">
+                                                    <a href="/LoaiCauHoi/Edit?id=@item.ID" class="btn btn-sm btn-info">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a href="/BaiDocNghe/Delete?id=@item.ID" class="btn btn-sm btn-danger">
+                                                    <a href="/LoaiCauHoi/Delete?id=@item.ID" class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </td>
