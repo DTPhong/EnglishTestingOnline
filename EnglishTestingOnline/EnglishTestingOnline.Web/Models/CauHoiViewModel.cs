@@ -24,4 +24,5 @@ namespace EnglishTestingOnline.Web.Models
 
         public virtual IEnumerable<CauTraLoiTracNghiemViewModel> CauTraLoiTracNghiems { get; set; }
     }
+  
 }

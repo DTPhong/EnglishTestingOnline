@@ -273,6 +273,7 @@
     <Compile Include="Controllers\LoaiBaiDocNgheController.cs" />
     <Compile Include="Controllers\LoaiCauHoiController.cs" />
     <Compile Include="Controllers\LoaiCauTraLoiTracNghiemController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -414,8 +415,38 @@
     <Content Include="Views\Account\UserRegister.cshtml" />
     <Content Include="Views\Account\UserLogin.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\BaiDocNghe\Index.cshtml" />
+    <Content Include="Views\BaiDocNghe\Add.cshtml" />
+    <Content Include="Views\BaiDocNghe\Edit.cshtml" />
+    <Content Include="Views\BaiLam\Index.cshtml" />
+    <Content Include="Views\BaiLam\Add.cshtml" />
+    <Content Include="Views\BaiLam\Edit.cshtml" />
+    <Content Include="Views\Role\CreateUserRole.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\CauHoiDeThi\Index.cshtml" />
+    <Content Include="Views\CauHoiDeThi\Edit.cshtml" />
+    <Content Include="Views\CauHoiDeThi\Add.cshtml" />
+    <Content Include="Views\CauTraLoiBaiLam\Index.cshtml" />
+    <Content Include="Views\CauTraLoiBaiLam\Edit.cshtml" />
+    <Content Include="Views\CauTraLoiBaiLam\Add.cshtml" />
     <Content Include="Views\CauTraLoiTracNghiem\Index.cshtml" />
+    <Content Include="Views\CauTraLoiTracNghiem\Edit.cshtml" />
+    <Content Include="Views\CauTraLoiTracNghiem\Add.cshtml" />
+    <Content Include="Views\ChuDe\Index.cshtml" />
+    <Content Include="Views\ChuDe\Edit.cshtml" />
+    <Content Include="Views\ChuDe\Add.cshtml" />
+    <Content Include="Views\DeThi\Index.cshtml" />
+    <Content Include="Views\DeThi\Edit.cshtml" />
+    <Content Include="Views\DeThi\Add.cshtml" />
     <Content Include="Views\KyThi\Index.cshtml" />
+    <Content Include="Views\KyThi\Edit.cshtml" />
+    <Content Include="Views\KyThi\Add.cshtml" />
+    <Content Include="Views\LoaiBaiDocNghe\Index.cshtml" />
+    <Content Include="Views\LoaiBaiDocNghe\Edit.cshtml" />
+    <Content Include="Views\LoaiBaiDocNghe\Add.cshtml" />
+    <Content Include="Views\LoaiCauTraLoiTracNghiem\Index.cshtml" />
+    <Content Include="Views\LoaiCauTraLoiTracNghiem\Edit.cshtml" />
+    <Content Include="Views\LoaiCauTraLoiTracNghiem\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -425,14 +456,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BaiDocNghe\" />
-    <Folder Include="Views\BaiLam\" />
-    <Folder Include="Views\CauHoiDeThi\" />
-    <Folder Include="Views\CauTraLoiBaiLam\" />
-    <Folder Include="Views\ChuDe\" />
-    <Folder Include="Views\DeThi\" />
-    <Folder Include="Views\LoaiBaiDocNghe\" />
-    <Folder Include="Views\LoaiCauTraLoiTracNghiem\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EnglishTestingOnline.Data\EnglishTestingOnline.Data.csproj">

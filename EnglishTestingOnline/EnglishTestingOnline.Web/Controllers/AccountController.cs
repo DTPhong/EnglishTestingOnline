@@ -70,7 +70,7 @@ namespace EnglishTestingOnline.Web.Controllers
                                   role.Id
                                   select new UserViewModel()
                                   {
-                                      Username = user.UserName,
+                                      Username = user.AccountName,
                                       Email = user.Email,
                                       Role = role.Name,
                                       Address =user.Address,
@@ -148,8 +148,7 @@ namespace EnglishTestingOnline.Web.Controllers
 
 
             List<SelectListItem> listRole = new List<SelectListItem>();
-            foreach (var item 
-                in RoleManager.Roles)
+            foreach (var item in RoleManager.Roles)
             {
                 listRole.Add(new SelectListItem() { Value = item.Name, Text = item.Name });
             }
@@ -193,13 +192,11 @@ namespace EnglishTestingOnline.Web.Controllers
                 AddErrors(result);
             }
             List<SelectListItem> listRole = new List<SelectListItem>();
-            foreach (var item
-                in RoleManager.Roles)
+            foreach (var item in RoleManager.Roles)
             {
                 listRole.Add(new SelectListItem() { Value = item.Name, Text = item.Name });
             }
             ViewBag.Roles = listRole;
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
         [AllowAnonymous]
@@ -308,6 +305,8 @@ namespace EnglishTestingOnline.Web.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+    
+
 
     }
 }

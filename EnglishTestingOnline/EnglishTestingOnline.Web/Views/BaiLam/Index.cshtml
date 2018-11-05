@@ -1,9 +1,8 @@
-﻿@model IEnumerable<EnglishTestingOnline.Web.Models.UserViewModel>
+﻿@model EnglishTestingOnline.Web.Infrastructure.Core.PaginationSet<EnglishTestingOnline.Web.Models.BaiLamViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
 <div class="content">
     <div class="container-fluid">
         <div class="container-fluid">
@@ -14,7 +13,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h2 class="card-title ">Danh sách tài khoản</h2>
+                            <h2 class="card-title ">Danh sách điểm</h2>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -27,7 +26,7 @@
                                         </button>
                                     </div>
                                 </form>
-                                <a href="/Account/CreateNewUser" class="btn btn-success">
+                                <a href="/LoaiCauHoi/Add" class="btn btn-success">
                                     <i class="fa fa-plus-circle"></i> Add new
                                 </a>
                                 <a href="" class="btn btn-default">
@@ -50,27 +49,27 @@
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>Tài khoản</b>
+                                                    <b>Đề thi</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>Tên chủ sở hữu</b>
+                                                    <b>Điểm Đọc</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>Địa chỉ</b>
+                                                    <b>Điểm Nghe</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>SĐT</b>
+                                                    <b>Điểm nói</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 15%">
                                                 <h4>
-                                                    <b>Quyền</b>
+                                                    <b>Điểm viết</b>
                                                 </h4>
                                             </th>
                                             <th style="width: 5%">
@@ -82,34 +81,34 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (var item in Model)
+                                        @foreach (var item in Model.Items)
                                         {
                                             <tr>
                                                 <td style="width: 5%">
-                                                    <input type="checkbox" value="" name="item" />
+                                                    <input type="checkbox" value="@item.ID" name="item" />
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Email)
+                                                    @Html.DisplayFor(modelItem => item.DeThi_ID)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Username)
+                                                    @Html.DisplayFor(modelItem => item.DiemDoc)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.AddressShortened)
+                                                    @Html.DisplayFor(modelItem => item.DiemNghe)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Phone)
+                                                    @Html.DisplayFor(modelItem => item.DiemNoi)
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.Role)
+                                                    @Html.DisplayFor(modelItem => item.DiemViet)
                                                 </td>
                                                 <td>
-                                                    <a href="/Account/EditUser?id=@item.Id" class="btn btn-sm btn-info">
+                                                    <a href="/BaiLam/Edit?id=@item.ID" class="btn btn-sm btn-info">
                                                         <i class="fa fa-edit"></i>
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <a href="/Account/Delete?id=@item.Id" class="btn btn-sm btn-danger">
+                                                    <a href="/BaiLam/Delete?id=@item.ID" class="btn btn-sm btn-danger">
                                                         <i class="fa fa-trash"></i>
                                                     </a>
                                                 </td>
@@ -118,7 +117,7 @@
                                     </tbody>
                                 </table>
 
-                                @*<div class="card-body">
+                                <div class="card-body">
 
                                     @if (Model.TotalPages > 1)
                                     {
@@ -167,7 +166,7 @@
                                         </ul>
 
                                     }
-                                </div>*@
+                                </div>
 
                             </div>
                         </div>
@@ -178,3 +177,4 @@
     </div>
 
 </div>
+
