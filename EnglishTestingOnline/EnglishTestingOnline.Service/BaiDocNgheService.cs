@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Service
 {
-    public interface IBaiDocNgheSercive
+    public interface IBaiDocNgheService
     {
         BaiDocNghe Add(BaiDocNghe baiDocNghe);
         BaiDocNghe Delete(int id);
@@ -20,7 +20,7 @@ namespace EnglishTestingOnline.Service
         IEnumerable<BaiDocNghe> GetAll();
         void Save();
     }
-    public class BaiDocNgheService : IBaiDocNgheSercive
+    public class BaiDocNgheService : IBaiDocNgheService
     {
         private IBaiDocNgheRepository _baiDocNgheRepository;
         private IUnitOfWork _unitOfWork;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EnglishTestingOnline.Model.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,7 +8,6 @@ namespace EnglishTestingOnline.Web.Models
 {
     public class BaiLamViewModel
     {
-       
         public int ID { get; set; }
 
         public string HocVien_ID { get; set; }
@@ -18,7 +18,7 @@ namespace EnglishTestingOnline.Web.Models
         public float? DiemDoc { get; set; }
         public float? DiemViet { get; set; }
         public virtual DeThiViewModel Dethi { get; set; }
-        public virtual HocVienViewModel HocVien { get; set; }
+        public virtual ApplicationUser HocVien { get; set; }
         public virtual IEnumerable<CauTraLoiBaiLamViewModel> CauTraLoiBaiLams { get; set; }
     }
 }

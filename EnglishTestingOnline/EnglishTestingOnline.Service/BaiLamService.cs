@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Service
 {
-    public interface IBaiLamSercive
+    public interface IBaiLamService
     {
         BaiLam Add(BaiLam baiLam);
         BaiLam Delete(int id);
@@ -18,14 +18,14 @@ namespace EnglishTestingOnline.Service
         IEnumerable<BaiLam> GetAll();
         IEnumerable<BaiLam> GetAllPaging(int page, int pageSize, out int totalRow);
 
-        IEnumerable<BaiLam> SearchByName(int keyword, int page, int pageSize, out int totalRow);
+        IEnumerable<BaiLam> SearchByName(string keyword, int page, int pageSize, out int totalRow);
         void Save();
     }
-    public class BaiLamService : IBaiLamSercive
+    public class BaiLamService : IBaiLamService
     {
         private IBaiLamRepository _baiLamRepository;
         private IUnitOfWork _unitOfWork;
-
+        string[] includes = { "ApplicationUser" };
         public BaiLamService(IBaiLamRepository baiLamRepository, IUnitOfWork unitOfWork)
         {
             this._baiLamRepository = baiLamRepository;
@@ -58,7 +58,7 @@ namespace EnglishTestingOnline.Service
         
         public IEnumerable<BaiLam> GetAllPaging(int page, int pageSize, out int totalRow)
         {
-            var query = _baiLamRepository.GetAll();
+            var query = _baiLamRepository.GetAll(includes);
             totalRow = query.Count();
 
             return query.Skip((page - 1) * pageSize).Take(pageSize);
@@ -68,7 +68,7 @@ namespace EnglishTestingOnline.Service
             _baiLamRepository.Update(baiLam);
         }
 
-        public IEnumerable<BaiLam> SearchByName(int keyword, int page, int pageSize, out int totalRow)
+        public IEnumerable<BaiLam> SearchByName(string keyword, int page, int pageSize, out int totalRow)
         {
             var query = _baiLamRepository.GetMulti(c => c.HocVien_ID.Equals(keyword));
             totalRow = query.Count();

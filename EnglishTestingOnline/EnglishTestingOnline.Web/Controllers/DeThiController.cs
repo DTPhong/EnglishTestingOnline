@@ -17,9 +17,9 @@ namespace EnglishTestingOnline.Web.Controllers
         private IDeThiSercive _deThiService;
         private IKyThiSercive _kyThiService;
         private ICauHoiDeThiService _cauHoiDeThiSercive;
-        private IBaiLamSercive _baiLamService;
+        private IBaiLamService _baiLamService;
 
-        public DeThiController(IDeThiSercive deThiService, IKyThiSercive kyThiService, ICauHoiDeThiService cauHoiDeThiSercive, IBaiLamSercive baiLamService)
+        public DeThiController(IDeThiSercive deThiService, IKyThiSercive kyThiService, ICauHoiDeThiService cauHoiDeThiSercive, IBaiLamService baiLamService)
         {
             this._deThiService = deThiService;
             this._kyThiService = kyThiService;

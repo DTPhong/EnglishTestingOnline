@@ -15,9 +15,9 @@ namespace EnglishTestingOnline.Web.Controllers
     public class CauTraLoiBaiLamController : Controller
     {
         private ICauTraLoiBaiLamService _cauTraLoiBaiLamService;
-        private IBaiLamSercive _baiLamService;
+        private IBaiLamService _baiLamService;
         private ICauhoiService _cauHoiService;
-        public CauTraLoiBaiLamController(ICauTraLoiBaiLamService cauTraLoiBaiLamService, IBaiLamSercive baiLamService, ICauhoiService cauHoiService)
+        public CauTraLoiBaiLamController(ICauTraLoiBaiLamService cauTraLoiBaiLamService, IBaiLamService baiLamService, ICauhoiService cauHoiService)
         {
             this._cauTraLoiBaiLamService = cauTraLoiBaiLamService;
             this._baiLamService = baiLamService;

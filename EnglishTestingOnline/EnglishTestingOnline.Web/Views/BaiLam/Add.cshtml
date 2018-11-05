@@ -21,6 +21,23 @@
                             {
                                 <form class="form-horizontal">
                                     <div class="row">
+                                        <label class="col-md-3 col-form-label">Học viên</label>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                @Html.DropDownListFor(model => model.HocVien_ID, new SelectList(ViewBag.Roles, "Value", "Text"), new { @class = "selectpicker", @title = "Tên học viên", @data_style = "select-with-transition" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <label class="col-md-3 col-form-label">Mã Đề thi</label>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                @Html.DropDownListFor(model => model.DeThi_ID, new SelectList(ViewBag.ListDeThi, "ID", "ID"), new { @class = "selectpicker", @title = "Chọn chủ đề", @data_style = "select-with-transition" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
                                         <label class="col-md-3 col-form-label">Điểm đọc</label>
                                         <div class="col-md-9">
                                             <div class="form-group">

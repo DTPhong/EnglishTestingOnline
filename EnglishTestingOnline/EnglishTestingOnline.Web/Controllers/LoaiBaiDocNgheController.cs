@@ -14,10 +14,10 @@ namespace EnglishTestingOnline.Web.Controllers
 {
     public class LoaiBaiDocNgheController : Controller
     {
-        private ILoaiBaiDocNgheSercive _loaiBaiDocNgheService;
-        private IBaiDocNgheSercive _baiDocNgheSercive;
+        private ILoaiBaiDocNgheService _loaiBaiDocNgheService;
+        private IBaiDocNgheService _baiDocNgheSercive;
 
-        public LoaiBaiDocNgheController(ILoaiBaiDocNgheSercive loaiBaiDocNgheService, IBaiDocNgheSercive baiDocNgheSercive)
+        public LoaiBaiDocNgheController(ILoaiBaiDocNgheService loaiBaiDocNgheService, IBaiDocNgheService baiDocNgheSercive)
         {
             this._loaiBaiDocNgheService = loaiBaiDocNgheService;
             this._baiDocNgheSercive = baiDocNgheSercive;

@@ -21,12 +21,23 @@
                             {
                                 <form class="form-horizontal">
                                     <div class="row">
-                                        <label class="col-md-3 col-form-label">Tên</label>
+                                        <label class="col-md-3 col-form-label">Nội dung</label>
                                         <div class="col-md-9">
                                             <div class="form-group">
                                                 @Html.TextBoxFor(model => model.NoiDung, new { @class = "form-control" })
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <label class="col-md-3 col-form-label">Loại bài đọc nghe</label>
+                                        <div class="col-md-9">
+                                            <div class="form-group">
+                                                @Html.DropDownListFor(model => model.LoaiBaiDocNghe_ID, new SelectList(ViewBag.ListLoaiBaiDocNghe, "ID", "Name"), new { @class = "selectpicker", @title = "Chọn chủ đề", @data_style = "select-with-transition" })
+                                            </div>
+                                        </div>
+                                        <label class="col-sm-3 label-on-right text-danger">
+                                            @Html.ValidationMessageFor(model => model.LoaiBaiDocNghe_ID)
+                                        </label>
                                     </div>
                                     <div class="row">
                                         <label class="col-md-3"></label>

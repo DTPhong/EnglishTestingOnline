@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using EnglishTestingOnline.Model.Model;
 using EnglishTestingOnline.Service;
+using EnglishTestingOnline.Web.App_Start;
 using EnglishTestingOnline.Web.Infrastructure.Core;
 using EnglishTestingOnline.Web.Infrastructure.Extensions;
 using EnglishTestingOnline.Web.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,31 +17,79 @@ namespace EnglishTestingOnline.Web.Controllers
 {
     public class BaiLamController : Controller
     {
-        private IBaiLamSercive _baiLamService;
-        private ICauTraLoiBaiLamService _cauTraLoiBaiLamService;
+        private IBaiLamService _baiLamService;
         private IDeThiSercive _deThiService;
-        public BaiLamController(IBaiLamSercive baiLamService, ICauTraLoiBaiLamService cauTraLoiBaiLamService)
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+        private ApplicationRoleManager _roleManager;
+        public BaiLamController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
+        {
+            SignInManager = signInManager;
+            UserManager = userManager;
+            RoleManager = roleManager;
+        }
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+        public ApplicationRoleManager RoleManager
+        {
+            get
+            {
+                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+            }
+            private set
+            {
+                _roleManager = value;
+            }
+        }
+        public BaiLamController(IBaiLamService baiLamService, ICauTraLoiBaiLamService cauTraLoiBaiLamService, IDeThiSercive deThiService)
         {
             this._baiLamService = baiLamService;
-            
+            this._deThiService = deThiService;
+
         }
-        public ActionResult Index(int keyword, int page = 1)
+        public ActionResult Index(string keyword = null, int page = 1)
         {
             //tổng record 1 page
             int pageSize = 20;
             //lấy từ record 0
             int totalRow = 0;
             IEnumerable<BaiLam> model = null;
-
+            if (keyword == "" || keyword == null)
+            {
+                model = _baiLamService.GetAllPaging(page, pageSize, out totalRow);
+            }
+            else
+            {
                 model = _baiLamService.SearchByName(keyword, page, pageSize, out totalRow);
-
+            }
             var viewModel = Mapper.Map<IEnumerable<BaiLam>, IEnumerable<BaiLamViewModel>>(model);
 
             // tổng số page
             int totalPage = (int)Math.Ceiling((double)totalRow / pageSize);
-
+            
             var paginationSet = new PaginationSet<BaiLamViewModel>()
             {
+                
                 Items = viewModel,
                 MaxPage = 5,
                 Page = page,
@@ -50,17 +101,22 @@ namespace EnglishTestingOnline.Web.Controllers
         }
         public ActionResult Add()
         {
-            ViewBag.ListCauTraLoiBaiLam = _cauTraLoiBaiLamService.GetAll();
-            //ViewBag.ListHocVien = _hocVienService.GetAll();
+            //ViewBag.ListCauTraLoiBaiLam = _cauTraLoiBaiLamService.GetAll();
             ViewBag.ListDeThi = _deThiService.GetAll();
+            List<SelectListItem> listStudent = new List<SelectListItem>();
+            foreach (var item in UserManager.Users)
+            {
+                listStudent.Add(new SelectListItem() { Value = item.Id, Text = item.AccountName });
+            }
+            ViewBag.Roles = listStudent;
             return View();
         }
         [HttpPost]
         public ActionResult Add(BaiLamViewModel baiLamVM)
         {
-            ViewBag.ListCauTraLoiBaiLam = _cauTraLoiBaiLamService.GetAll();
-            //ViewBag.ListHocVien = _hocVienService.GetAll();
+         
             ViewBag.ListDeThi = _deThiService.GetAll();
+
             if (ModelState.IsValid)
             {
                 var baiLam = new BaiLam();
@@ -75,7 +131,7 @@ namespace EnglishTestingOnline.Web.Controllers
         }
         public ActionResult Edit(int id)
         {
-            ViewBag.ListCauTraLoiBaiLam = _cauTraLoiBaiLamService.GetAll();
+           
             //ViewBag.ListHocVien = _hocVienService.GetAll();
             ViewBag.ListDeThi = _deThiService.GetAll();
             var baiLam = _baiLamService.GetById(id);

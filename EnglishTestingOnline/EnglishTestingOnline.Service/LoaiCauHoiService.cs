@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Service
 {
-    public interface ILoaiCauHoiSercive
+    public interface ILoaiCauHoiService
     {
         LoaiCauHoi Add(LoaiCauHoi LoaiCauHoi);
         LoaiCauHoi Delete(int id);
@@ -21,7 +21,7 @@ namespace EnglishTestingOnline.Service
         IEnumerable<LoaiCauHoi> SearchByName(string keyword, int page, int pageSize, out int totalRow);
         void Save();
     }
-    public class LoaiCauHoiService : ILoaiCauHoiSercive
+    public class LoaiCauHoiService : ILoaiCauHoiService
     {
         private ILoaiCauHoiRepository _LoaiCauHoiRepository;
         private IUnitOfWork _unitOfWork;

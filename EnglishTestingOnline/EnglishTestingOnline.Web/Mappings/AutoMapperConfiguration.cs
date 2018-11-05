@@ -19,6 +19,7 @@ namespace EnglishTestingOnline.Web.Mappings
                 cfg.CreateMap<ChuDe, ChuDeViewModel>();
                 cfg.CreateMap<LoaiBaiDocNghe, LoaiBaiDocNgheViewModel>();
                 cfg.CreateMap<LoaiCauHoi, LoaiCauHoiViewModel>();
+                cfg.CreateMap<BaiLam, BaiLamViewModel>();
             });
         }
     }

@@ -41,6 +41,7 @@ namespace EnglishTestingOnline.Web.Infrastructure.Extensions
         public static void UpdateBaiLam (this BaiLam baiLam, BaiLamViewModel baiLamVM)
         {
             baiLam.ID = baiLamVM.ID;
+            baiLam.HocVien_ID = baiLamVM.HocVien_ID;
             baiLam.DeThi_ID = baiLamVM.DeThi_ID;
             baiLam.DiemNghe = baiLamVM.DiemNghe;
             baiLam.DiemNoi = baiLamVM.DiemNoi;
