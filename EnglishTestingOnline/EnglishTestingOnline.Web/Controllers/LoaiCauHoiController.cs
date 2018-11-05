@@ -15,8 +15,8 @@ namespace EnglishTestingOnline.Web.Controllers
 {
     public class LoaiCauHoiController : Controller
     {
-        private ILoaiCauHoiSercive _loaiCauHoiService;
-        public LoaiCauHoiController(ILoaiCauHoiSercive loaiCauHoiService)
+        private ILoaiCauHoiService _loaiCauHoiService;
+        public LoaiCauHoiController(ILoaiCauHoiService loaiCauHoiService)
         {
             this._loaiCauHoiService = loaiCauHoiService;
         }

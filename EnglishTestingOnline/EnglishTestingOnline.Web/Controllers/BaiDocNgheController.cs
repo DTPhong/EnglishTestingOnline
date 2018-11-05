@@ -14,10 +14,10 @@ namespace EnglishTestingOnline.Web.Controllers
 {
     public class BaiDocNgheController : Controller
     {
-        private IBaiDocNgheSercive _baiDocNgheService;
+        private IBaiDocNgheService _baiDocNgheService;
         private ICauhoiService _cauHoiService;
-        private ILoaiBaiDocNgheSercive _loaiBaiDocNgheService;
-        public BaiDocNgheController(IBaiDocNgheSercive baiDocNgheService, ICauhoiService cauHoiService, ILoaiBaiDocNgheSercive loaiBaiDocNgheService)
+        private ILoaiBaiDocNgheService _loaiBaiDocNgheService;
+        public BaiDocNgheController(IBaiDocNgheService baiDocNgheService, ICauhoiService cauHoiService, ILoaiBaiDocNgheService loaiBaiDocNgheService)
         {
             this._baiDocNgheService = baiDocNgheService;
             this._cauHoiService = cauHoiService;
@@ -56,7 +56,7 @@ namespace EnglishTestingOnline.Web.Controllers
         }
         public ActionResult Add()
         {
-
+            ViewBag.ListLoaiBaiDocNghe = _loaiBaiDocNgheService.GetAll();
             return View();
         }
         [HttpPost]

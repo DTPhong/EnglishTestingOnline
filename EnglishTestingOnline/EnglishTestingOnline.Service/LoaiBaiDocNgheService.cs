@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Service
 {
-    public interface ILoaiBaiDocNgheSercive
+    public interface ILoaiBaiDocNgheService
     {
         LoaiBaiDocNghe Add(LoaiBaiDocNghe LoaiBaiDocNghe);
         LoaiBaiDocNghe Delete(int id);
@@ -20,7 +20,7 @@ namespace EnglishTestingOnline.Service
         IEnumerable<LoaiBaiDocNghe> SearchByName(int keyword, int page, int pageSize, out int totalRow);
         void Save();
     }
-    public class LoaiBaiDocNgheService : ILoaiBaiDocNgheSercive
+    public class LoaiBaiDocNgheService : ILoaiBaiDocNgheService
     {
         private ILoaiBaiDocNgheRepository _LoaiBaiDocNgheRepository;
         private IUnitOfWork _unitOfWork;

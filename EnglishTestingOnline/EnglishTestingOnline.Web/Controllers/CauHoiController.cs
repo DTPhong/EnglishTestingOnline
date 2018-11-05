@@ -18,14 +18,14 @@ namespace EnglishTestingOnline.Web.Controllers
     {
         private ICauhoiService _cauHoiService;
         private IChuDeSercive _chuDeService;
-        private IBaiDocNgheSercive _baiDocNgheSercive;
-        private ILoaiCauHoiSercive _loaiCauHoiService;
+        private IBaiDocNgheService _baiDocNgheService;
+        private ILoaiCauHoiService _loaiCauHoiService;
 
-        public CauHoiController(ICauhoiService cauhoiService, IChuDeSercive chuDeService, IBaiDocNgheSercive baiDocNgheSercive, ILoaiCauHoiSercive loaiCauHoiService)
+        public CauHoiController(ICauhoiService cauhoiService, IChuDeSercive chuDeService, IBaiDocNgheService baiDocNgheSercive, ILoaiCauHoiService loaiCauHoiService)
         {
             this._cauHoiService = cauhoiService;
             this._chuDeService = chuDeService;
-            this._baiDocNgheSercive = baiDocNgheSercive;
+            this._baiDocNgheService = baiDocNgheSercive;
             this._loaiCauHoiService = loaiCauHoiService;
         }
        
@@ -74,7 +74,7 @@ namespace EnglishTestingOnline.Web.Controllers
         public ActionResult Add()
         {
             ViewBag.ListChuDe = _chuDeService.GetAll();
-            ViewBag.ListBaiDocNghe = _baiDocNgheSercive.GetAll();
+            ViewBag.ListBaiDocNghe = _baiDocNgheService.GetAll();
             ViewBag.ListLoaiCauHoi = _loaiCauHoiService.GetAll();
             return View();
         }
@@ -83,7 +83,7 @@ namespace EnglishTestingOnline.Web.Controllers
         public ActionResult Add(CauHoiViewModel cauHoiVM)
         {
             ViewBag.ListChuDe = _chuDeService.GetAll();
-            ViewBag.ListBaiDocNghe = _baiDocNgheSercive.GetAll();
+            ViewBag.ListBaiDocNghe = _baiDocNgheService.GetAll();
             ViewBag.ListLoaiCauHoi = _loaiCauHoiService.GetAll();
             if (ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace EnglishTestingOnline.Web.Controllers
         public ActionResult Edit(int id)
         {
             ViewBag.ListChuDe = _chuDeService.GetAll();
-            ViewBag.ListBaiDocNghe = _baiDocNgheSercive.GetAll();
+            ViewBag.ListBaiDocNghe = _baiDocNgheService.GetAll();
             ViewBag.ListLoaiCauHoi = _loaiCauHoiService.GetAll();
             var cauHoi = _cauHoiService.GetById(id);
             var cauHoiViewModel = Mapper.Map<CauHoi, CauHoiViewModel>(cauHoi);

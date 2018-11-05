@@ -1,4 +1,4 @@
-﻿@model EnglishTestingOnline.Web.Infrastructure.Core.PaginationSet<EnglishTestingOnline.Web.Models.BaiDocNgheViewModel>
+﻿@model EnglishTestingOnline.Web.Infrastructure.Core.PaginationSet<EnglishTestingOnline.Web.Models.KyThiViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -68,7 +68,13 @@
                                                     <input type="checkbox" value="@item.ID" name="item" />
                                                 </td>
                                                 <td>
-                                                    @Html.DisplayFor(modelItem => item.NoiDung)
+                                                    @Html.DisplayFor(modelItem => item.TenKyThi)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.NgayThi)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.TenKyThi)
                                                 </td>
 
                                                 <td>
