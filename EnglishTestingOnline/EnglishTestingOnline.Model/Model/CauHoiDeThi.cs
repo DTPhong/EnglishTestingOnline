@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Model.Model
-{[Table("CauHoiDeThis")]
+{[Table("CauHoiDeThi")]
     public class CauHoiDeThi
     {
         [Key]

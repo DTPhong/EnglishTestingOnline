@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Model.Model
 {
-    [Table("BaiDocNghes")]
+    [Table("BaiDocNghe")]
     public class BaiDocNghe
     {
         [Key]
@@ -16,7 +16,6 @@ namespace EnglishTestingOnline.Model.Model
         public int ID { get; set; }
         public int? LoaiBaiDocNghe_ID { get; set; }
         [Required]
-        [StringLength(250)]
         public string NoiDung { get; set; }
 
         [ForeignKey("LoaiBaiDocNghe_ID")]

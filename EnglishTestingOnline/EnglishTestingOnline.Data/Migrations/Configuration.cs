@@ -16,18 +16,13 @@
 
         protected override void Seed(EnglishDbContext context)
         {
-            CreateKyThiSample(context);
-            CreateDethiSample(context);
-            CreateLoaiBaiDocNgheSample(context);
-            CreateBaiDocNgheSample(context);
             CreateChudeSample(context);
             CreateLoaiCauHoiSample(context);
+            CreateLoaiBaiDocNgheSample(context);
+            CreateBaiDocNgheSample(context);
             CreateCauHoiSample(context);
-
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            CreateKyThiSample(context);
+            CreateDethiSample(context);
         }
 
         private void CreateChudeSample(EnglishDbContext context)
@@ -107,29 +102,8 @@
                     {
 
                        LoaiBaiDocNghe_ID=1,
-                       NoiDung="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-                    },
-                    new BaiDocNghe()
-                    {
-
-                       LoaiBaiDocNghe_ID=2,
-                       NoiDung="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-
-                    },
-                    new BaiDocNghe()
-                    {
-
-                       LoaiBaiDocNghe_ID=2,
-                       NoiDung="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-
-                    },
-                    new BaiDocNghe()
-                    {
-
-                       LoaiBaiDocNghe_ID=1,
-                       NoiDung="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-
-                    },
+                       NoiDung="Lorem",
+                    }
             };
                 context.BaiDocNghes.AddRange(listBaiDocNghe);
                 context.SaveChanges();
@@ -145,15 +119,7 @@
                     {
                         LoaiCauHoi_ID=1,
                         BaiDocNghe_ID=1,
-                        ChuDe_ID=3,
-                        NoiDung="Noi dung cau hoi",
-                        DapAn="Dap an cau hoi"
-                    },
-                    new CauHoi()
-                    {
-                        LoaiCauHoi_ID=1,
-                        BaiDocNghe_ID=2,
-                        ChuDe_ID=3,
+                        ChuDe_ID=1,
                         NoiDung="Noi dung cau hoi",
                         DapAn="Dap an cau hoi"
                     },
@@ -161,23 +127,7 @@
                     {
                         LoaiCauHoi_ID=1,
                         BaiDocNghe_ID=1,
-                        ChuDe_ID=3,
-                        NoiDung="Noi dung cau hoi",
-                        DapAn="Dap an cau hoi"
-                    },
-                    new CauHoi()
-                    {
-                        LoaiCauHoi_ID=1,
-                        BaiDocNghe_ID=4,
-                        ChuDe_ID=3,
-                        NoiDung="Noi dung cau hoi",
-                        DapAn="Dap an cau hoi"
-                    },
-                    new CauHoi()
-                    {
-                        LoaiCauHoi_ID=1,
-                        BaiDocNghe_ID=3,
-                        ChuDe_ID=3,
+                        ChuDe_ID=1,
                         NoiDung="Noi dung cau hoi",
                         DapAn="Dap an cau hoi"
                     },
@@ -185,15 +135,7 @@
                     {
                         LoaiCauHoi_ID=1,
                         BaiDocNghe_ID=1,
-                        ChuDe_ID=3,
-                        NoiDung="Noi dung cau hoi",
-                        DapAn="Dap an cau hoi"
-                    },
-                    new CauHoi()
-                    {
-                        LoaiCauHoi_ID=1,
-                        BaiDocNghe_ID=2,
-                        ChuDe_ID=3,
+                        ChuDe_ID=1,
                         NoiDung="Noi dung cau hoi",
                         DapAn="Dap an cau hoi"
                     },
@@ -201,7 +143,7 @@
                     {
                         LoaiCauHoi_ID=1,
                         BaiDocNghe_ID=1,
-                        ChuDe_ID=3,
+                        ChuDe_ID=1,
                         NoiDung="Noi dung cau hoi",
                         DapAn="Dap an cau hoi"
                     },
@@ -209,7 +151,7 @@
                     {
                         LoaiCauHoi_ID=1,
                         BaiDocNghe_ID=1,
-                        ChuDe_ID=3,
+                        ChuDe_ID=1,
                         NoiDung="Noi dung cau hoi",
                         DapAn="Dap an cau hoi"
                     },
@@ -217,7 +159,39 @@
                     {
                         LoaiCauHoi_ID=1,
                         BaiDocNghe_ID=1,
-                        ChuDe_ID=3,
+                        ChuDe_ID=1,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=1,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=1,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=1,
+                        NoiDung="Noi dung cau hoi",
+                        DapAn="Dap an cau hoi"
+                    },
+                    new CauHoi()
+                    {
+                        LoaiCauHoi_ID=1,
+                        BaiDocNghe_ID=1,
+                        ChuDe_ID=1,
                         NoiDung="Noi dung cau hoi",
                         DapAn="Dap an cau hoi"
                     }
@@ -236,26 +210,26 @@
                     {
 
                         TenKyThi="IELTS Spring Examination",
-                    NgayThi=Convert.ToDateTime("2018-11-05 00:00:00.000"),
+                    NgayThi=DateTime.Now,
 
                     },
                     new KyThi()
                     {
 
                         TenKyThi="IELTS Summer Examination",
-                        NgayThi=Convert.ToDateTime("2018-11-05 00:00:00.000"),
+                        NgayThi=DateTime.Now,
                     },
                     new KyThi()
                     {
 
                         TenKyThi="IELTS Authumn Examination",
-                        //NgayThi=Convert.ToDateTime("2018-11-05 00:00:00.000"),
+                        NgayThi=DateTime.Now,
                     },
                     new KyThi()
                     {
 
                         TenKyThi="IELTS Winter Examination"
-                        ,NgayThi=Convert.ToDateTime("2018-11-05 00:00:00.000"),
+                        ,NgayThi=DateTime.Now,
                     }
             };
                 context.KyThis.AddRange(listKythi);

@@ -3,12 +3,12 @@ namespace EnglishTestingOnline.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initDb : DbMigration
+    public partial class initDB : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.BaiDocNghes",
+                "dbo.BaiDocNghe",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -16,11 +16,11 @@ namespace EnglishTestingOnline.Data.Migrations
                         NoiDung = c.String(nullable: false, maxLength: 250),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.LoaiBaiDocNghes", t => t.LoaiBaiDocNghe_ID)
+                .ForeignKey("dbo.LoaiBaiDocNghe", t => t.LoaiBaiDocNghe_ID)
                 .Index(t => t.LoaiBaiDocNghe_ID);
             
             CreateTable(
-                "dbo.LoaiBaiDocNghes",
+                "dbo.LoaiBaiDocNghe",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -29,7 +29,7 @@ namespace EnglishTestingOnline.Data.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.BaiLams",
+                "dbo.BaiLam",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -42,7 +42,7 @@ namespace EnglishTestingOnline.Data.Migrations
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("dbo.AspNetUsers", t => t.HocVien_ID, cascadeDelete: true)
-                .ForeignKey("dbo.DeThis", t => t.DeThi_ID, cascadeDelete: true)
+                .ForeignKey("dbo.DeThi", t => t.DeThi_ID, cascadeDelete: true)
                 .Index(t => t.HocVien_ID)
                 .Index(t => t.DeThi_ID);
             
@@ -107,7 +107,7 @@ namespace EnglishTestingOnline.Data.Migrations
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "dbo.DeThis",
+                "dbo.DeThi",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -116,11 +116,11 @@ namespace EnglishTestingOnline.Data.Migrations
                         ThoiGianBatDau = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.Kythis", t => t.KyThi_ID, cascadeDelete: true)
+                .ForeignKey("dbo.Kythi", t => t.KyThi_ID, cascadeDelete: true)
                 .Index(t => t.KyThi_ID);
             
             CreateTable(
-                "dbo.Kythis",
+                "dbo.Kythi",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -130,20 +130,20 @@ namespace EnglishTestingOnline.Data.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.CauHoiDeThis",
+                "dbo.CauHoiDeThi",
                 c => new
                     {
                         DeThi_ID = c.Int(nullable: false),
                         CauHoi_ID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.DeThi_ID, t.CauHoi_ID })
-                .ForeignKey("dbo.CauHois", t => t.CauHoi_ID, cascadeDelete: true)
-                .ForeignKey("dbo.DeThis", t => t.DeThi_ID, cascadeDelete: true)
+                .ForeignKey("dbo.CauHoi", t => t.CauHoi_ID, cascadeDelete: true)
+                .ForeignKey("dbo.DeThi", t => t.DeThi_ID, cascadeDelete: true)
                 .Index(t => t.DeThi_ID)
                 .Index(t => t.CauHoi_ID);
             
             CreateTable(
-                "dbo.CauHois",
+                "dbo.CauHoi",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -154,15 +154,15 @@ namespace EnglishTestingOnline.Data.Migrations
                         DapAn = c.String(nullable: false, maxLength: 250),
                     })
                 .PrimaryKey(t => t.ID)
-                .ForeignKey("dbo.BaiDocNghes", t => t.BaiDocNghe_ID)
-                .ForeignKey("dbo.ChuDes", t => t.ChuDe_ID, cascadeDelete: true)
-                .ForeignKey("dbo.LoaiCauHois", t => t.LoaiCauHoi_ID, cascadeDelete: true)
+                .ForeignKey("dbo.BaiDocNghe", t => t.BaiDocNghe_ID)
+                .ForeignKey("dbo.ChuDe", t => t.ChuDe_ID, cascadeDelete: true)
+                .ForeignKey("dbo.LoaiCauHoi", t => t.LoaiCauHoi_ID, cascadeDelete: true)
                 .Index(t => t.LoaiCauHoi_ID)
                 .Index(t => t.BaiDocNghe_ID)
                 .Index(t => t.ChuDe_ID);
             
             CreateTable(
-                "dbo.ChuDes",
+                "dbo.ChuDe",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -171,7 +171,7 @@ namespace EnglishTestingOnline.Data.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.LoaiCauHois",
+                "dbo.LoaiCauHoi",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -180,7 +180,7 @@ namespace EnglishTestingOnline.Data.Migrations
                 .PrimaryKey(t => t.ID);
             
             CreateTable(
-                "dbo.CauTraLoiBaiLams",
+                "dbo.CauTraLoiBaiLam",
                 c => new
                     {
                         BaiLam_ID = c.Int(nullable: false),
@@ -188,13 +188,13 @@ namespace EnglishTestingOnline.Data.Migrations
                         CauTraLoi = c.String(maxLength: 250),
                     })
                 .PrimaryKey(t => new { t.BaiLam_ID, t.CauHoi_ID })
-                .ForeignKey("dbo.BaiLams", t => t.BaiLam_ID, cascadeDelete: true)
-                .ForeignKey("dbo.CauHois", t => t.CauHoi_ID, cascadeDelete: true)
+                .ForeignKey("dbo.BaiLam", t => t.BaiLam_ID, cascadeDelete: true)
+                .ForeignKey("dbo.CauHoi", t => t.CauHoi_ID, cascadeDelete: true)
                 .Index(t => t.BaiLam_ID)
                 .Index(t => t.CauHoi_ID);
             
             CreateTable(
-                "dbo.CauTraLoiTracNghiems",
+                "dbo.CauTraLoiTracNghiem",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -203,13 +203,13 @@ namespace EnglishTestingOnline.Data.Migrations
                         NoiDung = c.String(maxLength: 250),
                     })
                 .PrimaryKey(t => new { t.ID, t.CauHoi_ID })
-                .ForeignKey("dbo.CauHois", t => t.CauHoi_ID, cascadeDelete: true)
-                .ForeignKey("dbo.LoaiCauTraLoiTracNghiems", t => t.LoaiCauTraLoi_ID, cascadeDelete: true)
+                .ForeignKey("dbo.CauHoi", t => t.CauHoi_ID, cascadeDelete: true)
+                .ForeignKey("dbo.LoaiCauTraLoiTracNghiem", t => t.LoaiCauTraLoi_ID, cascadeDelete: true)
                 .Index(t => t.CauHoi_ID)
                 .Index(t => t.LoaiCauTraLoi_ID);
             
             CreateTable(
-                "dbo.LoaiCauTraLoiTracNghiems",
+                "dbo.LoaiCauTraLoiTracNghiem",
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
@@ -233,58 +233,58 @@ namespace EnglishTestingOnline.Data.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.CauTraLoiTracNghiems", "LoaiCauTraLoi_ID", "dbo.LoaiCauTraLoiTracNghiems");
-            DropForeignKey("dbo.CauTraLoiTracNghiems", "CauHoi_ID", "dbo.CauHois");
-            DropForeignKey("dbo.CauTraLoiBaiLams", "CauHoi_ID", "dbo.CauHois");
-            DropForeignKey("dbo.CauTraLoiBaiLams", "BaiLam_ID", "dbo.BaiLams");
-            DropForeignKey("dbo.CauHoiDeThis", "DeThi_ID", "dbo.DeThis");
-            DropForeignKey("dbo.CauHoiDeThis", "CauHoi_ID", "dbo.CauHois");
-            DropForeignKey("dbo.CauHois", "LoaiCauHoi_ID", "dbo.LoaiCauHois");
-            DropForeignKey("dbo.CauHois", "ChuDe_ID", "dbo.ChuDes");
-            DropForeignKey("dbo.CauHois", "BaiDocNghe_ID", "dbo.BaiDocNghes");
-            DropForeignKey("dbo.BaiLams", "DeThi_ID", "dbo.DeThis");
-            DropForeignKey("dbo.DeThis", "KyThi_ID", "dbo.Kythis");
-            DropForeignKey("dbo.BaiLams", "HocVien_ID", "dbo.AspNetUsers");
+            DropForeignKey("dbo.CauTraLoiTracNghiem", "LoaiCauTraLoi_ID", "dbo.LoaiCauTraLoiTracNghiem");
+            DropForeignKey("dbo.CauTraLoiTracNghiem", "CauHoi_ID", "dbo.CauHoi");
+            DropForeignKey("dbo.CauTraLoiBaiLam", "CauHoi_ID", "dbo.CauHoi");
+            DropForeignKey("dbo.CauTraLoiBaiLam", "BaiLam_ID", "dbo.BaiLam");
+            DropForeignKey("dbo.CauHoiDeThi", "DeThi_ID", "dbo.DeThi");
+            DropForeignKey("dbo.CauHoiDeThi", "CauHoi_ID", "dbo.CauHoi");
+            DropForeignKey("dbo.CauHoi", "LoaiCauHoi_ID", "dbo.LoaiCauHoi");
+            DropForeignKey("dbo.CauHoi", "ChuDe_ID", "dbo.ChuDe");
+            DropForeignKey("dbo.CauHoi", "BaiDocNghe_ID", "dbo.BaiDocNghe");
+            DropForeignKey("dbo.BaiLam", "DeThi_ID", "dbo.DeThi");
+            DropForeignKey("dbo.DeThi", "KyThi_ID", "dbo.Kythi");
+            DropForeignKey("dbo.BaiLam", "HocVien_ID", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.BaiDocNghes", "LoaiBaiDocNghe_ID", "dbo.LoaiBaiDocNghes");
+            DropForeignKey("dbo.BaiDocNghe", "LoaiBaiDocNghe_ID", "dbo.LoaiBaiDocNghe");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.CauTraLoiTracNghiems", new[] { "LoaiCauTraLoi_ID" });
-            DropIndex("dbo.CauTraLoiTracNghiems", new[] { "CauHoi_ID" });
-            DropIndex("dbo.CauTraLoiBaiLams", new[] { "CauHoi_ID" });
-            DropIndex("dbo.CauTraLoiBaiLams", new[] { "BaiLam_ID" });
-            DropIndex("dbo.CauHois", new[] { "ChuDe_ID" });
-            DropIndex("dbo.CauHois", new[] { "BaiDocNghe_ID" });
-            DropIndex("dbo.CauHois", new[] { "LoaiCauHoi_ID" });
-            DropIndex("dbo.CauHoiDeThis", new[] { "CauHoi_ID" });
-            DropIndex("dbo.CauHoiDeThis", new[] { "DeThi_ID" });
-            DropIndex("dbo.DeThis", new[] { "KyThi_ID" });
+            DropIndex("dbo.CauTraLoiTracNghiem", new[] { "LoaiCauTraLoi_ID" });
+            DropIndex("dbo.CauTraLoiTracNghiem", new[] { "CauHoi_ID" });
+            DropIndex("dbo.CauTraLoiBaiLam", new[] { "CauHoi_ID" });
+            DropIndex("dbo.CauTraLoiBaiLam", new[] { "BaiLam_ID" });
+            DropIndex("dbo.CauHoi", new[] { "ChuDe_ID" });
+            DropIndex("dbo.CauHoi", new[] { "BaiDocNghe_ID" });
+            DropIndex("dbo.CauHoi", new[] { "LoaiCauHoi_ID" });
+            DropIndex("dbo.CauHoiDeThi", new[] { "CauHoi_ID" });
+            DropIndex("dbo.CauHoiDeThi", new[] { "DeThi_ID" });
+            DropIndex("dbo.DeThi", new[] { "KyThi_ID" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.BaiLams", new[] { "DeThi_ID" });
-            DropIndex("dbo.BaiLams", new[] { "HocVien_ID" });
-            DropIndex("dbo.BaiDocNghes", new[] { "LoaiBaiDocNghe_ID" });
+            DropIndex("dbo.BaiLam", new[] { "DeThi_ID" });
+            DropIndex("dbo.BaiLam", new[] { "HocVien_ID" });
+            DropIndex("dbo.BaiDocNghe", new[] { "LoaiBaiDocNghe_ID" });
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.LoaiCauTraLoiTracNghiems");
-            DropTable("dbo.CauTraLoiTracNghiems");
-            DropTable("dbo.CauTraLoiBaiLams");
-            DropTable("dbo.LoaiCauHois");
-            DropTable("dbo.ChuDes");
-            DropTable("dbo.CauHois");
-            DropTable("dbo.CauHoiDeThis");
-            DropTable("dbo.Kythis");
-            DropTable("dbo.DeThis");
+            DropTable("dbo.LoaiCauTraLoiTracNghiem");
+            DropTable("dbo.CauTraLoiTracNghiem");
+            DropTable("dbo.CauTraLoiBaiLam");
+            DropTable("dbo.LoaiCauHoi");
+            DropTable("dbo.ChuDe");
+            DropTable("dbo.CauHoi");
+            DropTable("dbo.CauHoiDeThi");
+            DropTable("dbo.Kythi");
+            DropTable("dbo.DeThi");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.BaiLams");
-            DropTable("dbo.LoaiBaiDocNghes");
-            DropTable("dbo.BaiDocNghes");
+            DropTable("dbo.BaiLam");
+            DropTable("dbo.LoaiBaiDocNghe");
+            DropTable("dbo.BaiDocNghe");
         }
     }
 }

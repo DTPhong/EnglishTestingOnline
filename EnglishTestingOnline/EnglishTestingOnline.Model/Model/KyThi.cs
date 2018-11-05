@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EnglishTestingOnline.Model.Model
 {
-    [Table("Kythis")]
+    [Table("Kythi")]
     public class KyThi
     {
         [Key]

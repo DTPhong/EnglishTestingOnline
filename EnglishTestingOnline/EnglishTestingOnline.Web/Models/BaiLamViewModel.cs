@@ -18,7 +18,7 @@ namespace EnglishTestingOnline.Web.Models
         public float? DiemDoc { get; set; }
         public float? DiemViet { get; set; }
         public virtual DeThiViewModel Dethi { get; set; }
-        public virtual ApplicationUser HocVien { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual IEnumerable<CauTraLoiBaiLamViewModel> CauTraLoiBaiLams { get; set; }
     }
 }
